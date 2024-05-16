@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. Sets and Functions &mdash; Mathematics in Lean 0.1 documentation</title>
+  <title>4. &#38598;&#21512;&#21644;&#20989;&#25968; &mdash; Mathematics in Lean 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=0731ccc3" />
@@ -51,8 +51,8 @@
 <li class="toctree-l1"><a class="reference internal" href="C01_Introduction.html">1. &#24341;&#35328;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C02_Basics.html">2. &#22522;&#30784;&#30693;&#35782;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C03_Logic.html">3. &#36923;&#36753;</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Sets and Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sets">4.1. Sets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. &#38598;&#21512;&#21644;&#20989;&#25968;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sets">4.1. &#38598;&#21512;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functions">4.2. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-schroder-bernstein-theorem">4.3. The Schr&#246;der-Bernstein Theorem</a></li>
 </ul>
@@ -83,7 +83,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">4. </span>Sets and Functions</li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>&#38598;&#21512;&#21644;&#20989;&#25968;</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/C04_Sets_and_Functions.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,68 +94,47 @@
            <div itemprop="articleBody">
              
   <section id="sets-and-functions">
-<span id="id1"></span><h1><span class="section-number">4. </span>Sets and Functions<a class="headerlink" href="#sets-and-functions" title="Link to this heading">&#61633;</a></h1>
-<p>The vocabulary of sets, relations, and functions provides a uniform
-language for carrying out constructions in all the branches of
-mathematics.
-Since functions and relations can be defined in terms of sets,
-axiomatic set theory can be used as a foundation for mathematics.</p>
-<p>Lean&#8217;s foundation is based instead on the primitive notion of a <em>type</em>,
-and it includes ways of defining functions between types.
-Every expression in Lean has a type:
-there are natural numbers, real numbers, functions from reals to reals,
-groups, vector spaces, and so on.
-Some expressions <em>are</em> types,
-which is to say,
-their type is <code class="docutils literal notranslate"><span class="pre">Type</span></code>.
-Lean and Mathlib provide ways of defining new types,
-and ways of defining objects of those types.</p>
-<p>Conceptually, you can think of a type as just a set of objects.
-Requiring every object to have a type has some advantages.
-For example, it makes it possible to overload notation like <code class="docutils literal notranslate"><span class="pre">+</span></code>,
-and it sometimes makes input less verbose
-because Lean can infer a lot of information from
-an object&#8217;s type.
-The type system also enables Lean to flag errors when you
-apply a function to the wrong number of arguments,
-or apply a function to arguments of the wrong type.</p>
-<p>Lean&#8217;s library does define elementary set-theoretic notions.
-In contrast to set theory,
-in Lean a set is always a set of objects of some type,
-such as a set of natural numbers or a set of functions
-from real numbers to real numbers.
-The distinction between types and sets takes some getting used to,
-but this chapter will take you through the essentials.</p>
+<span id="id1"></span><h1><span class="section-number">4. </span>&#38598;&#21512;&#21644;&#20989;&#25968;<a class="headerlink" href="#sets-and-functions" title="Link to this heading">&#61633;</a></h1>
+<p>&#38598;&#21512;&#12289;&#20851;&#31995;&#21644;&#20989;&#25968;&#30340;&#35789;&#27719;&#20026;&#25152;&#26377;&#25968;&#23398;&#20998;&#25903;&#30340;&#26500;&#36896;&#25552;&#20379;&#20102;&#32479;&#19968;&#30340;&#35821;&#35328;&#12290;
+&#30001;&#20110;&#20989;&#25968;&#21644;&#20851;&#31995;&#21487;&#20197;&#29992;&#38598;&#21512;&#26469;&#23450;&#20041;&#65292;&#22240;&#27492;&#20844;&#29702;&#38598;&#21512;&#35770;&#21487;&#20197;&#20316;&#20026;&#25968;&#23398;&#30340;&#22522;&#30784;&#12290;</p>
+<p>&#20316;&#20026; Lean &#22522;&#30784;&#30340;&#21407;&#22987;&#27010;&#24565;&#21017;&#26159; <em>&#31867;&#22411;</em>&#65292;&#23427;&#21253;&#25324;&#22312;&#31867;&#22411;&#38388;&#23450;&#20041;&#20989;&#25968;&#30340;&#26041;&#27861;&#12290;
+Lean &#20013;&#30340;&#27599;&#20010;&#34920;&#36798;&#24335;&#37117;&#26377;&#19968;&#20010;&#31867;&#22411;&#65306;&#33258;&#28982;&#25968;&#12289;&#23454;&#25968;&#12289;&#20174;&#23454;&#25968;&#21040;&#23454;&#25968;&#30340;&#20989;&#25968;&#12289;&#32676;&#12289;&#21521;&#37327;&#31354;&#38388;&#31561;&#31561;&#12290;
+&#26377;&#30340;&#34920;&#36798;&#24335; <em>&#26159;</em> &#31867;&#22411;&#65292;&#20063;&#23601;&#26159;&#35828;&#65292;&#23427;&#20204;&#30340;&#31867;&#22411;&#26159; <code class="docutils literal notranslate"><span class="pre">Type</span></code>.
+Lean &#21644; Mathlib &#25552;&#20379;&#23450;&#20041;&#26032;&#31867;&#22411;&#30340;&#26041;&#24335;&#65292;&#20197;&#21450;&#23450;&#20041;&#36825;&#20123;&#31867;&#22411;&#30340;&#23545;&#35937;&#30340;&#26041;&#24335;&#12290;</p>
+<p>&#20174;&#27010;&#24565;&#19978;&#35762;&#65292;&#20320;&#21487;&#20197;&#25226;&#31867;&#22411;&#30475;&#20316;&#26159;&#19968;&#32452;&#23545;&#35937;&#30340;&#38598;&#21512;&#12290;
+&#35201;&#27714;&#27599;&#20010;&#23545;&#35937;&#37117;&#26377;&#19968;&#20010;&#31867;&#22411;&#26377;&#19968;&#20123;&#22909;&#22788;&#12290;
+&#20363;&#22914;&#65292;&#23427;&#20351;&#24471;&#37325;&#36733;&#20687; <code class="docutils literal notranslate"><span class="pre">+</span></code> &#36825;&#26679;&#30340;&#31526;&#21495;&#25104;&#20026;&#21487;&#33021;&#65292;
+&#26377;&#26102;&#23427;&#36824;&#33021;&#32553;&#20943;&#20887;&#38271;&#30340;&#36755;&#20837;&#65292;&#22240;&#20026; Lean &#21487;&#20197;&#20174;&#23545;&#35937;&#30340;&#31867;&#22411;&#20013;&#25512;&#26029;&#20986;&#22823;&#37327;&#20449;&#24687;&#12290;
+&#24403;&#20320;&#23558;&#20989;&#25968;&#24212;&#29992;&#20110;&#38169;&#35823;&#30340;&#21442;&#25968;&#20010;&#25968;&#65292;
+&#25110;&#23558;&#20989;&#25968;&#24212;&#29992;&#20110;&#38169;&#35823;&#31867;&#22411;&#30340;&#21442;&#25968;&#26102;&#65292;
+&#31867;&#22411;&#31995;&#32479;&#36824;&#35753; Lean &#21487;&#20197;&#26631;&#35760;&#38169;&#35823;&#12290;</p>
+<p>Lean &#30340;&#24211;&#30830;&#23454;&#23450;&#20041;&#20102;&#21021;&#31561;&#38598;&#21512;&#35770;&#27010;&#24565;&#12290;
+&#19982;&#38598;&#21512;&#35770;&#19981;&#21516;&#30340;&#26159;&#65292;&#22312; Lean &#20013;&#65292;&#38598;&#21512;&#24635;&#26159;&#26576;&#31181;&#31867;&#22411;&#30340;&#23545;&#35937;&#21644;&#38598;&#21512;&#65292;
+&#20363;&#22914;&#33258;&#28982;&#25968;&#38598;&#21512;&#25110;&#20174;&#23454;&#25968;&#21040;&#23454;&#25968;&#30340;&#20989;&#25968;&#30340;&#38598;&#21512;&#12290;
+&#31867;&#22411;&#21644;&#38598;&#21512;&#20043;&#38388;&#30340;&#21306;&#21035;&#38656;&#35201;&#19968;&#20123;&#26102;&#38388;&#26469;&#36866;&#24212;&#65292;&#20294;&#26412;&#31456;&#23558;&#24102;&#20320;&#20102;&#35299;&#20854;&#20013;&#30340;&#35201;&#28857;&#12290;</p>
 <section id="sets">
-<span id="id2"></span><h2><span class="section-number">4.1. </span>Sets<a class="headerlink" href="#sets" title="Link to this heading">&#61633;</a></h2>
-<p id="index-0">If <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> is any type, the type <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#945;</span></code> consists of sets
-of elements of <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>.
-This type supports the usual set-theoretic operations and relations.
-For example, <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8838;</span> <span class="pre">t</span></code> says that <code class="docutils literal notranslate"><span class="pre">s</span></code> is a subset of <code class="docutils literal notranslate"><span class="pre">t</span></code>,
-<code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8745;</span> <span class="pre">t</span></code> denotes the intersection of <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8746;</span> <span class="pre">t</span></code> denotes their union.
-The subset relation can be typed with <code class="docutils literal notranslate"><span class="pre">\ss</span></code> or <code class="docutils literal notranslate"><span class="pre">\sub</span></code>,
-intersection can be typed with <code class="docutils literal notranslate"><span class="pre">\i</span></code> or <code class="docutils literal notranslate"><span class="pre">\cap</span></code>,
-and union can be typed with <code class="docutils literal notranslate"><span class="pre">\un</span></code> or <code class="docutils literal notranslate"><span class="pre">\cup</span></code>.
-The library also defines the set <code class="docutils literal notranslate"><span class="pre">univ</span></code>,
-which consists of all the elements of type <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>,
-and the empty set, <code class="docutils literal notranslate"><span class="pre">&#8709;</span></code>, which can be typed as <code class="docutils literal notranslate"><span class="pre">\empty</span></code>.
-Given <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">:</span> <span class="pre">&#945;</span></code> and <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">&#945;</span></code>,
-the expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code> says that <code class="docutils literal notranslate"><span class="pre">x</span></code> is a member of <code class="docutils literal notranslate"><span class="pre">s</span></code>.
-Theorems that mention set membership often include <code class="docutils literal notranslate"><span class="pre">mem</span></code>
-in their name.
-The expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8713;</span> <span class="pre">s</span></code> abbreviates <code class="docutils literal notranslate"><span class="pre">&#172;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code>.
-You can type <code class="docutils literal notranslate"><span class="pre">&#8712;</span></code> as <code class="docutils literal notranslate"><span class="pre">\in</span></code> or <code class="docutils literal notranslate"><span class="pre">\mem</span></code> and <code class="docutils literal notranslate"><span class="pre">&#8713;</span></code> as <code class="docutils literal notranslate"><span class="pre">\notin</span></code>.</p>
-<p id="index-1">One way to prove things about sets is to use <code class="docutils literal notranslate"><span class="pre">rw</span></code>
-or the simplifier to expand the definitions.
-In the second example below, we use <code class="docutils literal notranslate"><span class="pre">simp</span> <span class="pre">only</span></code>
-to tell the simplifier to use only the list
-of identities we give it,
-and not its full database of identities.
-Unlike <code class="docutils literal notranslate"><span class="pre">rw</span></code>, <code class="docutils literal notranslate"><span class="pre">simp</span></code> can perform simplifications
-inside a universal or existential quantifier.
-If you step through the proof,
-you can see the effects of these commands.</p>
+<span id="id2"></span><h2><span class="section-number">4.1. </span>&#38598;&#21512;<a class="headerlink" href="#sets" title="Link to this heading">&#61633;</a></h2>
+<p id="index-0">&#33509; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#26159;&#20219;&#24847;&#31867;&#22411;&#65292;&#21017;&#31867;&#22411; <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#945;</span></code> &#30001; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#20013;&#30340;&#20803;&#32032;&#32452;&#25104;&#30340;&#38598;&#21512;&#26500;&#25104;&#12290;
+&#36825;&#19968;&#31867;&#22411;&#25903;&#25345;&#24120;&#35268;&#30340;&#38598;&#21512;&#35770;&#36816;&#31639;&#21644;&#20851;&#31995;&#12290;
+&#20363;&#22914;&#65292; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8838;</span> <span class="pre">t</span></code> &#26159;&#35828; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#26159; <code class="docutils literal notranslate"><span class="pre">t</span></code> &#30340;&#23376;&#38598;&#65292;
+<code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8745;</span> <span class="pre">t</span></code> &#26159;&#25351; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">t</span></code> &#30340;&#20132;&#38598;&#65292;
+&#32780; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8746;</span> <span class="pre">t</span></code> &#26159;&#25351;&#23427;&#20204;&#30340;&#24182;&#38598;&#12290;
+&#23376;&#38598;&#20851;&#31995;&#21487;&#20197;&#29992; <code class="docutils literal notranslate"><span class="pre">\ss</span></code> &#25110; <code class="docutils literal notranslate"><span class="pre">\sub</span></code> &#36755;&#20837;&#65292;
+&#20132;&#38598;&#21487;&#20197;&#29992; <code class="docutils literal notranslate"><span class="pre">\i</span></code> &#25110; <code class="docutils literal notranslate"><span class="pre">\cap</span></code> &#36755;&#20837;&#65292;
+&#24182;&#38598;&#21487;&#20197;&#29992; <code class="docutils literal notranslate"><span class="pre">\un</span></code> &#25110; <code class="docutils literal notranslate"><span class="pre">\cup</span></code> &#36755;&#20837;&#12290;
+&#24211;&#20013;&#20063;&#23450;&#20041;&#20102;&#38598;&#21512; <code class="docutils literal notranslate"><span class="pre">univ</span></code>,
+&#23427;&#21253;&#21547;&#31867;&#22411; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#30340;&#20840;&#37096;&#20803;&#32032;&#65292;
+&#20197;&#21450;&#31354;&#38598; <code class="docutils literal notranslate"><span class="pre">&#8709;</span></code>, &#21487;&#20197;&#29992; <code class="docutils literal notranslate"><span class="pre">\empty</span></code> &#36755;&#20837;&#12290;
+&#32473;&#23450; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">:</span> <span class="pre">&#945;</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">&#945;</span></code>,
+&#34920;&#36798;&#24335; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code> &#26159;&#35828; <code class="docutils literal notranslate"><span class="pre">x</span></code> &#26159; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#30340;&#19968;&#20010;&#25104;&#21592;&#12290;
+&#25552;&#21040;&#38598;&#21512;&#25104;&#21592;&#20851;&#31995;&#30340;&#23450;&#29702;&#30340;&#21517;&#23383;&#32463;&#24120;&#21547;&#26377; <code class="docutils literal notranslate"><span class="pre">mem</span></code>.
+&#34920;&#36798;&#24335; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8713;</span> <span class="pre">s</span></code> &#26159; <code class="docutils literal notranslate"><span class="pre">&#172;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code> &#30340;&#32553;&#20889;&#12290;
+&#20320;&#21487;&#20197;&#29992; <code class="docutils literal notranslate"><span class="pre">\in</span></code> &#25110; <code class="docutils literal notranslate"><span class="pre">\mem</span></code> &#36755;&#20837; <code class="docutils literal notranslate"><span class="pre">&#8712;</span></code>, &#29992; <code class="docutils literal notranslate"><span class="pre">\notin</span></code> &#36755;&#20837; <code class="docutils literal notranslate"><span class="pre">&#8713;</span></code>.</p>
+<p id="index-1">&#35777;&#26126;&#20851;&#20110;&#38598;&#21512;&#30340;&#20107;&#24773;&#30340;&#19968;&#31181;&#26041;&#27861;&#26159;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">rw</span></code> &#25110;&#21270;&#31616;&#22120;&#26469;&#23637;&#24320;&#23450;&#20041;&#12290;
+&#22312;&#19979;&#38754;&#30340;&#31532;&#20108;&#20010;&#20363;&#23376;&#20013;&#65292; &#25105;&#20204;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">simp</span> <span class="pre">only</span></code> &#21578;&#35785;&#21270;&#31616;&#22120;&#21482;&#20351;&#29992;&#25105;&#20204;&#32473;&#23427;&#30340;&#21015;&#34920;&#20013;&#30340;&#31561;&#24335;&#65292;
+&#32780;&#19981;&#26159;&#25972;&#20010;&#25968;&#25454;&#24211;&#20013;&#30340;&#31561;&#24335;&#12290;
+&#19981;&#21516;&#20110; <code class="docutils literal notranslate"><span class="pre">rw</span></code>, <code class="docutils literal notranslate"><span class="pre">simp</span></code> &#21487;&#20197;&#22312;&#20840;&#31216;&#25110;&#23384;&#22312;&#37327;&#35789;&#20869;&#23454;&#26045;&#21270;&#31616;&#12290;
+&#22914;&#26524;&#20320;&#36880;&#27493;&#26597;&#30475;&#35777;&#26126;&#65292;&#20320;&#21487;&#20197;&#30475;&#21040;&#36825;&#20123;&#21629;&#20196;&#30340;&#25928;&#26524;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">{</span><span class="n">&#945;</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span>
 <span class="kd">variable</span> <span class="o">(</span><span class="n">s</span> <span class="n">t</span> <span class="n">u</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#945;</span><span class="o">)</span>
 <span class="kn">open</span> <span class="n">Set</span>
@@ -173,26 +152,23 @@ you can see the effects of these commands.</p>
   <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">h</span> <span class="n">_</span> <span class="n">xs</span><span class="o">,</span> <span class="n">xu</span><span class="o">&#10217;</span>
 </pre></div>
 </div>
-<p>In this example, we open the <code class="docutils literal notranslate"><span class="pre">set</span></code> namespace to have
-access to the shorter names for the theorems.
-But, in fact, we can delete the calls to <code class="docutils literal notranslate"><span class="pre">rw</span></code> and <code class="docutils literal notranslate"><span class="pre">simp</span></code>
-entirely:</p>
+<p>&#22312;&#36825;&#20010;&#20363;&#23376;&#20013;&#65292;&#25105;&#20204;&#24320;&#21551;&#20102; <code class="docutils literal notranslate"><span class="pre">Set</span></code> &#21517;&#23383;&#31354;&#38388;&#20197;&#29992;&#26356;&#30701;&#30340;&#23450;&#29702;&#21517;&#35775;&#38382;&#23450;&#29702;&#12290;
+&#20294;&#20107;&#23454;&#19978;&#65292;&#25105;&#20204;&#21487;&#20197;&#23436;&#20840;&#21024;&#38500; <code class="docutils literal notranslate"><span class="pre">rw</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">simp</span></code> &#30340;&#35843;&#29992;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8838;</span> <span class="n">t</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">u</span> <span class="bp">&#8838;</span> <span class="n">t</span> <span class="bp">&#8745;</span> <span class="n">u</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">x</span> <span class="n">xsu</span>
   <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">h</span> <span class="n">xsu.1</span><span class="o">,</span> <span class="n">xsu.2</span><span class="o">&#10217;</span>
 </pre></div>
 </div>
-<p>What is going on here is known as <em>definitional reduction</em>:
-to make sense of the <code class="docutils literal notranslate"><span class="pre">intro</span></code> command and the anonymous constructors
-Lean is forced to expand the definitions.
-The following example also illustrate the phenomenon:</p>
+<p>&#36825;&#37324;&#21457;&#29983;&#30340;&#20107;&#24773;&#34987;&#31216;&#20026; <em>&#23450;&#20041;&#32422;&#21270;</em>&#65306;&#20026;&#20102;&#29702;&#35299; <code class="docutils literal notranslate"><span class="pre">intro</span></code> &#21629;&#20196;&#21644;&#21311;&#21517;&#26500;&#36896;&#20989;&#25968;&#65292;
+Lean &#19981;&#24471;&#19981;&#23637;&#24320;&#23450;&#20041;&#12290;
+&#19979;&#38754;&#30340;&#20363;&#23376;&#20063;&#35828;&#26126;&#20102;&#36825;&#19968;&#29616;&#35937;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8838;</span> <span class="n">t</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">u</span> <span class="bp">&#8838;</span> <span class="n">t</span> <span class="bp">&#8745;</span> <span class="n">u</span> <span class="o">:=</span>
   <span class="k">fun</span> <span class="n">x</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xu</span><span class="o">&#10217;</span> <span class="bp">&#8614;</span> <span class="o">&#10216;</span><span class="n">h</span> <span class="n">xs</span><span class="o">,</span> <span class="n">xu</span><span class="o">&#10217;</span>
 </pre></div>
 </div>
-<p>To deal with unions, we can use <code class="docutils literal notranslate"><span class="pre">Set.union_def</span></code> and <code class="docutils literal notranslate"><span class="pre">Set.mem_union</span></code>.
-Since <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8746;</span> <span class="pre">t</span></code> unfolds to <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8744;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t</span></code>,
-we can also use the <code class="docutils literal notranslate"><span class="pre">cases</span></code> tactic to force a definitional reduction.</p>
+<p>&#20026;&#20102;&#22788;&#29702;&#24182;&#38598;&#65292;&#25105;&#20204;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Set.union_def</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Set.mem_union</span></code>.
+&#30001;&#20110; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8746;</span> <span class="pre">t</span></code> &#23637;&#24320;&#20026; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8744;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t</span></code>,
+&#25105;&#20204;&#20063;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">cases</span></code> &#31574;&#30053;&#24378;&#21046;&#35201;&#27714;&#23450;&#20041;&#32422;&#21270;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="o">(</span><span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">u</span><span class="o">)</span> <span class="bp">&#8838;</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">u</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">x</span> <span class="n">hx</span>
   <span class="k">have</span> <span class="n">xs</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="o">:=</span> <span class="n">hx.1</span>
@@ -206,33 +182,29 @@ we can also use the <code class="docutils literal notranslate"><span class="pre"
     <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xu</span><span class="o">&#10217;</span>
 </pre></div>
 </div>
-<p>Since intersection binds tighter than union,
-the use of parentheses in the expression <code class="docutils literal notranslate"><span class="pre">(s</span> <span class="pre">&#8745;</span> <span class="pre">t)</span> <span class="pre">&#8746;</span> <span class="pre">(s</span> <span class="pre">&#8745;</span> <span class="pre">u)</span></code>
-is unnecessary, but they make the meaning of the expression clearer.
-The following is a shorter proof of the same fact:</p>
+<p>&#30001;&#20110;&#20132;&#38598;&#27604;&#32852;&#21512;&#26356;&#32039;&#23494;&#65292;
+&#34920;&#36798;&#24335; <code class="docutils literal notranslate"><span class="pre">(s</span> <span class="pre">&#8745;</span> <span class="pre">t)</span> <span class="pre">&#8746;</span> <span class="pre">(s</span> <span class="pre">&#8745;</span> <span class="pre">u)</span></code> &#20013;&#20351;&#29992;&#25324;&#21495;&#26159;&#19981;&#24517;&#35201;&#30340;&#65292;
+&#20294;&#23427;&#20204;&#20351;&#34920;&#36798;&#24335;&#30340;&#21547;&#20041;&#26356;&#28165;&#26224;&#12290;
+&#19979;&#38754;&#26159;&#23545;&#21516;&#19968;&#20107;&#23454;&#26356;&#31616;&#30701;&#30340;&#35777;&#26126;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="o">(</span><span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">u</span><span class="o">)</span> <span class="bp">&#8838;</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">u</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rintro</span> <span class="n">x</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xt</span> <span class="bp">|</span> <span class="n">xu</span><span class="o">&#10217;</span>
   <span class="bp">&#183;</span> <span class="n">left</span><span class="bp">;</span> <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xt</span><span class="o">&#10217;</span>
   <span class="bp">.</span> <span class="n">right</span><span class="bp">;</span> <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xu</span><span class="o">&#10217;</span>
 </pre></div>
 </div>
-<p>As an exercise, try proving the other inclusion:</p>
+<p>&#20316;&#20026;&#32451;&#20064;&#65292;&#35797;&#30528;&#35777;&#26126;&#21478;&#19968;&#26041;&#21521;&#30340;&#21253;&#21547;&#20851;&#31995;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">u</span> <span class="bp">&#8838;</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="o">(</span><span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">u</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>It might help to know that when using <code class="docutils literal notranslate"><span class="pre">rintro</span></code>,
-sometimes we need to use parentheses around a disjunctive pattern
-<code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">|</span> <span class="pre">h2</span></code> to get Lean to parse it correctly.</p>
-<p>The library also defines set difference, <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">\</span> <span class="pre">t</span></code>,
-where the backslash is a special unicode character
-entered as <code class="docutils literal notranslate"><span class="pre">\\</span></code>.
-The expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">\</span> <span class="pre">t</span></code> expands to <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8743;</span> <span class="pre">x</span> <span class="pre">&#8713;</span> <span class="pre">t</span></code>.
-(The <code class="docutils literal notranslate"><span class="pre">&#8713;</span></code> can be entered as <code class="docutils literal notranslate"><span class="pre">\notin</span></code>.)
-It can be rewritten manually using <code class="docutils literal notranslate"><span class="pre">Set.diff_eq</span></code> and <code class="docutils literal notranslate"><span class="pre">dsimp</span></code>
-or <code class="docutils literal notranslate"><span class="pre">Set.mem_diff</span></code>,
-but the following two proofs of the same inclusion
-show how to avoid using them.</p>
+<p>&#30693;&#36947;&#20197;&#19979;&#20107;&#23454;&#21487;&#33021;&#26377;&#24110;&#21161;&#65306;&#24403;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">rintro</span></code> &#26102;&#65292;
+&#26377;&#26102;&#25105;&#20204;&#38656;&#35201;&#20351;&#29992;&#25324;&#21495;&#21253;&#22260;&#26512;&#21462;&#27169;&#24335; <code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">|</span> <span class="pre">h2</span></code> &#20351;&#24471; Lean &#33021;&#27491;&#30830;&#35299;&#26512;&#23427;&#12290;</p>
+<p>&#24211;&#37324;&#20063;&#23450;&#20041;&#20102;&#38598;&#21512;&#30340;&#24046;&#65292; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">\</span> <span class="pre">t</span></code>,
+&#20854;&#20013;&#21453;&#26012;&#32447;&#26159;&#20197; <code class="docutils literal notranslate"><span class="pre">\\</span></code> &#36755;&#20837;&#30340;&#29305;&#27530;unicode&#23383;&#31526;&#12290;
+&#34920;&#36798;&#24335; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">\</span> <span class="pre">t</span></code> &#23637;&#24320;&#20026; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8743;</span> <span class="pre">x</span> <span class="pre">&#8713;</span> <span class="pre">t</span></code>.
+&#65288; <code class="docutils literal notranslate"><span class="pre">&#8713;</span></code> &#21487;&#20197;&#29992; <code class="docutils literal notranslate"><span class="pre">\notin</span></code> &#36755;&#20837;&#12290;&#65289;
+&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Set.diff_eq</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> &#25110; <code class="docutils literal notranslate"><span class="pre">Set.mem_diff</span></code> &#25163;&#21160;&#37325;&#20889;&#23427;&#65292;
+&#32780;&#19979;&#38754;&#23545;&#21516;&#19968;&#20010;&#21253;&#21547;&#20851;&#31995;&#30340;&#20004;&#20010;&#35777;&#26126;&#23637;&#31034;&#20102;&#22914;&#20309;&#36991;&#20813;&#20351;&#29992;&#23427;&#20204;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="n">s</span> <span class="bp">\</span> <span class="n">t</span><span class="o">)</span> <span class="bp">\</span> <span class="n">u</span> <span class="bp">&#8838;</span> <span class="n">s</span> <span class="bp">\</span> <span class="o">(</span><span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">u</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">x</span> <span class="n">xstu</span>
   <span class="k">have</span> <span class="n">xs</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="o">:=</span> <span class="n">xstu.1.1</span>
@@ -252,17 +224,15 @@ show how to avoid using them.</p>
   <span class="n">rintro</span> <span class="o">(</span><span class="n">xt</span> <span class="bp">|</span> <span class="n">xu</span><span class="o">)</span> <span class="bp">&lt;;&gt;</span> <span class="n">contradiction</span>
 </pre></div>
 </div>
-<p>As an exercise, prove the reverse inclusion:</p>
+<p>&#20316;&#20026;&#32451;&#20064;&#65292;&#35777;&#26126;&#21453;&#21521;&#30340;&#21253;&#21547;&#20851;&#31995;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">\</span> <span class="o">(</span><span class="n">t</span> <span class="bp">&#8746;</span> <span class="n">u</span><span class="o">)</span> <span class="bp">&#8838;</span> <span class="o">(</span><span class="n">s</span> <span class="bp">\</span> <span class="n">t</span><span class="o">)</span> <span class="bp">\</span> <span class="n">u</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>To prove that two sets are equal,
-it suffices to show that every element of one is an element
-of the other.
-This principle is known as &#8220;extensionality,&#8221;
-and, unsurprisingly,
-the <code class="docutils literal notranslate"><span class="pre">ext</span></code> tactic is equipped to handle it.</p>
+<p>&#35201;&#35777;&#26126;&#20004;&#20010;&#38598;&#21512;&#30456;&#31561;&#65292;
+&#21482;&#38656;&#35777;&#26126;&#20219;&#19968;&#38598;&#21512;&#20013;&#30340;&#27599;&#20010;&#20803;&#32032;&#37117;&#26159;&#21478;&#19968;&#20010;&#38598;&#21512;&#20013;&#30340;&#20803;&#32032;&#12290;
+&#36825;&#20010;&#21407;&#29702;&#31216;&#20026;&#8220;&#22806;&#24310;&#24615;&#8221;&#65292;&#27627;&#19981;&#24847;&#22806;&#30340;&#26159;&#65292;
+<code class="docutils literal notranslate"><span class="pre">ext</span></code> &#31574;&#30053;&#21487;&#20197;&#29992;&#20110;&#22788;&#29702;&#23427;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">=</span> <span class="n">t</span> <span class="bp">&#8745;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">ext</span> <span class="n">x</span>
   <span class="n">simp</span> <span class="n">only</span> <span class="o">[</span><span class="n">mem_inter_iff</span><span class="o">]</span>
@@ -271,38 +241,33 @@ the <code class="docutils literal notranslate"><span class="pre">ext</span></cod
   <span class="bp">.</span> <span class="n">rintro</span> <span class="o">&#10216;</span><span class="n">xt</span><span class="o">,</span> <span class="n">xs</span><span class="o">&#10217;</span><span class="bp">;</span> <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xt</span><span class="o">&#10217;</span>
 </pre></div>
 </div>
-<p>Once again, deleting the line <code class="docutils literal notranslate"><span class="pre">simp</span> <span class="pre">only</span> <span class="pre">[mem_inter_iff]</span></code>
-does not harm the proof.
-In fact, if you like inscrutable proof terms,
-the following one-line proof is for you:</p>
+<p>&#20877;&#27425;&#37325;&#30003;&#65292;&#21024;&#38500; <code class="docutils literal notranslate"><span class="pre">simp</span> <span class="pre">only</span> <span class="pre">[mem_inter_iff]</span></code> &#19968;&#34892;&#24182;&#19981;&#20250;&#25439;&#23475;&#35777;&#26126;&#12290;
+&#20107;&#23454;&#19978;&#65292;&#22914;&#26524;&#20320;&#21916;&#27426;&#39640;&#28145;&#33707;&#27979;&#30340;&#35777;&#26126;&#39033;&#65292;&#19979;&#38754;&#30340;&#21333;&#34892;&#35777;&#26126;&#23601;&#26159;&#20026;&#20320;&#20934;&#22791;&#30340;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">=</span> <span class="n">t</span> <span class="bp">&#8745;</span> <span class="n">s</span> <span class="o">:=</span>
   <span class="n">Set.ext</span> <span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="o">&#10216;</span><span class="k">fun</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xt</span><span class="o">&#10217;</span> <span class="bp">&#8614;</span> <span class="o">&#10216;</span><span class="n">xt</span><span class="o">,</span> <span class="n">xs</span><span class="o">&#10217;,</span> <span class="k">fun</span> <span class="o">&#10216;</span><span class="n">xt</span><span class="o">,</span> <span class="n">xs</span><span class="o">&#10217;</span> <span class="bp">&#8614;</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xt</span><span class="o">&#10217;&#10217;</span>
 </pre></div>
 </div>
-<p>Here is an even shorter proof,
-using the simplifier:</p>
+<p>&#36825;&#26159;&#19968;&#20010;&#26356;&#31616;&#30701;&#30340;&#35777;&#26126;&#65292;&#20351;&#29992;&#20102;&#21270;&#31616;&#22120;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">=</span> <span class="n">t</span> <span class="bp">&#8745;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ext</span> <span class="n">x</span><span class="bp">;</span> <span class="n">simp</span> <span class="o">[</span><span class="n">and_comm</span><span class="o">]</span>
 </pre></div>
 </div>
-<p>An alternative to using <code class="docutils literal notranslate"><span class="pre">ext</span></code> is to use
-the theorem <code class="docutils literal notranslate"><span class="pre">Subset.antisymm</span></code>
-which allows us to prove an equation <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">t</span></code>
-between sets by proving <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8838;</span> <span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">&#8838;</span> <span class="pre">s</span></code>.</p>
+<p>&#38500;&#20102;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">ext</span></code> &#20043;&#22806;&#65292;&#25105;&#20204;&#36824;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Subset.antisymm</span></code> &#36825;&#20010;&#23450;&#29702;&#65292;
+&#23427;&#21487;&#20197;&#36890;&#36807;&#35777;&#26126; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8838;</span> <span class="pre">t</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">&#8838;</span> <span class="pre">s</span></code> &#26469;&#35777;&#26126;&#38598;&#21512;&#38388;&#30340;&#31561;&#24335; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">t</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">=</span> <span class="n">t</span> <span class="bp">&#8745;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">apply</span> <span class="n">Subset.antisymm</span>
   <span class="bp">&#183;</span> <span class="n">rintro</span> <span class="n">x</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xt</span><span class="o">&#10217;</span><span class="bp">;</span> <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">xt</span><span class="o">,</span> <span class="n">xs</span><span class="o">&#10217;</span>
   <span class="bp">.</span> <span class="n">rintro</span> <span class="n">x</span> <span class="o">&#10216;</span><span class="n">xt</span><span class="o">,</span> <span class="n">xs</span><span class="o">&#10217;</span><span class="bp">;</span> <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">xs</span><span class="o">,</span> <span class="n">xt</span><span class="o">&#10217;</span>
 </pre></div>
 </div>
-<p>Try finishing this proof term:</p>
+<p>&#23581;&#35797;&#23436;&#25104;&#35777;&#26126;&#39033;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="bp">=</span> <span class="n">t</span> <span class="bp">&#8745;</span> <span class="n">s</span> <span class="o">:=</span>
     <span class="n">Subset.antisymm</span> <span class="gr">sorry</span> <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Remember that you can replace <cite>sorry</cite> by an underscore,
-and when you hover over it,
-Lean will show you what it expects at that point.</p>
-<p>Here are some set-theoretic identities you might enjoy proving:</p>
+<p>&#35831;&#35760;&#20303;&#65292;&#24744;&#21487;&#20197;&#29992;&#19979;&#21010;&#32447;&#20195;&#26367; <code class="docutils literal notranslate"><span class="pre">sorry</span></code>,
+&#24182;&#23558;&#40736;&#26631;&#24748;&#20572;&#22312;&#23427;&#19978;&#38754;,
+Lean &#20250;&#21521;&#20320;&#26174;&#31034;&#23427;&#22312;&#36825;&#19968;&#20301;&#32622;&#30340;&#39044;&#26399;&#12290;</p>
+<p>&#19979;&#38754;&#26159;&#19968;&#20123;&#20320;&#21487;&#33021;&#20250;&#21916;&#27426;&#35777;&#26126;&#30340;&#38598;&#21512;&#35770;&#24615;&#36136;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="o">(</span><span class="n">s</span> <span class="bp">&#8746;</span> <span class="n">t</span><span class="o">)</span> <span class="bp">=</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -316,19 +281,15 @@ Lean will show you what it expects at that point.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>When it comes to representing sets,
-here is what is going on underneath the hood.
-In type theory, a <em>property</em> or <em>predicate</em> on a type <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>
-is just a function <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">:</span> <span class="pre">&#945;</span> <span class="pre">&#8594;</span> <span class="pre">Prop</span></code>.
-This makes sense:
-given <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">:</span> <span class="pre">&#945;</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">a</span></code> is just the proposition
-that <code class="docutils literal notranslate"><span class="pre">P</span></code> holds of <code class="docutils literal notranslate"><span class="pre">a</span></code>.
-In the library, <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#945;</span></code> is defined to be <code class="docutils literal notranslate"><span class="pre">&#945;</span> <span class="pre">&#8594;</span> <span class="pre">Prop</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code> is defined to be <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">x</span></code>.
-In other words, sets are really properties, treated as objects.</p>
-<p>The library also defines set-builder notation.
-The expression <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">y</span> <span class="pre">|</span> <span class="pre">P</span> <span class="pre">y</span> <span class="pre">}</span></code> unfolds to <code class="docutils literal notranslate"><span class="pre">(fun</span> <span class="pre">y</span> <span class="pre">&#8614;</span> <span class="pre">P</span> <span class="pre">y)</span></code>,
-so <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">{</span> <span class="pre">y</span> <span class="pre">|</span> <span class="pre">P</span> <span class="pre">y</span> <span class="pre">}</span></code> reduces to <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">x</span></code>.
-So we can turn the property of being even into the set of even numbers:</p>
+<p>&#35828;&#21040;&#38598;&#21512;&#30340;&#34920;&#31034;&#65292;&#19979;&#38754;&#23601;&#20026;&#22823;&#23478;&#25581;&#31192;&#32972;&#21518;&#30340;&#26426;&#21046;&#12290;
+&#22312;&#31867;&#22411;&#35770;&#20013;&#65292;&#31867;&#22411; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#19978;&#30340; <em>&#24615;&#36136;</em> &#25110; <em>&#35859;&#35789;</em> &#21482;&#26159;&#19968;&#20010;&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">:</span> <span class="pre">&#945;</span> <span class="pre">&#8594;</span> <span class="pre">Prop</span></code>.
+&#36825;&#26159;&#26377;&#24847;&#20041;&#30340;&#65306;&#32473;&#23450; <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">:</span> <span class="pre">&#945;</span></code>,  <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">a</span></code> &#23601;&#26159; <code class="docutils literal notranslate"><span class="pre">P</span></code> &#23545; <code class="docutils literal notranslate"><span class="pre">a</span></code> &#25104;&#31435;&#36825;&#19968;&#21629;&#39064;&#12290;
+&#22312;&#24211;&#20013;&#65292; <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#945;</span></code> &#23450;&#20041;&#20026; <code class="docutils literal notranslate"><span class="pre">&#945;</span> <span class="pre">&#8594;</span> <span class="pre">Prop</span></code> &#32780; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code> &#23450;&#20041;&#20026; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">x</span></code>.
+&#25442;&#21477;&#35805;&#35828;&#65292;&#38598;&#21512;&#23454;&#38469;&#19978;&#23601;&#26159;&#24615;&#36136;&#65292;&#21482;&#26159;&#34987;&#24403;&#25104;&#23545;&#35937;&#12290;</p>
+<p>&#24211;&#20013;&#20063;&#23450;&#20041;&#20102;&#38598;&#21512;&#26500;&#36896;&#22120;&#30340;&#31526;&#21495;&#12290;
+&#34920;&#36798;&#24335; <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">y</span> <span class="pre">|</span> <span class="pre">P</span> <span class="pre">y</span> <span class="pre">}</span></code> &#23637;&#24320;&#23601;&#26159; <code class="docutils literal notranslate"><span class="pre">(fun</span> <span class="pre">y</span> <span class="pre">&#8614;</span> <span class="pre">P</span> <span class="pre">y)</span></code>,
+&#22240;&#27492; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">{</span> <span class="pre">y</span> <span class="pre">|</span> <span class="pre">P</span> <span class="pre">y</span> <span class="pre">}</span></code> &#32422;&#21270;&#20026; <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">x</span></code>.
+&#22240;&#27492;&#25105;&#20204;&#21487;&#20197;&#25226;&#20598;&#25968;&#24615;&#36136;&#36716;&#21270;&#20026;&#20598;&#25968;&#38598;&#21512;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">evens</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span> <span class="o">:=</span>
   <span class="o">{</span> <span class="n">n</span> <span class="bp">|</span> <span class="n">Even</span> <span class="n">n</span> <span class="o">}</span>
 
@@ -342,23 +303,22 @@ So we can turn the property of being even into the set of even numbers:</p>
   <span class="n">apply</span> <span class="n">Classical.em</span>
 </pre></div>
 </div>
-<p>You should step through this proof and make sure
-you understand what is going on.
-Try deleting the line <code class="docutils literal notranslate"><span class="pre">rw</span> <span class="pre">[evens,</span> <span class="pre">odds]</span></code>
-and confirm that the proof still works.</p>
-<p>In fact, set-builder notation is used to define</p>
+<p>&#20320;&#24212;&#35813;&#36880;&#27493;&#36319;&#36394;&#36825;&#20010;&#35777;&#26126;&#65292;
+&#30830;&#23450;&#20320;&#26126;&#30333;&#21457;&#29983;&#20102;&#20160;&#20040;&#12290;
+&#23581;&#35797;&#21024;&#38500; <code class="docutils literal notranslate"><span class="pre">rw</span> <span class="pre">[evens,</span> <span class="pre">odds]</span></code> &#36825;&#19968;&#34892;&#65292;
+&#30830;&#35748;&#35777;&#26126;&#20173;&#28982;&#25104;&#31435;&#12290;</p>
+<p>&#20107;&#23454;&#19978;&#65292;&#38598;&#21512;&#26500;&#36896;&#22120;&#31526;&#21495;&#23450;&#20041;</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8745;</span> <span class="pre">t</span></code> as <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8743;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t}</span></code>,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8746;</span> <span class="pre">t</span></code> as <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8744;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t}</span></code>,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&#8709;</span></code> as <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">False}</span></code>, and</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">univ</span></code> as <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">True}</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8745;</span> <span class="pre">t</span></code> &#20026; <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8743;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t}</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&#8746;</span> <span class="pre">t</span></code> &#20026; <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8744;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t}</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#8709;</span></code> &#20026; <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">False}</span></code>, &#20197;&#21450;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">univ</span></code> &#20026; <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">True}</span></code>.</p></li>
 </ul>
-<p>We often need to indicate the type of <code class="docutils literal notranslate"><span class="pre">&#8709;</span></code> and <code class="docutils literal notranslate"><span class="pre">univ</span></code>
-explicitly,
-because Lean has trouble guessing which ones we mean.
-The following examples show how Lean unfolds the last
-two definitions when needed. In the second one,
-<code class="docutils literal notranslate"><span class="pre">trivial</span></code> is the canonical proof of <code class="docutils literal notranslate"><span class="pre">True</span></code> in the library.</p>
+<p>&#25105;&#20204;&#32463;&#24120;&#38656;&#35201;&#31934;&#30830;&#25351;&#23450; <code class="docutils literal notranslate"><span class="pre">&#8709;</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">univ</span></code> &#30340;&#31867;&#22411;&#65292;
+&#22240;&#20026; Lean &#24456;&#38590;&#29468;&#20986;&#25105;&#20204;&#25351;&#30340;&#26159;&#21738;&#31181;&#31867;&#22411;&#12290;
+&#19979;&#38754;&#30340;&#20363;&#23376;&#28436;&#31034;&#20102;&#24403;&#38656;&#35201;&#30340;&#26102;&#20505; Lean &#22914;&#20309;&#23637;&#24320;&#26368;&#21518;&#20004;&#20010;&#23450;&#20041;&#12290;
+&#22312;&#31532;&#20108;&#20010;&#20363;&#23376;&#20013;&#65292;
+<code class="docutils literal notranslate"><span class="pre">trivial</span></code> &#26159; &#24211;&#20013;&#23545; <code class="docutils literal notranslate"><span class="pre">True</span></code> &#30340;&#26631;&#20934;&#35777;&#26126;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="o">(</span><span class="bp">&#8709;</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span><span class="o">))</span> <span class="o">:</span> <span class="n">False</span> <span class="o">:=</span>
   <span class="n">h</span>
 
@@ -366,22 +326,19 @@ two definitions when needed. In the second one,
   <span class="n">trivial</span>
 </pre></div>
 </div>
-<p>As an exercise, prove the following inclusion.
-Use <code class="docutils literal notranslate"><span class="pre">intro</span> <span class="pre">n</span></code> to unfold the definition of subset,
-and use the simplifier to reduce the
-set-theoretic constructions to logic.
-We also recommend using the theorems
-<code class="docutils literal notranslate"><span class="pre">Nat.Prime.eq_two_or_odd</span></code> and <code class="docutils literal notranslate"><span class="pre">Nat.even_iff</span></code>.</p>
+<p>&#20316;&#20026;&#32451;&#20064;&#65292;&#35777;&#26126;&#19979;&#21015;&#21253;&#21547;&#20851;&#31995;&#12290;
+&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">intro</span> <span class="pre">n</span></code> &#20197;&#23637;&#24320;&#23376;&#38598;&#23450;&#20041;&#65292;
+&#20351;&#29992;&#21270;&#31616;&#22120;&#25226;&#38598;&#21512;&#35770;&#26500;&#36896;&#32422;&#21270;&#20026;&#36923;&#36753;&#12290;
+&#25105;&#20204;&#20063;&#25512;&#33616;&#20351;&#29992;&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">Nat.Prime.eq_two_or_odd</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Nat.even_iff</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">n</span> <span class="bp">|</span> <span class="n">Nat.Prime</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span> <span class="n">n</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&gt;</span> <span class="mi">2</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="bp">|</span> <span class="bp">&#172;</span><span class="n">Even</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Be careful: it is somewhat confusing that the library has multiple versions
-of the predicate <code class="docutils literal notranslate"><span class="pre">Prime</span></code>.
-The most general one makes sense in any commutative monoid with a zero element.
-The predicate <code class="docutils literal notranslate"><span class="pre">Nat.Prime</span></code> is specific to the natural numbers.
-Fortunately, there is a theorem that says that in the specific case,
-the two notions agree, so you can always rewrite one to the other.</p>
+<p>&#35831;&#27880;&#24847;&#65306;&#26377;&#28857;&#20196;&#20154;&#22256;&#24785;&#30340;&#26159;&#65292;&#24211;&#20013;&#26377;&#22810;&#20010;&#29256;&#26412;&#30340;&#35859;&#35789; <code class="docutils literal notranslate"><span class="pre">Prime</span></code>.
+&#26368;&#36890;&#29992;&#30340;&#35859;&#35789;&#23545;&#20219;&#20309;&#26377;&#38646;&#20803;&#32032;&#30340;&#20132;&#25442;&#24186;&#21322;&#32676;&#37117;&#26377;&#24847;&#20041;&#12290;
+&#35859;&#35789; <code class="docutils literal notranslate"><span class="pre">Nat.Prime</span></code> &#26159;&#38024;&#23545;&#33258;&#28982;&#25968;&#30340;&#12290;
+&#24184;&#36816;&#30340;&#26159;&#65292;&#26377;&#19968;&#20010;&#23450;&#29702;&#25351;&#20986;&#65292;&#22312;&#29305;&#23450;&#24773;&#20917;&#19979;&#65292;
+&#36825;&#20004;&#20010;&#27010;&#24565;&#26159;&#19968;&#33268;&#30340;&#65292;&#25152;&#20197;&#20320;&#24635;&#26159;&#21487;&#20197;&#25226;&#19968;&#20010;&#35859;&#35789;&#25913;&#20889;&#25104;&#21478;&#19968;&#20010;&#35859;&#35789;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#print</span> <span class="n">Prime</span>
 
 <span class="k">#print</span> <span class="n">Nat.Prime</span>
@@ -394,29 +351,24 @@ the two notions agree, so you can always rewrite one to the other.</p>
   <span class="n">exact</span> <span class="n">h</span>
 </pre></div>
 </div>
-<p id="index-2">The <cite>rwa</cite> tactic follows a rewrite with the assumption tactic.</p>
+<p id="index-2"><code class="docutils literal notranslate"><span class="pre">rwa</span></code> &#31574;&#30053;&#26159;&#22312;&#37325;&#20889;&#21518;&#36319;&#30528;&#19968;&#20010;&#20551;&#35774;&#31574;&#30053;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">Prime</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">Nat.Prime</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rwa</span> <span class="o">[</span><span class="n">Nat.prime_iff</span><span class="o">]</span>
 </pre></div>
 </div>
-<p id="index-3">Lean introduces the notation <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">...</span></code>,
-&#8220;for every <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">s</span></code> .,&#8221;
-as an abbreviation for  <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8594;</span> <span class="pre">...</span></code>.
-It also introduces the notation <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">...,</span></code>
-&#8220;there exists an <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">s</span></code> such that ..&#8221;
-These are sometimes known as <em>bounded quantifiers</em>,
-because the construction serves to restrict their significance
-to the set <code class="docutils literal notranslate"><span class="pre">s</span></code>.
-As a result, theorems in the library that make use of them
-often contain <code class="docutils literal notranslate"><span class="pre">ball</span></code> or <code class="docutils literal notranslate"><span class="pre">bex</span></code> in the name.
-The theorem <code class="docutils literal notranslate"><span class="pre">bex_def</span></code> asserts that <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">...</span></code> is equivalent
-to <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8743;</span> <span class="pre">...,</span></code>
-but when they are used with <code class="docutils literal notranslate"><span class="pre">rintro</span></code>, <code class="docutils literal notranslate"><span class="pre">use</span></code>,
-and anonymous constructors,
-these two expressions behave roughly the same.
-As a result, we usually don&#8217;t need to use <code class="docutils literal notranslate"><span class="pre">bex_def</span></code>
-to transform them explicitly.
-Here is are some examples of how they are used:</p>
+<p id="index-3">Lean &#24341;&#20837;&#20102;&#35760;&#21495; <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">...</span></code>,
+&#8220;&#23545;&#20110;&#20219;&#24847; <code class="docutils literal notranslate"><span class="pre">x</span></code> &#23646;&#20110; <code class="docutils literal notranslate"><span class="pre">s</span></code> .,&#8221;
+&#20316;&#20026; <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8594;</span> <span class="pre">...</span></code> &#30340;&#31616;&#21270;&#12290;
+Lean &#36824;&#24341;&#20837;&#20102;&#35760;&#21495; <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">...,</span></code>
+&#8220;&#23384;&#22312; <code class="docutils literal notranslate"><span class="pre">x</span></code> &#23646;&#20110; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#20351;&#24471; ..&#8221;
+&#26377;&#26102;&#23427;&#20204;&#34987;&#31216;&#20026; <em>&#26377;&#30028;&#37327;&#35789;</em>,
+&#22240;&#20026;&#36825;&#31181;&#26500;&#36896;&#23558;&#23427;&#20204;&#30340;&#24847;&#20041;&#38480;&#21046;&#22312;&#38598;&#21512; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#20869;&#12290;
+&#22240;&#27492;&#65292;&#24211;&#20013;&#20351;&#29992;&#36825;&#20123;&#37327;&#35789;&#30340;&#23450;&#29702;&#36890;&#24120;&#22312;&#21517;&#31216;&#20013;&#21253;&#21547; <code class="docutils literal notranslate"><span class="pre">ball</span></code> &#25110; <code class="docutils literal notranslate"><span class="pre">bex</span></code>.
+&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">bex_def</span></code> &#26029;&#35328; <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">...</span></code> &#31561;&#20215;&#20110; <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">&#8743;</span> <span class="pre">...,</span></code>
+&#20294;&#24403;&#23427;&#20204;&#21644; <code class="docutils literal notranslate"><span class="pre">rintro</span></code>, <code class="docutils literal notranslate"><span class="pre">use</span></code> &#20197;&#21450;&#21311;&#21517;&#26500;&#36896;&#22120;&#19968;&#36215;&#20351;&#29992;&#26102;&#65292;
+&#36825;&#20004;&#20010;&#34920;&#36798;&#24335;&#30340;&#34892;&#20026;&#22823;&#33268;&#30456;&#21516;&#12290;
+&#22240;&#27492;&#65292;&#25105;&#20204;&#36890;&#24120;&#19981;&#38656;&#35201;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">bex_def</span></code> &#26469;&#31934;&#30830;&#36716;&#25442;&#23427;&#20204;&#12290;
+&#36825;&#26159;&#20851;&#20110;&#23427;&#20204;&#29992;&#27861;&#30340;&#19968;&#20123;&#20363;&#23376;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">(</span><span class="n">s</span> <span class="n">t</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span><span class="o">)</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">h&#8320;</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">,</span> <span class="bp">&#172;</span><span class="n">Even</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#8321;</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">,</span> <span class="bp">&#172;</span><span class="n">Even</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Prime</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -430,7 +382,7 @@ Here is are some examples of how they are used:</p>
   <span class="n">use</span> <span class="n">x</span><span class="o">,</span> <span class="n">xs</span>
 </pre></div>
 </div>
-<p>See if you can prove these slight variations:</p>
+<p>&#30475;&#30475;&#20320;&#33021;&#21542;&#35777;&#26126;&#36825;&#20123;&#30053;&#26377;&#19981;&#21516;&#30340;&#29256;&#26412;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">section</span>
 <span class="kd">variable</span> <span class="o">(</span><span class="n">ssubt</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">&#8838;</span> <span class="n">t</span><span class="o">)</span>
 
@@ -443,17 +395,13 @@ Here is are some examples of how they are used:</p>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<p>Indexed unions and intersections are
-another important set-theoretic construction.
-We can model a sequence <span class="math notranslate nohighlight">\(A_0, A_1, A_2, \ldots\)</span> of sets of
-elements of <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>
-as a function <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">:</span> <span class="pre">&#8469;</span> <span class="pre">&#8594;</span> <span class="pre">Set</span> <span class="pre">&#945;</span></code>,
-in which case <code class="docutils literal notranslate"><span class="pre">&#8899;</span> <span class="pre">i,</span> <span class="pre">A</span> <span class="pre">i</span></code> denotes their union,
-and <code class="docutils literal notranslate"><span class="pre">&#8898;</span> <span class="pre">i,</span> <span class="pre">A</span> <span class="pre">i</span></code> denotes their intersection.
-There is nothing special about the natural numbers here,
-so <code class="docutils literal notranslate"><span class="pre">&#8469;</span></code> can be replaced by any type <code class="docutils literal notranslate"><span class="pre">I</span></code>
-used to index the sets.
-The following illustrates their use.</p>
+<p>&#24102;&#19979;&#26631;&#30340;&#24182;&#38598;&#21644;&#20132;&#38598;&#26159;&#21478;&#19968;&#31181;&#37325;&#35201;&#30340;&#38598;&#21512;&#35770;&#26500;&#36896;&#12290;
+&#25105;&#20204;&#21487;&#20197;&#25226; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#20013;&#30340;&#20803;&#32032;&#32452;&#25104;&#30340;&#38598;&#21512;&#30340;&#24207;&#21015; <span class="math notranslate nohighlight">\(A_0, A_1, A_2, \ldots\)</span>
+&#24314;&#27169;&#20026;&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">:</span> <span class="pre">&#8469;</span> <span class="pre">&#8594;</span> <span class="pre">Set</span> <span class="pre">&#945;</span></code>,
+&#27492;&#26102; <code class="docutils literal notranslate"><span class="pre">&#8899;</span> <span class="pre">i,</span> <span class="pre">A</span> <span class="pre">i</span></code> &#34920;&#31034;&#23427;&#20204;&#30340;&#24182;&#38598;&#65292;
+&#32780; <code class="docutils literal notranslate"><span class="pre">&#8898;</span> <span class="pre">i,</span> <span class="pre">A</span> <span class="pre">i</span></code> &#34920;&#31034;&#23427;&#20204;&#30340;&#20132;&#38598;&#12290;
+&#36825;&#37324;&#33258;&#28982;&#25968;&#27809;&#26377;&#20160;&#20040;&#29305;&#21035;&#20043;&#22788;&#65292;&#22240;&#27492; <code class="docutils literal notranslate"><span class="pre">&#8469;</span></code> &#21487;&#20197;&#26367;&#25442;&#20026;&#20219;&#24847;&#20316;&#20026;&#25351;&#26631;&#38598;&#30340;&#31867;&#22411; <code class="docutils literal notranslate"><span class="pre">I</span></code>.
+&#19979;&#38754;&#35828;&#26126;&#23427;&#20204;&#30340;&#29992;&#27861;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">{</span><span class="n">&#945;</span> <span class="n">I</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span>
 <span class="kd">variable</span> <span class="o">(</span><span class="n">A</span> <span class="n">B</span> <span class="o">:</span> <span class="n">I</span> <span class="bp">&#8594;</span> <span class="n">Set</span> <span class="n">&#945;</span><span class="o">)</span>
 <span class="kd">variable</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#945;</span><span class="o">)</span>
@@ -485,24 +433,18 @@ The following illustrates their use.</p>
   <span class="n">exact</span> <span class="n">h2</span> <span class="n">i</span>
 </pre></div>
 </div>
-<p>Parentheses are often needed with an
-indexed union or intersection because,
-as with the quantifiers,
-the scope of the bound variable extends as far as it can.</p>
-<p>Try proving the following identity.
-One direction requires classical logic!
-We recommend using <code class="docutils literal notranslate"><span class="pre">by_cases</span> <span class="pre">xs</span> <span class="pre">:</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code>
-at an appropriate point in the proof.</p>
+<p>&#24102;&#19979;&#26631;&#30340;&#24182;&#38598;&#25110;&#20132;&#38598;&#36890;&#24120;&#38656;&#35201;&#20351;&#29992;&#25324;&#21495;&#65292;
+&#22240;&#20026;&#19982;&#37327;&#35789;&#19968;&#26679;&#65292;&#32465;&#23450;&#21464;&#37327;&#30340;&#33539;&#22260;&#20250;&#23613;&#21487;&#33021;&#22320;&#25193;&#23637;&#12290;</p>
+<p>&#23581;&#35797;&#35777;&#26126;&#19979;&#21015;&#24658;&#31561;&#24335;&#12290;
+&#20854;&#20013;&#19968;&#20010;&#26041;&#21521;&#38656;&#35201;&#32463;&#20856;&#36923;&#36753;&#65281;
+&#25105;&#20204;&#24314;&#35758;&#22312;&#35777;&#26126;&#30340;&#36866;&#24403;&#20301;&#32622;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">by_cases</span> <span class="pre">xs</span> <span class="pre">:</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="n">s</span> <span class="bp">&#8746;</span> <span class="bp">&#8898;</span> <span class="n">i</span><span class="o">,</span> <span class="n">A</span> <span class="n">i</span><span class="o">)</span> <span class="bp">=</span> <span class="bp">&#8898;</span> <span class="n">i</span><span class="o">,</span> <span class="n">A</span> <span class="n">i</span> <span class="bp">&#8746;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Mathlib also has bounded unions and intersections,
-which are analogous to the bounded quantifiers.
-You can unpack their meaning with <code class="docutils literal notranslate"><span class="pre">mem_iUnion&#8322;</span></code>
-and <code class="docutils literal notranslate"><span class="pre">mem_iInter&#8322;</span></code>.
-As the following examples show,
-Lean&#8217;s simplifier carries out these replacements as well.</p>
+<p>Mathlib &#20063;&#26377;&#26377;&#30028;&#24182;&#38598;&#21644;&#26377;&#30028;&#20132;&#38598;&#65292;&#23427;&#20204;&#31867;&#20284;&#20110;&#26377;&#30028;&#37327;&#35789;&#12290;
+&#24744;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">mem_iUnion&#8322;</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">mem_iInter&#8322;</span></code> &#25581;&#31034;&#23427;&#20204;&#30340;&#21547;&#20041;&#12290;
+&#27491;&#22914;&#19979;&#38754;&#30340;&#31034;&#20363;&#25152;&#31034;&#65292;Lean &#30340;&#21270;&#31616;&#22120;&#20063;&#21487;&#20197;&#25191;&#34892;&#36825;&#20123;&#26367;&#25442;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">primes</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span> <span class="o">:=</span>
   <span class="o">{</span> <span class="n">x</span> <span class="bp">|</span> <span class="n">Nat.Prime</span> <span class="n">x</span> <span class="o">}</span>
 
@@ -522,23 +464,21 @@ Lean&#8217;s simplifier carries out these replacements as well.</p>
   <span class="n">apply</span> <span class="n">Nat.exists_prime_and_dvd</span>
 </pre></div>
 </div>
-<p>Try solving the following example, which is similar.
-If you start typing <code class="docutils literal notranslate"><span class="pre">eq_univ</span></code>,
-tab completion will tell you that <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">eq_univ_of_forall</span></code>
-is a good way to start the proof.
-We also recommend using the theorem <code class="docutils literal notranslate"><span class="pre">Nat.exists_infinite_primes</span></code>.</p>
+<p>&#35797;&#30528;&#35299;&#20915;&#19979;&#38754;&#36825;&#20010;&#31867;&#20284;&#30340;&#20363;&#23376;&#12290;
+&#22914;&#26524;&#20320;&#24320;&#22987;&#36755;&#20837; <code class="docutils literal notranslate"><span class="pre">eq_univ</span></code>,
+&#26631;&#31614;&#34917;&#20840;&#22120;&#20250;&#21578;&#35785;&#20320; <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">eq_univ_of_forall</span></code> &#26159;&#24320;&#22987;&#35777;&#26126;&#30340;&#22909;&#26041;&#27861;&#12290;
+&#25105;&#20204;&#36824;&#25512;&#33616;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Nat.exists_infinite_primes</span></code> &#23450;&#29702;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8899;</span> <span class="n">p</span> <span class="bp">&#8712;</span> <span class="n">primes</span><span class="o">,</span> <span class="o">{</span> <span class="n">x</span> <span class="bp">|</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="o">})</span> <span class="bp">=</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Give a collection of sets, <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">(Set</span> <span class="pre">&#945;)</span></code>,
-their union, <code class="docutils literal notranslate"><span class="pre">&#8899;&#8320;</span> <span class="pre">s</span></code>, has type <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#945;</span></code>
-and is defined as <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">&#8707;</span> <span class="pre">t</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t}</span></code>.
-Similarly, their intersection, <code class="docutils literal notranslate"><span class="pre">&#8898;&#8320;</span> <span class="pre">s</span></code>, is defined as
+<p>&#32473;&#23450;&#19968;&#32452;&#38598;&#21512; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">(Set</span> <span class="pre">&#945;)</span></code>,
+&#23427;&#20204;&#30340;&#24182;&#38598; <code class="docutils literal notranslate"><span class="pre">&#8899;&#8320;</span> <span class="pre">s</span></code> &#20855;&#26377;&#31867;&#22411; <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#945;</span></code>,
+&#23450;&#20041;&#20026; <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">&#8707;</span> <span class="pre">t</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t}</span></code>.
+&#31867;&#20284;&#22320;&#65292;&#23427;&#20204;&#30340;&#20132;&#38598; <code class="docutils literal notranslate"><span class="pre">&#8898;&#8320;</span> <span class="pre">s</span></code> &#23450;&#20041;&#20026;
 <code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">&#8704;</span> <span class="pre">t</span> <span class="pre">&#8712;</span> <span class="pre">s,</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">t}</span></code>.
-These operations are called <code class="docutils literal notranslate"><span class="pre">sUnion</span></code> and <code class="docutils literal notranslate"><span class="pre">sInter</span></code>, respectively.
-The following examples show their relationship to bounded union
-and intersection.</p>
+&#36825;&#20123;&#36816;&#31639;&#20998;&#21035;&#31216;&#20026; <code class="docutils literal notranslate"><span class="pre">sUnion</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">sInter</span></code>.
+&#19979;&#38754;&#30340;&#20363;&#23376;&#23637;&#31034;&#20102;&#23427;&#20204;&#19982;&#26377;&#30028;&#24182;&#38598;&#21644;&#26377;&#30028;&#20132;&#38598;&#30340;&#20851;&#31995;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">{</span><span class="n">&#945;</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="o">(</span><span class="n">Set</span> <span class="n">&#945;</span><span class="o">))</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8899;&#8320;</span> <span class="n">s</span> <span class="bp">=</span> <span class="bp">&#8899;</span> <span class="n">t</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">,</span> <span class="n">t</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -552,8 +492,7 @@ and intersection.</p>
   <span class="n">rfl</span>
 </pre></div>
 </div>
-<p>In the library, these identities are called
-<code class="docutils literal notranslate"><span class="pre">sUnion_eq_biUnion</span></code> and <code class="docutils literal notranslate"><span class="pre">sInter_eq_biInter</span></code>.</p>
+<p>&#22312;&#24211;&#20013;&#65292;&#36825;&#20123;&#24658;&#31561;&#24335;&#31216;&#20026; <code class="docutils literal notranslate"><span class="pre">sUnion_eq_biUnion</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">sInter_eq_biInter</span></code>.</p>
 </section>
 <section id="functions">
 <span id="id3"></span><h2><span class="section-number">4.2. </span>Functions<a class="headerlink" href="#functions" title="Link to this heading">&#61633;</a></h2>
