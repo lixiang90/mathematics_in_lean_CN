@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4. &#38598;&#21512;&#21644;&#20989;&#25968; &mdash; Mathematics in Lean 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=0731ccc3" />
 
@@ -18,7 +18,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=7c91f8fd"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -54,7 +54,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. &#38598;&#21512;&#21644;&#20989;&#25968;</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sets">4.1. &#38598;&#21512;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functions">4.2. &#20989;&#25968;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-schroder-bernstein-theorem">4.3. The Schr&#246;der-Bernstein Theorem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-schroeder-bernstein-theorem">4.3. &#26045;&#32599;&#24503;-&#20271;&#24681;&#26031;&#22374;&#23450;&#29702;</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="C05_Elementary_Number_Theory.html">5. Elementary Number Theory</a></li>
@@ -776,107 +776,90 @@ Lean &#20801;&#35768;&#20351;&#29992;&#22810;&#31181;&#36884;&#24452;&#35775;&#3
 </pre></div>
 </div>
 </section>
-<section id="the-schroder-bernstein-theorem">
-<span id="the-schroeder-bernstein-theorem"></span><h2><span class="section-number">4.3. </span>The Schr&#246;der-Bernstein Theorem<a class="headerlink" href="#the-schroder-bernstein-theorem" title="Link to this heading">&#61633;</a></h2>
-<p>We close this chapter with an elementary but nontrivial theorem of set theory.
-Let <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> be sets.
-(In our formalization, they will actually be types.)
-Suppose <span class="math notranslate nohighlight">\(f : \alpha &#8594; \beta\)</span> and <span class="math notranslate nohighlight">\(g : \beta &#8594; \alpha\)</span>
-are both injective.
-Intuitively, this means that <span class="math notranslate nohighlight">\(\alpha\)</span> is no bigger than <span class="math notranslate nohighlight">\(\beta\)</span> and vice-versa.
-If <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are finite, this implies that
-they have the same cardinality, which is equivalent to saying that there
-is a bijection between them.
-In the nineteenth century, Cantor stated that same result holds even in the
-case where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are infinite.
-This was eventually established by Dedekind, Schr&#246;der, and Bernstein
-independently.</p>
-<p>Our formalization will introduce some new methods that we will explain
-in greater detail in chapters to come.
-Don&#8217;t worry if they go by too quickly here.
-Our goal is to show you that you already have the skills to contribute
-to the formal proof of a real mathematical result.</p>
-<p>To understand the idea behind the proof, consider the image of the map
-<span class="math notranslate nohighlight">\(g\)</span> in <span class="math notranslate nohighlight">\(\alpha\)</span>.
-On that image, the inverse of <span class="math notranslate nohighlight">\(g\)</span> is defined and is a bijection
-with <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<section id="the-schroeder-bernstein-theorem">
+<span id="id4"></span><h2><span class="section-number">4.3. </span>&#26045;&#32599;&#24503;-&#20271;&#24681;&#26031;&#22374;&#23450;&#29702;<a class="headerlink" href="#the-schroeder-bernstein-theorem" title="Link to this heading">&#61633;</a></h2>
+<p>&#25105;&#20204;&#29992;&#19968;&#20010;&#21021;&#31561;&#32780;&#38750;&#24179;&#20961;&#30340;&#23450;&#29702;&#32467;&#26463;&#26412;&#31456;&#12290;
+&#20196; <span class="math notranslate nohighlight">\(\alpha\)</span> &#21644; <span class="math notranslate nohighlight">\(\beta\)</span> &#26159;&#38598;&#21512;&#12290;
+&#65288;&#22312;&#25105;&#20204;&#30340;&#24418;&#24335;&#21270;&#20013;, &#23427;&#20204;&#23454;&#38469;&#19978;&#20250;&#26159;&#31867;&#22411;&#12290;&#65289;
+&#20551;&#23450; <span class="math notranslate nohighlight">\(f : \alpha &#8594; \beta\)</span> &#21644; <span class="math notranslate nohighlight">\(g : \beta &#8594; \alpha\)</span> &#37117;&#26159;&#21333;&#23556;&#12290;
+&#30452;&#35266;&#19978;&#65292;&#36825;&#24847;&#21619;&#30528; <span class="math notranslate nohighlight">\(\alpha\)</span> &#19981;&#22823;&#20110; <span class="math notranslate nohighlight">\(\beta\)</span>, &#21453;&#20043;&#20134;&#28982;&#12290;
+&#22914;&#26524; <span class="math notranslate nohighlight">\(\alpha\)</span> &#21644; <span class="math notranslate nohighlight">\(\beta\)</span> &#26159;&#26377;&#38480;&#30340;&#65292;
+&#36825;&#24847;&#21619;&#30528;&#23427;&#20204;&#20855;&#26377;&#30456;&#21516;&#30340;&#22522;&#25968;&#65292;&#32780;&#36825;&#30456;&#24403;&#20110;&#35828;&#23427;&#20204;&#20043;&#38388;&#23384;&#22312;&#21452;&#23556;&#12290;
+&#22312;&#21313;&#20061;&#19990;&#32426;&#65292;&#24247;&#25176;&#23572;&#65288;Cantor&#65289;&#25351;&#20986;&#65292;&#21363;&#20351;&#24403; <span class="math notranslate nohighlight">\(\alpha\)</span> &#21644; <span class="math notranslate nohighlight">\(\beta\)</span> &#26080;&#31351;&#26102;&#65292;
+&#21516;&#26679;&#30340;&#32467;&#26524;&#20063;&#25104;&#31435;&#12290;
+&#36825;&#20010;&#32467;&#26524;&#26368;&#32456;&#30001;&#25140;&#24503;&#37329;&#65288;Dedekind&#65289;&#12289;&#26045;&#32599;&#24503;&#65288;Schr&#246;der&#65289;&#21644;&#20271;&#24681;&#26031;&#22374;&#65288;Bernstein&#65289;&#21508;&#33258;&#29420;&#31435;&#35777;&#26126;&#12290;</p>
+<p>&#25105;&#20204;&#30340;&#24418;&#24335;&#21270;&#23558;&#24341;&#20837;&#19968;&#20123;&#26032;&#26041;&#27861;&#65292;&#25105;&#20204;&#23558;&#22312;&#25509;&#19979;&#26469;&#30340;&#31456;&#33410;&#20013;&#26356;&#35814;&#32454;&#22320;&#35299;&#37322;&#36825;&#20123;&#26041;&#27861;&#12290;
+&#19981;&#24517;&#25285;&#24515;&#23427;&#20204;&#22312;&#36825;&#37324;&#35762;&#24471;&#22826;&#24555;&#12290;
+&#25105;&#20204;&#30340;&#30446;&#26631;&#26159;&#21521;&#20320;&#23637;&#31034;&#20320;&#24050;&#32463;&#20855;&#22791;&#20026;&#30495;&#23454;&#25968;&#23398;&#32467;&#26524;&#30340;&#24418;&#24335;&#35777;&#26126;&#20570;&#20986;&#36129;&#29486;&#30340;&#25216;&#33021;&#12290;</p>
+<p>&#20026;&#20102;&#29702;&#35299;&#35777;&#26126;&#32972;&#21518;&#30340;&#24605;&#24819;&#65292;&#32771;&#34385;&#26144;&#23556; <span class="math notranslate nohighlight">\(g\)</span> &#22312; <span class="math notranslate nohighlight">\(\alpha\)</span> &#20013;&#30340;&#20687;&#12290;
+&#22312;&#36825;&#20010;&#20687;&#20013;&#65292; <span class="math notranslate nohighlight">\(g\)</span> &#30340;&#36870;&#26377;&#23450;&#20041;&#65292;&#19988;&#26159;&#21040; <span class="math notranslate nohighlight">\(\beta\)</span> &#30340;&#21452;&#23556;&#12290;</p>
 <a class="reference internal image-reference" href="_images/schroeder_bernstein1.png"><img alt="the Schr&#246;der Bernstein theorem" class="align-center" src="_images/schroeder_bernstein1.png" style="height: 150px;" /></a>
-<p>The problem is that the bijection does not include the shaded region
-in the diagram, which is nonempty if <span class="math notranslate nohighlight">\(g\)</span> is not surjective.
-Alternatively, we can use <span class="math notranslate nohighlight">\(f\)</span> to map all of
-<span class="math notranslate nohighlight">\(\alpha\)</span> to <span class="math notranslate nohighlight">\(\beta\)</span>,
-but in that case the problem is that if <span class="math notranslate nohighlight">\(f\)</span> is not surjective,
-it will miss some elements of <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<p>&#38382;&#39064;&#26159;&#21452;&#23556;&#19981;&#21253;&#25324;&#22270;&#20013;&#30340;&#38452;&#24433;&#21306;&#22495;&#65292;
+&#22914;&#26524; <span class="math notranslate nohighlight">\(g\)</span> &#19981;&#26159;&#28385;&#23556;&#65292;&#21017;&#23427;&#26159;&#38750;&#31354;&#30340;&#12290;
+&#25110;&#32773;&#65292;&#25105;&#20204;&#21487;&#20197;&#20351;&#29992; <span class="math notranslate nohighlight">\(f\)</span> &#25226;&#25972;&#20010; <span class="math notranslate nohighlight">\(\alpha\)</span> &#26144;&#23556;&#21040; <span class="math notranslate nohighlight">\(\beta\)</span>,
+&#20294;&#22312;&#37027;&#31181;&#24773;&#20917;&#19979;&#38382;&#39064;&#26159;&#33509; <span class="math notranslate nohighlight">\(f\)</span> &#19981;&#26159;&#28385;&#23556;&#65292;
+&#21017;&#23427;&#20250;&#38169;&#36807; <span class="math notranslate nohighlight">\(\beta\)</span> &#30340;&#19968;&#20123;&#20803;&#32032;&#12290;</p>
 <a class="reference internal image-reference" href="_images/schroeder_bernstein2.png"><img alt="the Schr&#246;der Bernstein theorem" class="align-center" src="_images/schroeder_bernstein2.png" style="height: 150px;" /></a>
-<p>But now consider the composition <span class="math notranslate nohighlight">\(g \circ f\)</span> from <span class="math notranslate nohighlight">\(\alpha\)</span> to
-itself. Because the composition is injective, it forms a bijection between
-<span class="math notranslate nohighlight">\(\alpha\)</span> and its image, yielding a scaled-down copy of <span class="math notranslate nohighlight">\(\alpha\)</span>
-inside itself.</p>
+<p>&#20294;&#29616;&#22312;&#32771;&#34385;&#20174; <span class="math notranslate nohighlight">\(\alpha\)</span> &#21040;&#33258;&#36523;&#30340;&#22797;&#21512;&#26144;&#23556; <span class="math notranslate nohighlight">\(g \circ f\)</span>.
+&#30001;&#20110;&#36825;&#20010;&#22797;&#21512;&#26144;&#23556;&#26159;&#21333;&#23556;&#65292;&#23427;&#26500;&#25104;&#20102; <span class="math notranslate nohighlight">\(\alpha\)</span> &#21644;&#23427;&#30340;&#20687;&#30340;&#21452;&#23556;&#65292;
+&#22312; <span class="math notranslate nohighlight">\(\alpha\)</span> &#20869;&#37096;&#20135;&#29983;&#20102;&#19968;&#20010;&#32553;&#23567;&#30340;&#21103;&#26412;&#12290;</p>
 <a class="reference internal image-reference" href="_images/schroeder_bernstein3.png"><img alt="the Schr&#246;der Bernstein theorem" class="align-center" src="_images/schroeder_bernstein3.png" style="height: 150px;" /></a>
-<p>This composition maps the inner shaded ring to yet another such
-set, which we can think of as an even smaller concentric shaded ring,
-and so on.
-This yields a
-concentric sequence of shaded rings, each of which is in
-bijective correspondence with the next.
-If we map each ring to the next and leave the unshaded
-parts of <span class="math notranslate nohighlight">\(\alpha\)</span> alone,
-we have a bijection of <span class="math notranslate nohighlight">\(\alpha\)</span> with the image of <span class="math notranslate nohighlight">\(g\)</span>.
-Composing with <span class="math notranslate nohighlight">\(g^{-1}\)</span>, this yields the desired
-bijection between <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
-<p>We can describe this bijection more simply.
-Let <span class="math notranslate nohighlight">\(A\)</span> be the union of the sequence of shaded regions, and
-define <span class="math notranslate nohighlight">\(h : \alpha \to \beta\)</span> as follows:</p>
+<p>&#36825;&#20010;&#22797;&#21512;&#23558;&#20869;&#37096;&#38452;&#24433;&#29615;&#26144;&#23556;&#21040;&#21478;&#19968;&#20010;&#36825;&#26679;&#30340;&#38598;&#21512;&#65292;
+&#25105;&#20204;&#21487;&#20197;&#23558;&#20854;&#35270;&#20026;&#26356;&#23567;&#30340;&#21516;&#24515;&#38452;&#24433;&#29615;&#65292;&#20381;&#27492;&#31867;&#25512;&#12290;
+&#36825;&#20250;&#20135;&#29983;&#19968;&#20010;&#38452;&#24433;&#29615;&#30340;&#21516;&#24515;&#24207;&#21015;&#65292;&#27599;&#20010;&#37117;&#19982;&#19979;&#19968;&#20010;&#26377;&#21452;&#23556;&#23545;&#24212;&#12290;
+&#22914;&#26524;&#25105;&#20204;&#25226;&#27599;&#20010;&#29615;&#26144;&#23556;&#21040;&#19979;&#19968;&#20010;&#65292;&#24182;&#20445;&#30041; <span class="math notranslate nohighlight">\(\alpha\)</span> &#30340;&#26080;&#38452;&#24433;&#37096;&#20998;&#65292;
+&#21017;&#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(\alpha\)</span> &#21644; <span class="math notranslate nohighlight">\(g\)</span> &#30340;&#20687;&#20043;&#38388;&#30340;&#21452;&#23556;&#12290;
+&#21644; <span class="math notranslate nohighlight">\(g^{-1}\)</span> &#22797;&#21512;&#65292;&#36825;&#20135;&#29983;&#20102;&#25152;&#38656;&#30340; <span class="math notranslate nohighlight">\(\alpha\)</span> &#21644; <span class="math notranslate nohighlight">\(\beta\)</span> &#30340;&#21452;&#23556;&#12290;</p>
+<p>&#25105;&#20204;&#21487;&#20197;&#26356;&#31616;&#21333;&#22320;&#25551;&#36848;&#36825;&#20010;&#21452;&#23556;&#12290;
+&#20196; <span class="math notranslate nohighlight">\(A\)</span> &#20026;&#36825;&#21015;&#38452;&#24433;&#21306;&#22495;&#30340;&#24182;&#65292;
+&#22914;&#19979;&#23450;&#20041; <span class="math notranslate nohighlight">\(h : \alpha \to \beta\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}h(x) = \begin{cases}
   f(x) &amp; \text{if $x \in A$} \\
   g^{-1}(x) &amp; \text{otherwise.}
 \end{cases}\end{split}\]</div>
-<p>In other words, we use <span class="math notranslate nohighlight">\(f\)</span> on the shaded parts,
-and we use the inverse of <span class="math notranslate nohighlight">\(g\)</span> everywhere else.
-The resulting map <span class="math notranslate nohighlight">\(h\)</span> is injective
-because each component is injective
-and the images of the two components are disjoint.
-To see that it is surjective,
-suppose we are given a <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(\beta\)</span>, and
-consider <span class="math notranslate nohighlight">\(g(y)\)</span>.
-If <span class="math notranslate nohighlight">\(g(y)\)</span> is in one of the shaded regions,
-it cannot be in the first ring, so we have <span class="math notranslate nohighlight">\(g(y) = g(f(x))\)</span>
-for some <span class="math notranslate nohighlight">\(x\)</span> is in the previous ring.
-By the injectivity of <span class="math notranslate nohighlight">\(g\)</span>, we have <span class="math notranslate nohighlight">\(h(x) = f(x) = y\)</span>.
-If <span class="math notranslate nohighlight">\(g(y)\)</span> is not in the shaded region,
-then by the definition of <span class="math notranslate nohighlight">\(h\)</span>, we have <span class="math notranslate nohighlight">\(h(g(y))= y\)</span>.
-Either way, <span class="math notranslate nohighlight">\(y\)</span> is in the image of <span class="math notranslate nohighlight">\(h\)</span>.</p>
-<p>This argument should sound plausible, but the details are delicate.
-Formalizing the proof will not only improve our confidence in the
-result, but also help us understand it better.
-Because the proof uses classical logic, we tell Lean that our definitions
-will generally not be computable.</p>
+<p>&#25442;&#21477;&#35805;&#35828;&#65292;&#25105;&#20204;&#22312;&#38452;&#24433;&#37096;&#20998;&#20351;&#29992; <span class="math notranslate nohighlight">\(f\)</span>,
+&#32780;&#22312;&#20854;&#20313;&#37096;&#20998;&#20351;&#29992; <span class="math notranslate nohighlight">\(g\)</span> &#30340;&#36870;&#12290;
+&#29983;&#25104;&#30340;&#26144;&#23556; <span class="math notranslate nohighlight">\(h\)</span> &#26159;&#21333;&#23556;&#65292;
+&#22240;&#20026;&#27599;&#20010;&#20998;&#25903;&#37117;&#26159;&#21333;&#23556;&#24182;&#19988;&#20004;&#20010;&#20998;&#25903;&#30340;&#20687;&#26159;&#19981;&#30456;&#20132;&#30340;&#12290;
+&#20026;&#20102;&#30475;&#20986;&#23427;&#26159;&#28385;&#23556;&#65292;
+&#20551;&#35774;&#32473;&#23450;&#20102; <span class="math notranslate nohighlight">\(\beta\)</span> &#20013;&#30340;&#20803;&#32032; <span class="math notranslate nohighlight">\(y\)</span>,
+&#32771;&#34385; <span class="math notranslate nohighlight">\(g(y)\)</span>.
+&#33509; <span class="math notranslate nohighlight">\(g(y)\)</span> &#20301;&#20110;&#38452;&#24433;&#21306;&#22495;&#20043;&#19968;&#65292;
+&#23427;&#19981;&#33021;&#22312;&#31532;&#19968;&#20010;&#29615;&#20013;&#65292;&#22240;&#27492;&#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(g(y) = g(f(x))\)</span>,
+&#20854;&#20013; <span class="math notranslate nohighlight">\(x\)</span> &#22312;&#19978;&#19968;&#20010;&#29615;&#20013;&#12290;
+&#30001; <span class="math notranslate nohighlight">\(g\)</span> &#30340;&#21333;&#23556;&#24615;&#65292;&#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(h(x) = f(x) = y\)</span>.
+&#33509; <span class="math notranslate nohighlight">\(g(y)\)</span> &#19981;&#22312;&#38452;&#24433;&#21306;&#22495;&#20013;&#65292;
+&#37027;&#20040;&#30001; <span class="math notranslate nohighlight">\(h\)</span> &#30340;&#23450;&#20041;&#65292;&#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(h(g(y))= y\)</span>.
+&#19981;&#35770;&#21738;&#31181;&#24773;&#20917;&#65292; <span class="math notranslate nohighlight">\(y\)</span> &#37117;&#22312; <span class="math notranslate nohighlight">\(h\)</span> &#30340;&#20687;&#20013;&#12290;</p>
+<p>&#36825;&#20010;&#35770;&#35777;&#21548;&#36215;&#26469;&#24212;&#35813;&#26377;&#36947;&#29702;&#65292;&#20294;&#32454;&#33410;&#21364;&#24456;&#24494;&#22937;&#12290;
+&#24418;&#24335;&#21270;&#35777;&#26126;&#19981;&#20165;&#21487;&#20197;&#25552;&#39640;&#25105;&#20204;&#23545;&#32467;&#26524;&#30340;&#20449;&#24515;&#65292;
+&#36824;&#21487;&#20197;&#24110;&#21161;&#25105;&#20204;&#26356;&#22909;&#22320;&#29702;&#35299;&#23427;&#12290;
+&#22240;&#20026;&#35777;&#26126;&#20351;&#29992;&#32463;&#20856;&#36923;&#36753;&#65292;
+&#25152;&#20197;&#25105;&#20204;&#21578;&#35785; Lean&#65292;
+&#25105;&#20204;&#30340;&#23450;&#20041;&#36890;&#24120;&#26159;&#19981;&#21487;&#35745;&#31639;&#30340;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">noncomputable</span> <span class="kn">section</span>
 <span class="kn">open</span> <span class="n">Classical</span>
 <span class="kd">variable</span> <span class="o">{</span><span class="n">&#945;</span> <span class="n">&#946;</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Nonempty</span> <span class="n">&#946;</span><span class="o">]</span>
 </pre></div>
 </div>
-<p>The annotation <code class="docutils literal notranslate"><span class="pre">[Nonempty</span> <span class="pre">&#946;]</span></code> specifies that <code class="docutils literal notranslate"><span class="pre">&#946;</span></code> is nonempty.
-We use it because the Mathlib primitive that we will use to
-construct <span class="math notranslate nohighlight">\(g^{-1}\)</span> requires it.
-The case of the theorem where <span class="math notranslate nohighlight">\(\beta\)</span> is empty is trivial,
-and even though it would not be hard to generalize the formalization to cover
-that case as well, we will not bother.
-Specifically, we need the hypothesis <code class="docutils literal notranslate"><span class="pre">[Nonempty</span> <span class="pre">&#946;]</span></code> for the operation
-<code class="docutils literal notranslate"><span class="pre">invFun</span></code> that is defined in Mathlib.
-Given <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">:</span> <span class="pre">&#945;</span></code>, <code class="docutils literal notranslate"><span class="pre">invFun</span> <span class="pre">g</span> <span class="pre">x</span></code> chooses a preimage of <code class="docutils literal notranslate"><span class="pre">x</span></code>
-in <code class="docutils literal notranslate"><span class="pre">&#946;</span></code> if there is one,
-and returns an arbitrary element of <code class="docutils literal notranslate"><span class="pre">&#946;</span></code> otherwise.
-The function <code class="docutils literal notranslate"><span class="pre">invFun</span> <span class="pre">g</span></code> is always a left inverse if <code class="docutils literal notranslate"><span class="pre">g</span></code> is injective
-and a right inverse if <code class="docutils literal notranslate"><span class="pre">g</span></code> is surjective.</p>
+<p>&#35760;&#21495; <code class="docutils literal notranslate"><span class="pre">[Nonempty</span> <span class="pre">&#946;]</span></code> &#35268;&#23450; <code class="docutils literal notranslate"><span class="pre">&#946;</span></code> &#38750;&#31354;&#12290;
+&#25105;&#20204;&#20351;&#29992;&#23427;&#26159;&#22240;&#20026;&#25105;&#20204;&#23558;&#29992;&#20110;&#26500;&#36896; <span class="math notranslate nohighlight">\(g^{-1}\)</span> &#30340; Mathlib &#21407;&#35821;&#35201;&#27714;&#23427;&#12290;
+&#23450;&#29702;&#22312; <span class="math notranslate nohighlight">\(\beta\)</span> &#20026;&#31354;&#30340;&#24773;&#24418;&#26159;&#24179;&#20961;&#30340;&#65292;
+&#34429;&#28982;&#25226;&#24418;&#24335;&#21270;&#25512;&#24191;&#21040;&#35206;&#30422;&#36825;&#31181;&#24773;&#20917;&#24182;&#19981;&#38590;&#65292;&#25105;&#20204;&#19981;&#36825;&#20040;&#20570;&#12290;
+&#29305;&#21035;&#22320;&#65292;&#25105;&#20204;&#38656;&#35201;&#20551;&#35774; <code class="docutils literal notranslate"><span class="pre">[Nonempty</span> <span class="pre">&#946;]</span></code> &#20197;&#20351;&#29992; Mathlib &#20013;&#23450;&#20041;&#30340;&#36816;&#31639; <code class="docutils literal notranslate"><span class="pre">invFun</span></code>.
+&#23545;&#20110;&#32473;&#23450;&#30340; <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">:</span> <span class="pre">&#945;</span></code>,  &#22914;&#26524;&#26377;&#30340;&#35805;&#65292;
+<code class="docutils literal notranslate"><span class="pre">invFun</span> <span class="pre">g</span> <span class="pre">x</span></code> &#36873;&#25321; <code class="docutils literal notranslate"><span class="pre">x</span></code> &#22312; <code class="docutils literal notranslate"><span class="pre">&#946;</span></code> &#20013;&#30340;&#19968;&#20010;&#21407;&#20687;&#65292;
+&#21542;&#21017;&#23601;&#36820;&#22238; <code class="docutils literal notranslate"><span class="pre">&#946;</span></code> &#20013;&#30340;&#20219;&#24847;&#20803;&#32032;&#12290;
+&#33509; <code class="docutils literal notranslate"><span class="pre">g</span></code> &#26159;&#21333;&#23556;&#65292;&#21017; <code class="docutils literal notranslate"><span class="pre">invFun</span> <span class="pre">g</span></code> &#19968;&#23450;&#26159;&#24038;&#36870;&#65292;
+&#33509; <code class="docutils literal notranslate"><span class="pre">g</span></code> &#26159;&#28385;&#23556;&#65292;&#21017;&#23427;&#26159;&#21491;&#36870;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="o">(</span><span class="n">invFun</span> <span class="n">g</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span><span class="o">)</span>
 <span class="k">#check</span> <span class="o">(</span><span class="n">leftInverse_invFun</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">g</span> <span class="bp">&#8594;</span> <span class="n">LeftInverse</span> <span class="o">(</span><span class="n">invFun</span> <span class="n">g</span><span class="o">)</span> <span class="n">g</span><span class="o">)</span>
 <span class="k">#check</span> <span class="o">(</span><span class="n">leftInverse_invFun</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">g</span> <span class="bp">&#8594;</span> <span class="bp">&#8704;</span> <span class="n">y</span><span class="o">,</span> <span class="n">invFun</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="n">y</span><span class="o">)</span> <span class="bp">=</span> <span class="n">y</span><span class="o">)</span>
 <span class="k">#check</span> <span class="o">(</span><span class="n">invFun_eq</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">y</span><span class="o">,</span> <span class="n">g</span> <span class="n">y</span> <span class="bp">=</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8594;</span> <span class="n">g</span> <span class="o">(</span><span class="n">invFun</span> <span class="n">g</span> <span class="n">x</span><span class="o">)</span> <span class="bp">=</span> <span class="n">x</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>We define the set corresponding to the union of the shaded regions as follows.</p>
+<p>&#25105;&#20204;&#23450;&#20041;&#23545;&#24212;&#20110;&#38452;&#24433;&#21306;&#22495;&#30340;&#24182;&#30340;&#38598;&#21512;&#22914;&#19979;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span><span class="o">)</span> <span class="o">(</span><span class="n">g</span> <span class="o">:</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="n">&#945;</span><span class="o">)</span>
 
 <span class="kd">def</span> <span class="n">sbAux</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">Set</span> <span class="n">&#945;</span>
@@ -887,35 +870,31 @@ and a right inverse if <code class="docutils literal notranslate"><span class="p
   <span class="bp">&#8899;</span> <span class="n">n</span><span class="o">,</span> <span class="n">sbAux</span> <span class="n">f</span> <span class="n">g</span> <span class="n">n</span>
 </pre></div>
 </div>
-<p>The definition <code class="docutils literal notranslate"><span class="pre">sbAux</span></code> is an example of a <em>recursive definition</em>,
-which we will explain in the next chapter.
-It defines a sequence of sets</p>
+<p>&#23450;&#20041; <code class="docutils literal notranslate"><span class="pre">sbAux</span></code> &#26159; <em>&#36882;&#24402;&#23450;&#20041;</em> &#30340;&#19968;&#20010;&#20363;&#23376;&#65292;
+&#25105;&#20204;&#23558;&#22312;&#19979;&#19968;&#31456;&#35299;&#37322;&#12290;
+&#23427;&#23450;&#20041;&#20102;&#19968;&#21015;&#38598;&#21512;</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}S_0 &amp;= \alpha &#8726; g(\beta) \\
 S_{n+1} &amp;= g(f(S_n)).\end{split}\]</div>
-<p>The definition <code class="docutils literal notranslate"><span class="pre">sbSet</span></code> corresponds to the set
-<span class="math notranslate nohighlight">\(A = \bigcup_{n \in \mathbb{N}} S_n\)</span> in our proof sketch.
-The function <span class="math notranslate nohighlight">\(h\)</span> described above is now defined as follows:</p>
+<p>&#23450;&#20041; <code class="docutils literal notranslate"><span class="pre">sbSet</span></code> &#23545;&#24212;&#20110;&#25105;&#20204;&#30340;&#35777;&#26126;&#27010;&#35201;&#20013;&#30340;&#38598;&#21512; <span class="math notranslate nohighlight">\(A = \bigcup_{n \in \mathbb{N}} S_n\)</span>.
+&#19978;&#38754;&#25551;&#36848;&#30340;&#20989;&#25968; <span class="math notranslate nohighlight">\(h\)</span> &#29616;&#22312;&#23450;&#20041;&#22914;&#19979;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">sbFun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#946;</span> <span class="o">:=</span>
   <span class="k">if</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">sbSet</span> <span class="n">f</span> <span class="n">g</span> <span class="k">then</span> <span class="n">f</span> <span class="n">x</span> <span class="k">else</span> <span class="n">invFun</span> <span class="n">g</span> <span class="n">x</span>
 </pre></div>
 </div>
-<p>We will need the fact that our definition of <span class="math notranslate nohighlight">\(g^{-1}\)</span> is a
-right inverse on the complement of <span class="math notranslate nohighlight">\(A\)</span>,
-which is to say, on the non-shaded regions of <span class="math notranslate nohighlight">\(\alpha\)</span>.
-This is so because the outermost ring, <span class="math notranslate nohighlight">\(S_0\)</span>, is equal to
-<span class="math notranslate nohighlight">\(\alpha \setminus g(\beta)\)</span>, so the complement of <span class="math notranslate nohighlight">\(A\)</span> is
-contained in <span class="math notranslate nohighlight">\(g(\beta)\)</span>.
-As a result, for every <span class="math notranslate nohighlight">\(x\)</span> in the complement of <span class="math notranslate nohighlight">\(A\)</span>,
-there is a <span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\(g(y) = x\)</span>.
-(By the injectivity of <span class="math notranslate nohighlight">\(g\)</span>, this <span class="math notranslate nohighlight">\(y\)</span> is unique,
-but next theorem says only that <code class="docutils literal notranslate"><span class="pre">invFun</span> <span class="pre">g</span> <span class="pre">x</span></code> returns some <code class="docutils literal notranslate"><span class="pre">y</span></code>
-such that <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code>.)</p>
-<p>Step through the proof below, make sure you understand what is going on,
-and fill in the remaining parts.
-You will need to use <code class="docutils literal notranslate"><span class="pre">invFun_eq</span></code> at the end.
-Notice that rewriting with <code class="docutils literal notranslate"><span class="pre">sbAux</span></code> here replaces <code class="docutils literal notranslate"><span class="pre">sbAux</span> <span class="pre">f</span> <span class="pre">g</span> <span class="pre">0</span></code>
-with the right-hand side of the corresponding defining equation.</p>
+<p>&#25105;&#20204;&#23558;&#38656;&#35201;&#36825;&#26679;&#30340;&#20107;&#23454;&#65306;&#25105;&#20204;&#23450;&#20041;&#30340; <span class="math notranslate nohighlight">\(g^{-1}\)</span> &#26159; <span class="math notranslate nohighlight">\(A\)</span> &#30340;&#34917;&#38598;&#19978;&#30340;&#21491;&#36870;&#65292;
+&#20063;&#23601;&#26159;&#35828;&#65292;&#26159; <span class="math notranslate nohighlight">\(\alpha\)</span> &#20013;&#26080;&#38452;&#24433;&#21306;&#22495;&#19978;&#30340;&#21491;&#36870;&#12290;
+&#36825;&#26159;&#22240;&#20026;&#26368;&#22806;&#23618;&#30340;&#29615; <span class="math notranslate nohighlight">\(S_0\)</span> &#31561;&#20110; <span class="math notranslate nohighlight">\(\alpha \setminus g(\beta)\)</span>,
+&#22240;&#27492; <span class="math notranslate nohighlight">\(A\)</span> &#30340;&#34917;&#38598;&#21253;&#21547;&#20110; <span class="math notranslate nohighlight">\(g(\beta)\)</span> &#20013;&#12290;
+&#25152;&#20197;&#65292;&#23545; <span class="math notranslate nohighlight">\(A\)</span> &#30340;&#34917;&#38598;&#20013;&#30340;&#27599;&#20010; <span class="math notranslate nohighlight">\(x\)</span>,
+&#23384;&#22312; <span class="math notranslate nohighlight">\(y\)</span> &#20351;&#24471; <span class="math notranslate nohighlight">\(g(y) = x\)</span>.
+&#65288;&#30001; <span class="math notranslate nohighlight">\(g\)</span> &#30340;&#21333;&#23556;&#24615;&#65292;&#36825;&#20010; <span class="math notranslate nohighlight">\(y\)</span> &#26159;&#21807;&#19968;&#30340;&#65292;
+&#20294;&#19979;&#19968;&#20010;&#23450;&#29702;&#21482;&#35828;&#20102; <code class="docutils literal notranslate"><span class="pre">invFun</span> <span class="pre">g</span> <span class="pre">x</span></code> &#36820;&#22238; <code class="docutils literal notranslate"><span class="pre">y</span></code> &#20351;&#24471; <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code>.&#65289;</p>
+<p>&#36880;&#27493;&#23436;&#25104;&#19979;&#38754;&#30340;&#35777;&#26126;&#65292;&#30830;&#20445;&#20320;&#29702;&#35299;&#21457;&#29983;&#20102;&#20160;&#20040;&#65292;
+&#24182;&#22635;&#20889;&#21097;&#20313;&#37096;&#20998;&#12290;
+&#20320;&#38656;&#35201;&#22312;&#26368;&#21518;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">invFun_eq</span></code>.
+&#35831;&#27880;&#24847;&#65292;&#27492;&#22788;&#29992; <code class="docutils literal notranslate"><span class="pre">sbAux</span></code> &#37325;&#20889;&#26367;&#25442;&#20102; <code class="docutils literal notranslate"><span class="pre">sbAux</span> <span class="pre">f</span> <span class="pre">g</span> <span class="pre">0</span></code>
+&#19982;&#30456;&#24212;&#23450;&#20041;&#26041;&#31243;&#30340;&#21491;&#20391;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">sb_right_inv</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8713;</span> <span class="n">sbSet</span> <span class="n">f</span> <span class="n">g</span><span class="o">)</span> <span class="o">:</span> <span class="n">g</span> <span class="o">(</span><span class="n">invFun</span> <span class="n">g</span> <span class="n">x</span><span class="o">)</span> <span class="bp">=</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">g</span> <span class="bp">&#39;&#39;</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="n">contrapose</span><span class="bp">!</span> <span class="n">hx</span>
@@ -928,27 +907,27 @@ with the right-hand side of the corresponding defining equation.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>We now turn to the proof that <span class="math notranslate nohighlight">\(h\)</span> is injective.
-Informally, the proof goes as follows.
-First, suppose <span class="math notranslate nohighlight">\(h(x_1) = h(x_2)\)</span>.
-If <span class="math notranslate nohighlight">\(x_1\)</span> is in <span class="math notranslate nohighlight">\(A\)</span>, then <span class="math notranslate nohighlight">\(h(x_1) = f(x_1)\)</span>,
-and we can show that <span class="math notranslate nohighlight">\(x_2\)</span> is in <span class="math notranslate nohighlight">\(A\)</span> as follows.
-If it isn&#8217;t, then we have <span class="math notranslate nohighlight">\(h(x_2) = g^{-1}(x_2)\)</span>.
-From <span class="math notranslate nohighlight">\(f(x_1) = h(x_1) = h(x_2)\)</span> we have <span class="math notranslate nohighlight">\(g(f(x_1)) = x_2\)</span>.
-From the definition of <span class="math notranslate nohighlight">\(A\)</span>, since <span class="math notranslate nohighlight">\(x_1\)</span> is in <span class="math notranslate nohighlight">\(A\)</span>,
-<span class="math notranslate nohighlight">\(x_2\)</span> is in <span class="math notranslate nohighlight">\(A\)</span> as well, a contradiction.
-Hence, if <span class="math notranslate nohighlight">\(x_1\)</span> is in <span class="math notranslate nohighlight">\(A\)</span>, so is <span class="math notranslate nohighlight">\(x_2\)</span>,
-in which case we have <span class="math notranslate nohighlight">\(f(x_1) = h(x_1) = h(x_2) = f(x_2)\)</span>.
-The injectivity of <span class="math notranslate nohighlight">\(f\)</span> then implies <span class="math notranslate nohighlight">\(x_1 = x_2\)</span>.
-The symmetric argument shows that if <span class="math notranslate nohighlight">\(x_2\)</span> is in <span class="math notranslate nohighlight">\(A\)</span>,
-then so is <span class="math notranslate nohighlight">\(x_1\)</span>, which again implies <span class="math notranslate nohighlight">\(x_1 = x_2\)</span>.</p>
-<p>The only remaining possibility is that neither <span class="math notranslate nohighlight">\(x_1\)</span> nor <span class="math notranslate nohighlight">\(x_2\)</span>
-is in <span class="math notranslate nohighlight">\(A\)</span>. In that case, we have
+<p>&#25105;&#20204;&#29616;&#22312;&#36716;&#21521;&#35777;&#26126; <span class="math notranslate nohighlight">\(h\)</span> &#26159;&#21333;&#23556;&#12290;
+&#38750;&#27491;&#24335;&#22320;&#35828;&#65292;&#35777;&#26126;&#36807;&#31243;&#22914;&#19979;&#12290;
+&#39318;&#20808;&#65292;&#20551;&#35774; <span class="math notranslate nohighlight">\(h(x_1) = h(x_2)\)</span>.
+&#33509; <span class="math notranslate nohighlight">\(x_1\)</span> &#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#65292;
+&#21017; <span class="math notranslate nohighlight">\(h(x_1) = f(x_1)\)</span>,
+&#19988;&#25105;&#20204;&#21487;&#20197;&#35777;&#26126; <span class="math notranslate nohighlight">\(x_2\)</span> &#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#22914;&#19979;&#12290;
+&#33509;&#38750;&#22914;&#27492;&#65292;&#21017;&#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(h(x_2) = g^{-1}(x_2)\)</span>.
+&#30001; <span class="math notranslate nohighlight">\(f(x_1) = h(x_1) = h(x_2)\)</span> &#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(g(f(x_1)) = x_2\)</span>.
+&#30001; <span class="math notranslate nohighlight">\(A\)</span> &#30340;&#23450;&#20041;&#65292;&#26082;&#28982; <span class="math notranslate nohighlight">\(x_1\)</span> &#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#65292;
+<span class="math notranslate nohighlight">\(x_2\)</span> &#21516;&#26679;&#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#65292;&#30683;&#30462;&#12290;
+&#22240;&#27492;&#65292;&#33509; <span class="math notranslate nohighlight">\(x_1\)</span> &#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#65292;&#21017; <span class="math notranslate nohighlight">\(x_2\)</span> &#20063;&#22312;&#65292;
+&#36825;&#31181;&#24773;&#20917;&#19979;&#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(f(x_1) = h(x_1) = h(x_2) = f(x_2)\)</span>.
+<span class="math notranslate nohighlight">\(f\)</span> &#30340;&#21333;&#23556;&#24615;&#25512;&#20986; <span class="math notranslate nohighlight">\(x_1 = x_2\)</span>.
+&#23545;&#31216;&#35770;&#35777;&#34920;&#26126;&#33509; <span class="math notranslate nohighlight">\(x_2\)</span> &#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#65292;
+&#21017; <span class="math notranslate nohighlight">\(x_1\)</span> &#20063;&#22312;&#65292;&#36825;&#21448;&#19968;&#27425;&#34164;&#21547;&#30528; <span class="math notranslate nohighlight">\(x_1 = x_2\)</span>.</p>
+<p>&#21097;&#19979;&#30340;&#21807;&#19968;&#21487;&#33021;&#24615;&#26159; <span class="math notranslate nohighlight">\(x_1\)</span> &#21644; <span class="math notranslate nohighlight">\(x_2\)</span> &#37117;&#19981;&#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#12290;
+&#36825;&#31181;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#26377;
 <span class="math notranslate nohighlight">\(g^{-1}(x_1) = h(x_1) = h(x_2) = g^{-1}(x_2)\)</span>.
-Applying <span class="math notranslate nohighlight">\(g\)</span> to both sides yields <span class="math notranslate nohighlight">\(x_1 = x_2\)</span>.</p>
-<p>Once again, we encourage you to step through the following proof
-to see how the argument plays out in Lean.
-See if you can finish off the proof using <code class="docutils literal notranslate"><span class="pre">sb_right_inv</span></code>.</p>
+&#20004;&#36793;&#20351;&#29992; <span class="math notranslate nohighlight">\(g\)</span> &#23601;&#24471;&#21040; <span class="math notranslate nohighlight">\(x_1 = x_2\)</span>.</p>
+<p>&#25105;&#20204;&#20877;&#27425;&#40723;&#21169;&#20320;&#36880;&#27493;&#23436;&#25104;&#20197;&#19979;&#35777;&#26126;&#65292;&#35266;&#23519;&#36825;&#20010;&#35770;&#35777;&#22312; Lean &#20013;&#26159;&#22914;&#20309;&#23637;&#24320;&#30340;&#12290;
+&#30475;&#30475;&#20320;&#26159;&#21542;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">sb_right_inv</span></code> &#32467;&#26463;&#35777;&#26126;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">sb_injective</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">)</span> <span class="o">:</span> <span class="n">Injective</span> <span class="o">(</span><span class="n">sbFun</span> <span class="n">f</span> <span class="n">g</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">set</span> <span class="n">A</span> <span class="o">:=</span> <span class="n">sbSet</span> <span class="n">f</span> <span class="n">g</span> <span class="k">with</span> <span class="n">A_def</span>
   <span class="n">set</span> <span class="n">h</span> <span class="o">:=</span> <span class="n">sbFun</span> <span class="n">f</span> <span class="n">g</span> <span class="k">with</span> <span class="n">h_def</span>
@@ -977,37 +956,37 @@ See if you can finish off the proof using <code class="docutils literal notransl
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>The proof introduces some new tactics.
-To start with, notice the <code class="docutils literal notranslate"><span class="pre">set</span></code> tactic, which introduces abbreviations
-<code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> for <code class="docutils literal notranslate"><span class="pre">sbSet</span> <span class="pre">f</span> <span class="pre">g</span></code> and <code class="docutils literal notranslate"><span class="pre">sb_fun</span> <span class="pre">f</span> <span class="pre">g</span></code> respectively.
-We name the corresponding defining equations <code class="docutils literal notranslate"><span class="pre">A_def</span></code> and <code class="docutils literal notranslate"><span class="pre">h_def</span></code>.
-The abbreviations are definitional, which is to say, Lean will sometimes
-unfold them automatically when needed.
-But not always; for example, when using <code class="docutils literal notranslate"><span class="pre">rw</span></code>, we generally need to
-use <code class="docutils literal notranslate"><span class="pre">A_def</span></code> and <code class="docutils literal notranslate"><span class="pre">h_def</span></code> explicitly.
-So the definitions bring a tradeoff: they can make expressions shorter
-and more readable, but they sometimes require us to do more work.</p>
-<p>A more interesting tactic is the <code class="docutils literal notranslate"><span class="pre">wlog</span></code> tactic, which encapsulates
-the symmetry argument in the informal proof above.
-We will not dwell on it now, but notice that it does exactly what we want.
-If you hover over the tactic you can take a look at its documentation.</p>
-<p>The argument for surjectivity is even easier.
-Given <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(\beta\)</span>,
-we consider two cases, depending on whether <span class="math notranslate nohighlight">\(g(y)\)</span> is in <span class="math notranslate nohighlight">\(A\)</span>.
-If it is, it can&#8217;t be in <span class="math notranslate nohighlight">\(S_0\)</span>, the outermost ring,
-because by definition that is disjoint from the image of <span class="math notranslate nohighlight">\(g\)</span>.
-Thus it is an element of <span class="math notranslate nohighlight">\(S_{n+1}\)</span> for some <span class="math notranslate nohighlight">\(n\)</span>.
-This means that it is of the form <span class="math notranslate nohighlight">\(g(f(x))\)</span> for some
-<span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(S_n\)</span>.
-By the injectivity of <span class="math notranslate nohighlight">\(g\)</span>, we have <span class="math notranslate nohighlight">\(f(x) = y\)</span>.
-In the case where <span class="math notranslate nohighlight">\(g(y)\)</span> is in the complement of <span class="math notranslate nohighlight">\(A\)</span>,
-we immediately have <span class="math notranslate nohighlight">\(h(g(y))= y\)</span>, and we are done.</p>
-<p>Once again, we encourage you to step through the proof and fill in
-the missing parts.
-The tactic <code class="docutils literal notranslate"><span class="pre">cases</span> <span class="pre">n</span> <span class="pre">with</span> <span class="pre">n</span></code> splits on the cases <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">y</span> <span class="pre">&#8712;</span> <span class="pre">sbAux</span> <span class="pre">f</span> <span class="pre">g</span> <span class="pre">0</span></code>
-and <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">y</span> <span class="pre">&#8712;</span> <span class="pre">sbAux</span> <span class="pre">f</span> <span class="pre">g</span> <span class="pre">n.succ</span></code>.
-In both cases, calling the simplifier with <code class="docutils literal notranslate"><span class="pre">simp</span> <span class="pre">[sbAux]</span></code>
-applies the corresponding defining equation of <code class="docutils literal notranslate"><span class="pre">sbAux</span></code>.</p>
+<p>&#36825;&#20010;&#35777;&#26126;&#24341;&#20837;&#20102;&#19968;&#20123;&#26032;&#31574;&#30053;&#12290;
+&#39318;&#20808;&#65292;&#35831;&#27880;&#24847; <code class="docutils literal notranslate"><span class="pre">set</span></code> &#31574;&#30053;&#65292;
+&#23427;&#24341;&#20837;&#20102;&#32553;&#20889; <code class="docutils literal notranslate"><span class="pre">A</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">h</span></code>
+&#20998;&#21035;&#20195;&#34920; <code class="docutils literal notranslate"><span class="pre">sbSet</span> <span class="pre">f</span> <span class="pre">g</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">sb_fun</span> <span class="pre">f</span> <span class="pre">g</span></code>.
+&#25105;&#20204;&#25226;&#23545;&#24212;&#30340;&#23450;&#20041;&#24335;&#21629;&#21517;&#20026; <code class="docutils literal notranslate"><span class="pre">A_def</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">h_def</span></code>.
+&#36825;&#20123;&#32553;&#20889;&#26159;&#23450;&#20041;&#24615;&#30340;&#65292;&#20063;&#23601;&#26159;&#35828;&#65292;
+&#24403;&#38656;&#35201;&#26102;&#65292;Lean&#26377;&#26102;&#20250;&#33258;&#21160;&#23637;&#24320;&#23427;&#20204;&#12290;
+&#20294;&#24182;&#19981;&#24635;&#26159;&#22914;&#27492;&#65307;&#20363;&#22914;&#65292;&#24403;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">rw</span></code> &#26102;&#65292;
+&#25105;&#20204;&#36890;&#24120;&#38656;&#35201;&#31934;&#30830;&#22320;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">A_def</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">h_def</span></code>.
+&#25152;&#20197;&#36825;&#20123;&#23450;&#20041;&#24102;&#26469;&#20102;&#19968;&#20010;&#26435;&#34913;&#65306;
+&#23427;&#20204;&#21487;&#20197;&#20351;&#34920;&#36798;&#24335;&#26356;&#30701;&#24182;&#19988;&#26356;&#20855;&#21487;&#35835;&#24615;&#65292;
+&#20294;&#23427;&#20204;&#26377;&#26102;&#38656;&#35201;&#25105;&#20204;&#20570;&#26356;&#22810;&#30340;&#24037;&#20316;&#12290;</p>
+<p>&#19968;&#20010;&#26356;&#26377;&#36259;&#30340;&#31574;&#30053;&#26159; <code class="docutils literal notranslate"><span class="pre">wlog</span></code> &#31574;&#30053;&#65292;
+&#23427;&#23553;&#35013;&#20102;&#19978;&#38754;&#38750;&#27491;&#24335;&#35777;&#26126;&#20013;&#30340;&#23545;&#31216;&#24615;&#35770;&#35777;&#12290;
+&#25105;&#20204;&#29616;&#22312;&#19981;&#20250;&#35814;&#32454;&#35752;&#35770;&#23427;&#65292;&#20294;&#35831;&#27880;&#24847;&#23427;&#24688;&#22909;&#20570;&#20102;&#25105;&#20204;&#24819;&#35201;&#30340;&#24037;&#20316;&#12290;
+&#22914;&#26524;&#23558;&#40736;&#26631;&#24748;&#20572;&#22312;&#35813;&#31574;&#30053;&#19978;&#65292;&#20320;&#21487;&#20197;&#26597;&#30475;&#20854;&#25991;&#26723;&#12290;</p>
+<p>&#28385;&#23556;&#24615;&#30340;&#35770;&#35777;&#29978;&#33267;&#26356;&#23481;&#26131;&#12290;
+&#32473;&#23450; <span class="math notranslate nohighlight">\(\beta\)</span> &#20013;&#30340; <span class="math notranslate nohighlight">\(y\)</span>,
+&#25105;&#20204;&#32771;&#34385;&#20004;&#31181;&#24773;&#20917;&#65292;&#21462;&#20915;&#20110; <span class="math notranslate nohighlight">\(g(y)\)</span> &#26159;&#21542;&#22312; <span class="math notranslate nohighlight">\(A\)</span> &#20013;&#12290;
+&#33509;&#26159;&#65292;&#21017;&#23427;&#19981;&#20250;&#22312;&#26368;&#22806;&#23618;&#30340;&#29615; <span class="math notranslate nohighlight">\(S_0\)</span> &#20013;&#65292;
+&#22240;&#20026;&#26681;&#25454;&#23450;&#20041;&#65292;&#36825;&#20010;&#29615;&#21644; <span class="math notranslate nohighlight">\(g\)</span> &#30340;&#20687;&#19981;&#30456;&#20132;&#12290;
+&#22240;&#27492;&#23384;&#22312; <span class="math notranslate nohighlight">\(n\)</span> &#20351;&#24471; <cite>g(y)</cite> &#26159; <span class="math notranslate nohighlight">\(S_{n+1}\)</span> &#30340;&#20803;&#32032;&#12290;
+&#36825;&#24847;&#21619;&#30528;&#23427;&#24418;&#22914; <span class="math notranslate nohighlight">\(g(f(x))\)</span>,
+&#20854;&#20013; <span class="math notranslate nohighlight">\(x\)</span> &#22312; <span class="math notranslate nohighlight">\(S_n\)</span> &#20013;&#12290;
+&#30001; <span class="math notranslate nohighlight">\(g\)</span> &#30340;&#21333;&#23556;&#24615;&#65292;&#25105;&#20204;&#26377; <span class="math notranslate nohighlight">\(f(x) = y\)</span>.
+&#22312; <span class="math notranslate nohighlight">\(g(y)\)</span> &#23646;&#20110; <span class="math notranslate nohighlight">\(A\)</span> &#30340;&#34917;&#38598;&#30340;&#24773;&#20917;&#65292;
+&#25105;&#20204;&#31435;&#21051;&#24471;&#21040; <span class="math notranslate nohighlight">\(h(g(y))= y\)</span>, &#35777;&#27605;&#12290;</p>
+<p>&#25105;&#20204;&#20877;&#27425;&#40723;&#21169;&#24744;&#36880;&#27493;&#23436;&#25104;&#35777;&#26126;&#24182;&#22635;&#20889;&#32570;&#22833;&#30340;&#37096;&#20998;&#12290;
+&#31574;&#30053; <code class="docutils literal notranslate"><span class="pre">cases</span> <span class="pre">n</span> <span class="pre">with</span> <span class="pre">n</span></code> &#20998;&#35299;&#20026;&#24773;&#20917; <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">y</span> <span class="pre">&#8712;</span> <span class="pre">sbAux</span> <span class="pre">f</span> <span class="pre">g</span> <span class="pre">0</span></code>
+&#21644; <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">y</span> <span class="pre">&#8712;</span> <span class="pre">sbAux</span> <span class="pre">f</span> <span class="pre">g</span> <span class="pre">n.succ</span></code>.
+&#22312;&#20004;&#31181;&#24773;&#20917;&#19979;&#65292;&#36890;&#36807; <code class="docutils literal notranslate"><span class="pre">simp</span> <span class="pre">[sbAux]</span></code> &#35843;&#29992;&#21270;&#31616;&#22120;&#37117;&#20250;&#24212;&#29992; <code class="docutils literal notranslate"><span class="pre">sbAux</span></code> &#30340;&#30456;&#24212;&#23450;&#20041;&#24335;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">sb_surjective</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">)</span> <span class="o">(</span><span class="n">hg</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">g</span><span class="o">)</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="n">sbFun</span> <span class="n">f</span> <span class="n">g</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">set</span> <span class="n">A</span> <span class="o">:=</span> <span class="n">sbSet</span> <span class="n">f</span> <span class="n">g</span> <span class="k">with</span> <span class="n">A_def</span>
   <span class="n">set</span> <span class="n">h</span> <span class="o">:=</span> <span class="n">sbFun</span> <span class="n">f</span> <span class="n">g</span> <span class="k">with</span> <span class="n">h_def</span>
@@ -1028,9 +1007,9 @@ applies the corresponding defining equation of <code class="docutils literal not
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>We can now put it all together. The final statement is short and sweet,
-and the proof uses the fact that <code class="docutils literal notranslate"><span class="pre">Bijective</span> <span class="pre">h</span></code> unfolds to
-<code class="docutils literal notranslate"><span class="pre">Injective</span> <span class="pre">h</span> <span class="pre">&#8743;</span> <span class="pre">Surjective</span> <span class="pre">h</span></code>.</p>
+<p>&#25105;&#20204;&#29616;&#22312;&#21487;&#20197;&#25226;&#23427;&#20204;&#25918;&#22312;&#19968;&#36215;&#12290;
+&#26368;&#21518;&#30340;&#35770;&#35777;&#31616;&#30701;&#32780;&#29980;&#32654;&#65292;&#35777;&#26126;&#20351;&#29992;&#20102; <code class="docutils literal notranslate"><span class="pre">Bijective</span> <span class="pre">h</span></code> &#23637;&#24320;&#20026;
+<code class="docutils literal notranslate"><span class="pre">Injective</span> <span class="pre">h</span> <span class="pre">&#8743;</span> <span class="pre">Surjective</span> <span class="pre">h</span></code> &#36825;&#19968;&#20107;&#23454;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">schroeder_bernstein</span> <span class="o">{</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span><span class="o">}</span> <span class="o">{</span><span class="n">g</span> <span class="o">:</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="n">&#945;</span><span class="o">}</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">)</span> <span class="o">(</span><span class="n">hg</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">g</span><span class="o">)</span> <span class="o">:</span>
     <span class="bp">&#8707;</span> <span class="n">h</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span><span class="o">,</span> <span class="n">Bijective</span> <span class="n">h</span> <span class="o">:=</span>
   <span class="o">&#10216;</span><span class="n">sbFun</span> <span class="n">f</span> <span class="n">g</span><span class="o">,</span> <span class="n">sb_injective</span> <span class="n">f</span> <span class="n">g</span> <span class="n">hf</span><span class="o">,</span> <span class="n">sb_surjective</span> <span class="n">f</span> <span class="n">g</span> <span class="n">hf</span> <span class="n">hg</span><span class="o">&#10217;</span>
