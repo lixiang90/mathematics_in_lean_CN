@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5. Elementary Number Theory &mdash; Mathematics in Lean 0.1 documentation</title>
+  <title>5. &#21021;&#31561;&#25968;&#35770; &mdash; Mathematics in Lean 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=0731ccc3" />
@@ -52,8 +52,8 @@
 <li class="toctree-l1"><a class="reference internal" href="C02_Basics.html">2. &#22522;&#30784;&#30693;&#35782;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C03_Logic.html">3. &#36923;&#36753;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C04_Sets_and_Functions.html">4. &#38598;&#21512;&#21644;&#20989;&#25968;</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Elementary Number Theory</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#irrational-roots">5.1. Irrational Roots</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. &#21021;&#31561;&#25968;&#35770;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#section-irrational-roots">5.1. &#26080;&#29702;&#26681;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#induction-and-recursion">5.2. Induction and Recursion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#infinitely-many-primes">5.3. Infinitely Many Primes</a></li>
 </ul>
@@ -83,7 +83,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5. </span>Elementary Number Theory</li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>&#21021;&#31561;&#25968;&#35770;</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/C05_Elementary_Number_Theory.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -93,38 +93,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="elementary-number-theory">
-<span id="number-theory"></span><h1><span class="section-number">5. </span>Elementary Number Theory<a class="headerlink" href="#elementary-number-theory" title="Link to this heading">&#61633;</a></h1>
-<p>In this chapter, we show you how to formalize some elementary
-results in number theory.
-As we deal with more substantive mathematical content,
-the proofs will get longer and more involved,
-building on the skills you have already mastered.</p>
-<section id="irrational-roots">
-<span id="section-irrational-roots"></span><h2><span class="section-number">5.1. </span>Irrational Roots<a class="headerlink" href="#irrational-roots" title="Link to this heading">&#61633;</a></h2>
-<p>Let&#8217;s start with a fact known to the ancient Greeks, namely,
-that the square root of 2 is irrational.
-If we suppose otherwise,
-we can write <span class="math notranslate nohighlight">\(\sqrt{2} = a / b\)</span> as a fraction
-in lowest terms. Squaring both sides yields <span class="math notranslate nohighlight">\(a^2 = 2 b^2\)</span>,
-which implies that <span class="math notranslate nohighlight">\(a\)</span> is even.
-If we write <span class="math notranslate nohighlight">\(a = 2c\)</span>, then we get <span class="math notranslate nohighlight">\(4c^2 = 2 b^2\)</span>
-and hence <span class="math notranslate nohighlight">\(b^2 = 2 c^2\)</span>.
-This implies that <span class="math notranslate nohighlight">\(b\)</span> is also even, contradicting
-the fact that we have assumed that <span class="math notranslate nohighlight">\(a / b\)</span> has been
-reduced to lowest terms.</p>
-<p>Saying that <span class="math notranslate nohighlight">\(a / b\)</span> is a fraction in lowest terms means
-that <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> do not have any factors in common,
-which is to say, they are <em>coprime</em>.
-Mathlib defines the predicate <code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span> <span class="pre">m</span> <span class="pre">n</span></code> to be <code class="docutils literal notranslate"><span class="pre">Nat.gcd</span> <span class="pre">m</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">1</span></code>.
-Using Lean&#8217;s anonymous projection notation, if <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code> are
-expressions of type <code class="docutils literal notranslate"><span class="pre">Nat</span></code>, we can write <code class="docutils literal notranslate"><span class="pre">s.Coprime</span> <span class="pre">t</span></code> instead of
-<code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span> <span class="pre">s</span> <span class="pre">t</span></code>, and similarly for <code class="docutils literal notranslate"><span class="pre">Nat.gcd</span></code>.
-As usual, Lean will often unfold the definition of <code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span></code> automatically
-when necessary,
-but we can also do it manually by rewriting or simplifying with
-the identifier <code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">norm_num</span></code> tactic is smart enough to compute concrete values.</p>
+  <section id="number-theory">
+<span id="id1"></span><h1><span class="section-number">5. </span>&#21021;&#31561;&#25968;&#35770;<a class="headerlink" href="#number-theory" title="Link to this heading">&#61633;</a></h1>
+<p>&#22312;&#26412;&#31456;&#20013;&#65292;&#25105;&#20204;&#21521;&#20320;&#23637;&#31034;&#22914;&#20309;&#24418;&#24335;&#21270;&#25968;&#35770;&#20013;&#30340;&#19968;&#20123;&#21021;&#31561;&#32467;&#26524;&#12290;
+&#24403;&#25105;&#20204;&#22788;&#29702;&#26356;&#23454;&#36136;&#24615;&#30340;&#25968;&#23398;&#20869;&#23481;&#26102;&#65292;
+&#35777;&#26126;&#20250;&#21464;&#24471;&#26356;&#38271;&#12289;&#26356;&#22797;&#26434;&#65292;
+&#20197;&#20320;&#24050;&#32463;&#25484;&#25569;&#30340;&#25216;&#33021;&#20026;&#22522;&#30784;&#12290;</p>
+<section id="section-irrational-roots">
+<span id="id2"></span><h2><span class="section-number">5.1. </span>&#26080;&#29702;&#26681;<a class="headerlink" href="#section-irrational-roots" title="Link to this heading">&#61633;</a></h2>
+<p>&#35753;&#25105;&#20204;&#20174;&#21476;&#24076;&#33098;&#20154;&#30693;&#36947;&#30340;&#19968;&#20010;&#20107;&#23454;&#24320;&#22987;&#65292;&#21363; 2 &#30340;&#24179;&#26041;&#26681;&#26159;&#26080;&#29702;&#25968;&#12290;
+&#22914;&#26524;&#25105;&#20204;&#20551;&#23450;&#24182;&#38750;&#22914;&#27492;&#65292;
+&#21017;&#25105;&#20204;&#21487;&#20197;&#23558;&#20854;&#34920;&#31034;&#20026;&#26368;&#31616;&#20998;&#25968; <span class="math notranslate nohighlight">\(\sqrt{2} = a / b\)</span>.
+&#20004;&#36793;&#21462;&#24179;&#26041;&#24471;&#21040; <span class="math notranslate nohighlight">\(a^2 = 2 b^2\)</span>,
+&#36825;&#24847;&#21619;&#30528; <span class="math notranslate nohighlight">\(a\)</span> &#26159;&#20598;&#25968;&#12290;
+&#22914;&#26524;&#25105;&#20204;&#35760; <span class="math notranslate nohighlight">\(a = 2c\)</span>, &#21017;&#26377; <span class="math notranslate nohighlight">\(4c^2 = 2 b^2\)</span>,
+&#20174;&#32780; <span class="math notranslate nohighlight">\(b^2 = 2 c^2\)</span>.
+&#36825;&#24847;&#21619;&#30528; <span class="math notranslate nohighlight">\(b\)</span> &#20063;&#26159;&#20598;&#25968;&#65292;
+&#36825;&#21644;&#25105;&#20204;&#20551;&#35774;&#30340;&#20107;&#23454;&#65292;&#21363; <span class="math notranslate nohighlight">\(a / b\)</span> &#24050;&#32422;&#20998;&#21040;&#26368;&#31616;&#30683;&#30462;&#12290;</p>
+<p>&#31216; <span class="math notranslate nohighlight">\(a / b\)</span> &#26159;&#26368;&#31616;&#20998;&#25968;&#24847;&#21619;&#30528; <span class="math notranslate nohighlight">\(a\)</span> &#21644; <span class="math notranslate nohighlight">\(b\)</span> &#27809;&#26377;&#20219;&#20309;&#20844;&#22240;&#23376;&#65292;
+&#20063;&#23601;&#26159;&#35828;&#65292;&#23427;&#20204;&#26159; <em>&#20114;&#32032;</em> &#30340;&#12290;
+Mathlib &#25226;&#35859;&#35789; <code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span> <span class="pre">m</span> <span class="pre">n</span></code> &#23450;&#20041;&#20026; <code class="docutils literal notranslate"><span class="pre">Nat.gcd</span> <span class="pre">m</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">1</span></code>.
+&#20351;&#29992; Lean &#30340;&#21311;&#21517;&#25237;&#24433;&#35760;&#21495;&#65292;&#22914;&#26524; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">t</span></code> &#26159; <code class="docutils literal notranslate"><span class="pre">Nat</span></code> &#31867;&#22411;&#30340;&#34920;&#36798;&#24335;&#65292;
+&#25105;&#20204;&#21487;&#20197;&#29992; <code class="docutils literal notranslate"><span class="pre">s.Coprime</span> <span class="pre">t</span></code> &#26367;&#20195; <code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span> <span class="pre">s</span> <span class="pre">t</span></code>,
+&#32780; <code class="docutils literal notranslate"><span class="pre">Nat.gcd</span></code> &#20063;&#26377;&#31867;&#20284;&#30340;&#34920;&#36798;&#26041;&#24335;&#12290;
+&#20687;&#24448;&#24120;&#19968;&#26679;&#65292;Lean &#36890;&#24120;&#20250;&#22312;&#24517;&#35201;&#26102;&#33258;&#21160;&#23637;&#24320; <code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span></code> &#30340;&#23450;&#20041;&#65292;
+&#20294;&#25105;&#20204;&#20063;&#21487;&#20197;&#36890;&#36807;&#37325;&#20889;&#25110;&#31616;&#21270;&#26631;&#35782;&#31526; <code class="docutils literal notranslate"><span class="pre">Nat.Coprime</span></code> &#26469;&#25163;&#21160;&#25805;&#20316;&#12290;
+<code class="docutils literal notranslate"><span class="pre">norm_num</span></code> &#31574;&#30053;&#36275;&#22815;&#26234;&#33021;&#65292;&#21487;&#20197;&#35745;&#31639;&#20855;&#20307;&#20540;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#print</span> <span class="n">Nat.Coprime</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">m.Coprime</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">m.gcd</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span>
@@ -139,21 +133,16 @@ The <code class="docutils literal notranslate"><span class="pre">norm_num</span>
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Nat.gcd</span> <span class="mi">12</span> <span class="mi">8</span> <span class="bp">=</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
 </pre></div>
 </div>
-<p>We have already encountered the <code class="docutils literal notranslate"><span class="pre">gcd</span></code> function in
-<a class="reference internal" href="C02_Basics.html#more-on-order-and-divisibility"><span class="std std-numref">Section 2.4</span></a>.
-There is also a version of <code class="docutils literal notranslate"><span class="pre">gcd</span></code> for the integers;
-we will return to a discussion of the relationship between
-different number systems below.
-There are even a generic <code class="docutils literal notranslate"><span class="pre">gcd</span></code> function and generic
-notions of <code class="docutils literal notranslate"><span class="pre">Prime</span></code> and <code class="docutils literal notranslate"><span class="pre">Coprime</span></code>
-that make sense in general classes of algebraic structures.
-We will come to understand how Lean manages this generality
-in the next chapter.
-In the meanwhile, in this section, we will restrict attention
-to the natural numbers.</p>
-<p>We also need the notion of a prime number, <code class="docutils literal notranslate"><span class="pre">Nat.Prime</span></code>.
-The theorem <code class="docutils literal notranslate"><span class="pre">Nat.prime_def_lt</span></code> provides one familiar characterization,
-and <code class="docutils literal notranslate"><span class="pre">Nat.Prime.eq_one_or_self_of_dvd</span></code> provides another.</p>
+<p>&#25105;&#20204;&#24050;&#32463;&#22312; <a class="reference internal" href="C02_Basics.html#more-on-order-and-divisibility"><span class="std std-numref">Section 2.4</span></a> &#20013;&#36935;&#21040;&#36807; <code class="docutils literal notranslate"><span class="pre">gcd</span></code> &#20989;&#25968;&#12290;
+&#36824;&#26377;&#19968;&#20010;&#29992;&#20110;&#25972;&#25968;&#30340; <code class="docutils literal notranslate"><span class="pre">gcd</span></code> &#29256;&#26412;&#65307;
+&#25105;&#20204;&#23558;&#22312;&#19979;&#38754;&#22238;&#21040;&#19981;&#21516;&#25968;&#31995;&#20043;&#38388;&#20851;&#31995;&#30340;&#35752;&#35770;&#20013;&#12290;
+&#29978;&#33267;&#36824;&#26377;&#24191;&#20041; <code class="docutils literal notranslate"><span class="pre">gcd</span></code> &#20989;&#25968;&#20197;&#21450;&#24191;&#20041; <code class="docutils literal notranslate"><span class="pre">Prime</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Coprime</span></code> &#30340;&#27010;&#24565;&#65292;
+&#23427;&#20204;&#22312;&#19968;&#33324;&#31867;&#22411;&#30340;&#20195;&#25968;&#32467;&#26500;&#20013;&#26377;&#24847;&#20041;&#12290;
+&#25105;&#20204;&#23558;&#22312;&#19979;&#19968;&#31456;&#20102;&#35299; Lean &#26159;&#22914;&#20309;&#31649;&#29702;&#36825;&#31181;&#19968;&#33324;&#24615;&#30340;&#12290;
+&#21516;&#26102;&#65292;&#22312;&#26412;&#33410;&#20013;&#65292;&#25105;&#20204;&#23558;&#25226;&#27880;&#24847;&#21147;&#38480;&#21046;&#21040;&#33258;&#28982;&#25968;&#12290;</p>
+<p>&#25105;&#20204;&#36824;&#38656;&#35201;&#32032;&#25968;&#30340;&#27010;&#24565;&#65292; <code class="docutils literal notranslate"><span class="pre">Nat.Prime</span></code>.
+&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">Nat.prime_def_lt</span></code> &#25552;&#20379;&#20102;&#19968;&#20010;&#29087;&#24713;&#30340;&#21051;&#30011;&#65292;
+<code class="docutils literal notranslate"><span class="pre">Nat.Prime.eq_one_or_self_of_dvd</span></code> &#25552;&#20379;&#20102;&#21478;&#19968;&#20010;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="n">Nat.prime_def_lt</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">prime_p</span> <span class="o">:</span> <span class="n">Nat.Prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">p</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -174,21 +163,16 @@ and <code class="docutils literal notranslate"><span class="pre">Nat.Prime.eq_on
   <span class="n">Nat.prime_three</span>
 </pre></div>
 </div>
-<p>In the natural numbers, a prime number has the property that it cannot
-be written as a product of nontrivial factors.
-In a broader mathematical context, an element of a ring that has this property
-is said to be <em>irreducible</em>.
-An element of a ring is said to be <em>prime</em> if whenever it divides a product,
-it divides one of the factors.
-It is an important property of the natural numbers
-that in that setting the two notions coincide,
-giving rise to the theorem <code class="docutils literal notranslate"><span class="pre">Nat.Prime.dvd_mul</span></code>.</p>
-<p>We can use this fact to establish a key property in the argument
-above:
-if the square of a number is even, then that number is even as well.
-Mathlib defines the predicate <code class="docutils literal notranslate"><span class="pre">Even</span></code> in <code class="docutils literal notranslate"><span class="pre">Data.Nat.Parity</span></code>,
-but for reasons that will become clear below,
-we will simply use <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&#8739;</span> <span class="pre">m</span></code> to express that <code class="docutils literal notranslate"><span class="pre">m</span></code> is even.</p>
+<p>&#22312;&#33258;&#28982;&#25968;&#20013;&#65292;&#32032;&#25968;&#20855;&#26377;&#19981;&#33021;&#20889;&#25104;&#38750;&#24179;&#20961;&#22240;&#23376;&#30340;&#20056;&#31215;&#30340;&#24615;&#36136;&#12290;
+&#22312;&#26356;&#24191;&#27867;&#30340;&#25968;&#23398;&#32972;&#26223;&#19979;&#65292;&#29615;&#20013;&#20855;&#26377;&#27492;&#24615;&#36136;&#30340;&#20803;&#32032;&#34987;&#31216;&#20026; <em>&#19981;&#21487;&#32422;</em> &#30340;&#12290;
+&#29615;&#30340;&#20803;&#32032;&#31216;&#20026; <em>&#32032;&#20803;</em>&#65292;&#22914;&#26524;&#27599;&#24403;&#23427;&#25972;&#38500;&#19968;&#20010;&#20056;&#31215;&#26102;&#65292;&#23427;&#25972;&#38500;&#20854;&#20013;&#19968;&#20010;&#22240;&#23376;&#12290;
+&#33258;&#28982;&#25968;&#30340;&#19968;&#20010;&#37325;&#35201;&#24615;&#36136;&#26159;&#65292;&#23545;&#23427;&#26469;&#35828;&#36825;&#20004;&#20010;&#27010;&#24565;&#26159;&#19968;&#33268;&#30340;&#65292;
+&#36825;&#20135;&#29983;&#20102;&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">Nat.Prime.dvd_mul</span></code>.</p>
+<p>&#25105;&#20204;&#21487;&#20197;&#21033;&#29992;&#36825;&#20010;&#20107;&#23454;&#24314;&#31435;&#19978;&#38754;&#35770;&#35777;&#20013;&#30340;&#19968;&#20010;&#20851;&#38190;&#24615;&#36136;&#65306;
+&#22914;&#26524;&#19968;&#20010;&#25968;&#30340;&#24179;&#26041;&#26159;&#20598;&#25968;&#65292;&#37027;&#20040;&#36825;&#20010;&#25968;&#20063;&#26159;&#20598;&#25968;&#12290;
+Mathlib &#22312; <code class="docutils literal notranslate"><span class="pre">Data.Nat.Parity</span></code> &#20013;&#23450;&#20041;&#20102;&#35859;&#35789; <code class="docutils literal notranslate"><span class="pre">Even</span></code>,
+&#20294;&#20986;&#20110;&#19979;&#38754;&#20250;&#28548;&#28165;&#30340;&#21407;&#22240;&#65292;
+&#25105;&#20204;&#23558;&#31616;&#21333;&#22320;&#29992; <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&#8739;</span> <span class="pre">m</span></code> &#34920;&#31034; <code class="docutils literal notranslate"><span class="pre">m</span></code> &#26159;&#20598;&#25968;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="n">Nat.Prime.dvd_mul</span>
 <span class="k">#check</span> <span class="n">Nat.Prime.dvd_mul</span> <span class="n">Nat.prime_two</span>
 <span class="k">#check</span> <span class="n">Nat.prime_two.dvd_mul</span>
@@ -201,29 +185,26 @@ we will simply use <code class="docutils literal notranslate"><span class="pre">
   <span class="n">Nat.Prime.dvd_of_dvd_pow</span> <span class="n">Nat.prime_two</span> <span class="n">h</span>
 </pre></div>
 </div>
-<p>As we proceed, you will need to become proficient at finding the facts you
-need.
-Remember that if you can guess the prefix of the name and
-you have imported the relevant library,
-you can use tab completion (sometimes with <code class="docutils literal notranslate"><span class="pre">ctrl-tab</span></code>) to find
-what you are looking for.
-You can use <code class="docutils literal notranslate"><span class="pre">ctrl-click</span></code> on any identifier to jump to the file
-where it is defined, which enables you to browse definitions and theorems
-nearby.
-You can also use the search engine on the
-<a class="reference external" href="https://leanprover-community.github.io/">Lean community web pages</a>,
-and if all else fails,
-don&#8217;t hesitate to ask on
-<a class="reference external" href="https://leanprover.zulipchat.com/">Zulip</a>.</p>
+<p>&#38543;&#30528;&#25105;&#20204;&#30340;&#32487;&#32493;&#65292;&#20320;&#23558;&#38656;&#35201;&#29087;&#32451;&#22320;&#26597;&#25214;&#25152;&#38656;&#30340;&#20107;&#23454;&#12290;
+&#35831;&#35760;&#20303;&#65292;&#22914;&#26524;&#20320;&#33021;&#29468;&#20986;&#21517;&#31216;&#30340;&#21069;&#32512;&#24182;&#19988;&#20320;&#24050;&#32463;&#23548;&#20837;&#20102;&#30456;&#20851;&#24211;&#65292;
+&#20320;&#21487;&#20197;&#20351;&#29992;&#21046;&#34920;&#31526;&#34917;&#20840;&#65288;&#26377;&#26102;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">ctrl-tab</span></code>&#65289;&#26469;&#26597;&#25214;&#20320;&#22312;&#23547;&#25214;&#30340;&#19996;&#35199;&#12290;
+&#20320;&#21487;&#20197;&#22312;&#20219;&#20309;&#26631;&#35782;&#31526;&#19978;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">ctrl-click</span></code> &#26469;&#36339;&#36716;&#21040;&#25991;&#20214;&#20013;&#23427;&#30340;&#23450;&#20041;&#25152;&#22312;&#20301;&#32622;&#65292;
+&#20351;&#20320;&#33021;&#22815;&#27983;&#35272;&#38468;&#36817;&#30340;&#23450;&#20041;&#21644;&#23450;&#29702;&#12290;
+&#20320;&#20063;&#21487;&#20197;&#20351;&#29992;
+<a class="reference external" href="https://leanprover-community.github.io/">Lean community web pages</a>
+&#37324;&#30340;&#25628;&#32034;&#24341;&#25806;&#65292;
+&#22914;&#26524;&#20854;&#20182;&#26041;&#27861;&#37117;&#22833;&#36133;&#20102;&#65292;
+&#19981;&#35201;&#32670;&#20110;&#21521;
+<a class="reference external" href="https://leanprover.zulipchat.com/">Zulip</a>
+&#25552;&#38382;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#39;</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">c</span> <span class="o">:=</span>
   <span class="c1">-- apply? suggests the following:</span>
   <span class="o">(</span><span class="n">mul_right_inj&#39;</span> <span class="n">h&#39;</span><span class="o">)</span><span class="bp">.</span><span class="n">mp</span> <span class="n">h</span>
 </pre></div>
 </div>
-<p>The heart of our proof of the irrationality of the square root of two
-is contained in the following theorem.
-See if you can fill out the proof sketch, using
-<code class="docutils literal notranslate"><span class="pre">even_of_even_sqr</span></code> and the theorem <code class="docutils literal notranslate"><span class="pre">Nat.dvd_gcd</span></code>.</p>
+<p>&#25105;&#20204;&#23545;&#26681;&#21495;&#20108;&#26080;&#29702;&#24615;&#35777;&#26126;&#30340;&#26680;&#24515;&#21253;&#21547;&#22312;&#19979;&#21015;&#23450;&#29702;&#20013;&#12290;
+&#30475;&#30475;&#20320;&#33021;&#19981;&#33021;&#22635;&#34917;&#36825;&#20010;&#35777;&#26126;&#26775;&#27010;&#65292;
+&#35831;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">even_of_even_sqr</span></code> &#20197;&#21450;&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_gcd</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">coprime_mn</span> <span class="o">:</span> <span class="n">m.Coprime</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">sqr_eq</span>
   <span class="k">have</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -243,50 +224,47 @@ See if you can fill out the proof sketch, using
   <span class="n">norm_num</span> <span class="n">at</span> <span class="n">this</span>
 </pre></div>
 </div>
-<p>In fact, with very few changes, we can replace <code class="docutils literal notranslate"><span class="pre">2</span></code> by an arbitrary prime.
-Give it a try in the next example.
-At the end of the proof, you&#8217;ll need to derive a contradiction from
-<code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&#8739;</span> <span class="pre">1</span></code>.
-You can use <code class="docutils literal notranslate"><span class="pre">Nat.Prime.two_le</span></code>, which says that
-any prime number is greater than or equal to two,
-and <code class="docutils literal notranslate"><span class="pre">Nat.le_of_dvd</span></code>.</p>
+<p>&#20107;&#23454;&#19978;&#65292;&#21482;&#38656;&#24456;&#23569;&#30340;&#25913;&#21464;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#25226; <code class="docutils literal notranslate"><span class="pre">2</span></code> &#26367;&#25442;&#20026;&#20219;&#24847;&#32032;&#25968;&#12290;
+&#22312;&#19979;&#19968;&#20010;&#20363;&#23376;&#20013;&#35797;&#19968;&#35797;&#12290;
+&#22312;&#35777;&#26126;&#30340;&#26411;&#23614;&#65292;&#20320;&#38656;&#35201;&#30001; <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&#8739;</span> <span class="pre">1</span></code> &#23548;&#20986;&#30683;&#30462;&#12290;
+&#20320;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Nat.Prime.two_le</span></code>,
+&#23427;&#26159;&#35828;&#20219;&#24847;&#32032;&#25968;&#22823;&#20110;&#25110;&#31561;&#20110;&#20108;&#65292;
+&#20197;&#21450; <code class="docutils literal notranslate"><span class="pre">Nat.le_of_dvd</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">coprime_mn</span> <span class="o">:</span> <span class="n">m.Coprime</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">prime_p</span> <span class="o">:</span> <span class="n">p.Prime</span><span class="o">)</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Let us consider another approach.
-Here is a quick proof that if <span class="math notranslate nohighlight">\(p\)</span> is prime, then
-<span class="math notranslate nohighlight">\(m^2 \ne p n^2\)</span>: if we assume <span class="math notranslate nohighlight">\(m^2 = p n^2\)</span>
-and consider the factorization of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> into primes,
-then <span class="math notranslate nohighlight">\(p\)</span> occurs an even number of times on the left side of the equation
-and an odd number of times on the right, a contradiction.
-Note that this argument requires that <span class="math notranslate nohighlight">\(n\)</span> and hence <span class="math notranslate nohighlight">\(m\)</span>
-are not equal to zero.
-The formalization below confirms that this assumption is sufficient.</p>
-<p>The unique factorization theorem says that any natural number other
-than zero can be written as the product of primes in a unique way.
-Mathlib contains a formal version of this, expressed in terms of a function
-<code class="docutils literal notranslate"><span class="pre">Nat.factors</span></code>, which returns the list of
-prime factors of a number in nondecreasing order.
-The library proves that all the elements of <code class="docutils literal notranslate"><span class="pre">Nat.factors</span> <span class="pre">n</span></code>
-are prime, that any <code class="docutils literal notranslate"><span class="pre">n</span></code> greater than zero is equal to the
-product of its factors,
-and that if <code class="docutils literal notranslate"><span class="pre">n</span></code> is equal to the product of another list of prime numbers,
-then that list is a permutation of <code class="docutils literal notranslate"><span class="pre">Nat.factors</span> <span class="pre">n</span></code>.</p>
+<p>&#25105;&#20204;&#32771;&#34385;&#21478;&#19968;&#31181;&#24605;&#36335;&#12290;
+&#36825;&#26159;&#33509; <span class="math notranslate nohighlight">\(p\)</span> &#26159;&#32032;&#25968;&#21017; <span class="math notranslate nohighlight">\(m^2 \ne p n^2\)</span> &#30340;&#19968;&#20010;&#24555;&#36895;&#35777;&#26126;&#65306;
+&#22914;&#26524;&#25105;&#20204;&#20551;&#35774; <span class="math notranslate nohighlight">\(m^2 = p n^2\)</span>,
+&#32771;&#34385; <span class="math notranslate nohighlight">\(m\)</span> &#21644; <span class="math notranslate nohighlight">\(n\)</span> &#30340;&#32032;&#20998;&#35299;&#65292;
+&#21017; <span class="math notranslate nohighlight">\(p\)</span> &#22312;&#31561;&#24335;&#24038;&#36793;&#20986;&#29616;&#20598;&#25968;&#27425;&#32780;&#22312;&#21491;&#36793;&#20986;&#29616;&#22855;&#25968;&#27425;&#65292;&#30683;&#30462;&#12290;
+&#27880;&#24847;&#21040;&#36825;&#20010;&#35770;&#35777;&#35201;&#27714; <span class="math notranslate nohighlight">\(n\)</span>, &#20174;&#32780; <span class="math notranslate nohighlight">\(m\)</span>,
+&#19981;&#31561;&#20110;&#38646;&#12290;
+&#19979;&#38754;&#30340;&#24418;&#24335;&#21270;&#35777;&#23454;&#20102;&#36825;&#20010;&#20551;&#35774;&#26159;&#20805;&#20998;&#30340;&#12290;</p>
+<p>&#21807;&#19968;&#22240;&#23376;&#20998;&#35299;&#23450;&#29702;&#34920;&#26126;&#65292;
+&#20219;&#20309;&#22823;&#20110;&#38646;&#30340;&#33258;&#28982;&#25968;&#21487;&#20197;&#29992;&#21807;&#19968;&#30340;&#26041;&#24335;&#20889;&#25104;&#32032;&#25968;&#30340;&#20056;&#31215;&#12290;
+Mathlib &#21253;&#21547;&#20854;&#24418;&#24335;&#21270;&#29256;&#26412;&#65292;&#20351;&#29992;&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">Nat.factors</span></code> &#34920;&#36798;&#65292;
+&#35813;&#20989;&#25968;&#20197;&#38750;&#36882;&#20943;&#39034;&#24207;&#36820;&#22238;&#25968;&#30340;&#32032;&#22240;&#25968;&#21015;&#34920;&#12290;
+&#27492;&#24211;&#35777;&#26126;&#20102; <code class="docutils literal notranslate"><span class="pre">Nat.factors</span> <span class="pre">n</span></code> &#30340;&#20840;&#37096;&#20803;&#32032;&#37117;&#26159;&#32032;&#25968;&#65292;
+&#20219;&#24847;&#22823;&#20110;&#38646;&#30340; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#31561;&#20110;&#23427;&#30340;&#22240;&#23376;&#30340;&#20056;&#31215;&#65292;
+&#20197;&#21450;&#33509; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#31561;&#20110;&#21478;&#19968;&#21015;&#32032;&#25968;&#30340;&#20056;&#31215;&#65292;
+&#21017;&#36825;&#20010;&#21015;&#26159; <code class="docutils literal notranslate"><span class="pre">Nat.factors</span> <span class="pre">n</span></code> &#30340;&#19968;&#20010;&#25490;&#21015;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="n">Nat.factors</span>
 <span class="k">#check</span> <span class="n">Nat.prime_of_mem_factors</span>
 <span class="k">#check</span> <span class="n">Nat.prod_factors</span>
 <span class="k">#check</span> <span class="n">Nat.factors_unique</span>
 </pre></div>
 </div>
-<p>You can browse these theorems and others nearby, even though we have not
-talked about list membership, products, or permutations yet.
-We won&#8217;t need any of that for the task at hand.
-We will instead use the fact that Mathlib has a function <code class="docutils literal notranslate"><span class="pre">Nat.factorization</span></code>,
-that represents the same data as a function.
-Specifically, <code class="docutils literal notranslate"><span class="pre">Nat.factorization</span> <span class="pre">n</span> <span class="pre">p</span></code>, which we can also write
-<code class="docutils literal notranslate"><span class="pre">n.factorization</span> <span class="pre">p</span></code>, returns the multiplicity of <code class="docutils literal notranslate"><span class="pre">p</span></code> in the prime
-factorization of <code class="docutils literal notranslate"><span class="pre">n</span></code>. We will use the following three facts.</p>
+<p>&#20320;&#21487;&#20197;&#27983;&#35272;&#36825;&#20123;&#23450;&#29702;&#21644;&#38468;&#36817;&#30340;&#20854;&#20182;&#23450;&#29702;&#65292;
+&#21363;&#20351;&#25105;&#20204;&#36824;&#27809;&#26377;&#35848;&#21040;&#21015;&#34920;&#25104;&#21592;&#12289;&#20056;&#31215;&#25110;&#25490;&#21015;&#12290;
+&#25105;&#20204;&#25163;&#22836;&#30340;&#20219;&#21153;&#19981;&#38656;&#35201;&#36825;&#20123;&#12290;
+&#25105;&#20204;&#20250;&#20351;&#29992; Mathlib &#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">Nat.factorization</span></code> &#20316;&#20026;&#26367;&#20195;&#21697;&#65292;
+&#23427;&#25226;&#21516;&#26679;&#30340;&#25968;&#25454;&#34920;&#31034;&#20026;&#20989;&#25968;&#12290;
+&#29305;&#21035;&#22320;&#65292;<code class="docutils literal notranslate"><span class="pre">Nat.factorization</span> <span class="pre">n</span> <span class="pre">p</span></code>,
+&#20063;&#35760;&#20026; <code class="docutils literal notranslate"><span class="pre">n.factorization</span> <span class="pre">p</span></code>,
+&#36820;&#22238; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#30340;&#32032;&#20998;&#35299;&#20013; <code class="docutils literal notranslate"><span class="pre">p</span></code> &#30340;&#37325;&#25968;&#12290;
+&#25105;&#20204;&#23558;&#29992;&#21040;&#20197;&#19979;&#19977;&#20010;&#20107;&#23454;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">factorization_mul&#39;</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">mnez</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">nnez</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span>
     <span class="o">(</span><span class="n">m</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span><span class="bp">.</span><span class="n">factorization</span> <span class="n">p</span> <span class="bp">=</span> <span class="n">m.factorization</span> <span class="n">p</span> <span class="bp">+</span> <span class="n">n.factorization</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">Nat.factorization_mul</span> <span class="n">mnez</span> <span class="n">nnez</span><span class="o">]</span>
@@ -303,15 +281,14 @@ factorization of <code class="docutils literal notranslate"><span class="pre">n<
   <span class="n">simp</span>
 </pre></div>
 </div>
-<p>In fact, <code class="docutils literal notranslate"><span class="pre">n.factorization</span></code> is defined in Lean as a function of finite support,
-which explains the strange notation you will see as you step through the
-proofs above. Don&#8217;t worry about this now. For our purposes here, we can use
-the three theorems above as a black box.</p>
-<p>The next example shows that the simplifier is smart enough to replace
-<code class="docutils literal notranslate"><span class="pre">n^2</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code> by <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code>. The tactic <code class="docutils literal notranslate"><span class="pre">simpa</span></code> just calls <code class="docutils literal notranslate"><span class="pre">simp</span></code>
-followed by <code class="docutils literal notranslate"><span class="pre">assumption</span></code>.</p>
-<p>See if you can use the identities above to fill in the missing parts
-of the proof.</p>
+<p>&#20107;&#23454;&#19978;&#65292;<code class="docutils literal notranslate"><span class="pre">n.factorization</span></code> &#22312; Lean &#20013;&#34987;&#23450;&#20041;&#20026;&#26377;&#38480;&#25903;&#38598;&#30340;&#20989;&#25968;&#65292;
+&#36825;&#35299;&#37322;&#20102;&#20320;&#22312;&#36880;&#27493;&#26597;&#30475;&#19978;&#36848;&#35777;&#26126;&#26102;&#20250;&#30475;&#21040;&#30340;&#22855;&#24618;&#31526;&#21495;&#12290;
+&#29616;&#22312;&#19981;&#29992;&#25285;&#24515;&#36825;&#20010;&#12290;
+&#20986;&#20110;&#25105;&#20204;&#36825;&#37324;&#30340;&#30446;&#30340;&#65292;&#25105;&#20204;&#21487;&#20197;&#23558;&#19978;&#38754;&#19977;&#20010;&#23450;&#29702;&#20316;&#20026;&#40657;&#30418;&#20351;&#29992;&#12290;</p>
+<p>&#19979;&#19968;&#20010;&#31034;&#20363;&#34920;&#26126;&#21270;&#31616;&#22120;&#36275;&#22815;&#26234;&#33021;&#65292;
+&#21487;&#20197;&#25226; <code class="docutils literal notranslate"><span class="pre">n^2</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code> &#26367;&#25442;&#20026; <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code>.
+&#31574;&#30053; <code class="docutils literal notranslate"><span class="pre">simpa</span></code> &#19981;&#36807;&#26159;&#20808;&#35843;&#29992; <code class="docutils literal notranslate"><span class="pre">simp</span></code> &#25509;&#19979;&#26469;&#29992; <code class="docutils literal notranslate"><span class="pre">assumption</span></code>.</p>
+<p>&#30475;&#30475;&#20320;&#26159;&#21542;&#21487;&#20197;&#29992;&#19978;&#38754;&#30340;&#31561;&#24335;&#26469;&#22635;&#34917;&#35777;&#26126;&#32570;&#22833;&#30340;&#37096;&#20998;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">nnz</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">prime_p</span> <span class="o">:</span> <span class="n">p.Prime</span><span class="o">)</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">sqr_eq</span>
   <span class="k">have</span> <span class="n">nsqr_nez</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">simpa</span>
@@ -325,28 +302,25 @@ of the proof.</p>
   <span class="n">norm_num</span> <span class="n">at</span> <span class="n">this</span>
 </pre></div>
 </div>
-<p>A nice thing about this proof is that it also generalizes. There is
-nothing special about <code class="docutils literal notranslate"><span class="pre">2</span></code>; with small changes, the proof shows that
-whenever we write <code class="docutils literal notranslate"><span class="pre">m^k</span> <span class="pre">=</span> <span class="pre">r</span> <span class="pre">*</span> <span class="pre">n^k</span></code>, the multiplicity of any prime <code class="docutils literal notranslate"><span class="pre">p</span></code>
-in <code class="docutils literal notranslate"><span class="pre">r</span></code> has to be a multiple of <code class="docutils literal notranslate"><span class="pre">k</span></code>.</p>
-<p>To use <code class="docutils literal notranslate"><span class="pre">Nat.count_factors_mul_of_pos</span></code> with <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">*</span> <span class="pre">n^k</span></code>,
-we need to know that <code class="docutils literal notranslate"><span class="pre">r</span></code> is positive.
-But when <code class="docutils literal notranslate"><span class="pre">r</span></code> is zero, the theorem below is trivial, and easily
-proved by the simplifier.
-So the proof is carried out in cases.
-The line <code class="docutils literal notranslate"><span class="pre">cases</span> <span class="pre">r</span> <span class="pre">with</span> <span class="pre">r</span></code> replaces the goal with two versions:
-one in which <code class="docutils literal notranslate"><span class="pre">r</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">0</span></code>,
-and the other in which <code class="docutils literal notranslate"><span class="pre">r</span></code> is replaces by <code class="docutils literal notranslate"><span class="pre">r.succ</span></code>,
-the successor of <code class="docutils literal notranslate"><span class="pre">r</span></code>.
-In the second case, we can use the theorem <code class="docutils literal notranslate"><span class="pre">r.succ_ne_zero</span></code>, which
-establishes <code class="docutils literal notranslate"><span class="pre">r.succ</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code>.</p>
-<p>Notice also that the line that begins <code class="docutils literal notranslate"><span class="pre">have</span> <span class="pre">:</span> <span class="pre">npow_nz</span></code> provides a
-short proof-term proof of <code class="docutils literal notranslate"><span class="pre">n^k</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code>.
-To understand how it works, try replacing it with a tactic proof,
-and then think about how the tactics describe the proof term.</p>
-<p>See if you can fill in the missing parts of the proof below.
-At the very end, you can use <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</span></code> and <code class="docutils literal notranslate"><span class="pre">Nat.dvd_mul_right</span></code>
-to finish it off.</p>
+<p>&#36825;&#20010;&#35777;&#26126;&#30340;&#19968;&#20010;&#22909;&#22788;&#26159;&#23427;&#30340;&#21487;&#25512;&#24191;&#24615;&#12290;
+<code class="docutils literal notranslate"><span class="pre">2</span></code> &#27809;&#20160;&#20040;&#29305;&#21035;&#30340;&#65307;&#36890;&#36807;&#23569;&#37327;&#20462;&#25913;&#65292;
+&#35777;&#26126;&#25351;&#20986;&#21482;&#35201;&#25105;&#20204;&#26377; <code class="docutils literal notranslate"><span class="pre">m^k</span> <span class="pre">=</span> <span class="pre">r</span> <span class="pre">*</span> <span class="pre">n^k</span></code>,
+<code class="docutils literal notranslate"><span class="pre">r</span></code> &#20013;&#32032;&#25968; <code class="docutils literal notranslate"><span class="pre">p</span></code> &#30340;&#37325;&#25968;&#23601;&#21482;&#33021;&#26159; <code class="docutils literal notranslate"><span class="pre">k</span></code> &#30340;&#20493;&#25968;&#12290;</p>
+<p>&#20026;&#20102;&#23545; <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">*</span> <span class="pre">n^k</span></code> &#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Nat.count_factors_mul_of_pos</span></code>,
+&#25105;&#20204;&#38656;&#35201;&#30693;&#36947; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26159;&#27491;&#30340;&#12290;
+&#20294;&#24403; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26159;&#38646;&#26102;&#65292;&#19979;&#38754;&#30340;&#23450;&#29702;&#26159;&#24179;&#20961;&#30340;&#65292;
+&#21487;&#20351;&#29992;&#21270;&#31616;&#22120;&#36731;&#26131;&#35777;&#26126;&#12290;
+&#25152;&#20197;&#35777;&#26126;&#26159;&#20998;&#24773;&#20917;&#36827;&#34892;&#30340;&#12290;
+<code class="docutils literal notranslate"><span class="pre">cases</span> <span class="pre">r</span> <span class="pre">with</span> <span class="pre">r</span></code> &#36825;&#19968;&#34892;&#25226;&#30446;&#26631;&#26367;&#25442;&#20026;&#20004;&#20010;&#29256;&#26412;&#65306;
+&#19968;&#20010;&#25226; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26367;&#25442;&#20026; <code class="docutils literal notranslate"><span class="pre">0</span></code>,
+&#21478;&#19968;&#20010;&#25226; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26367;&#25442;&#20026; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#30340;&#21518;&#32487; <code class="docutils literal notranslate"><span class="pre">r.succ</span></code>.
+&#22312;&#31532;&#20108;&#31181;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#21487;&#20197;&#24212;&#29992;&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">r.succ_ne_zero</span></code>,
+&#30001;&#23427;&#21487;&#24471; <code class="docutils literal notranslate"><span class="pre">r.succ</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code>.</p>
+<p>&#21478;&#35831;&#27880;&#24847;&#65292;&#20197; <code class="docutils literal notranslate"><span class="pre">have</span> <span class="pre">:</span> <span class="pre">npow_nz</span></code> &#24320;&#22836;&#30340;&#34892;&#25552;&#20379;&#20102; <code class="docutils literal notranslate"><span class="pre">n^k</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code> &#30340;&#31616;&#30701;&#35777;&#26126;&#39033;&#35777;&#26126;&#12290;
+&#35201;&#29702;&#35299;&#23427;&#26159;&#22914;&#20309;&#24037;&#20316;&#30340;&#65292;&#35831;&#23581;&#35797;&#29992;&#31574;&#30053;&#35777;&#26126;&#26367;&#25442;&#23427;&#65292;
+&#28982;&#21518;&#24605;&#32771;&#31574;&#30053;&#22914;&#20309;&#25551;&#36848;&#35777;&#26126;&#39033;&#12290;</p>
+<p>&#30475;&#30475;&#20320;&#26159;&#21542;&#21487;&#20197;&#22635;&#34917;&#19979;&#21015;&#35777;&#26126;&#20013;&#32570;&#22833;&#30340;&#37096;&#20998;&#12290;
+&#22312;&#26368;&#21518;&#65292;&#20320;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_mul_right</span></code> &#26469;&#25910;&#23614;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="n">k</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">nnz</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">pow_eq</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">prime_p</span> <span class="o">:</span> <span class="n">p.Prime</span><span class="o">)</span> <span class="o">:</span>
     <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">r.factorization</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rcases</span> <span class="n">r</span> <span class="k">with</span> <span class="n">_</span> <span class="bp">|</span> <span class="n">r</span>
@@ -363,43 +337,33 @@ to finish it off.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>There are a number of ways in which we might want to improve on these results.
-To start with, a proof that the square root of two is irrational
-should say something about the square root of two,
-which can be understood as an element of the
-real or complex numbers.
-And stating that it is irrational should say something about the
-rational numbers, namely, that no rational number is equal to it.
-Moreover, we should extend the theorems in this section to the integers.
-Although it is mathematically obvious that if we could write the square root of
-two as a quotient of two integers then we could write it as a quotient
-of two natural numbers,
-proving this formally requires some effort.</p>
-<p>In Mathlib, the natural numbers, the integers, the rationals, the reals,
-and the complex numbers are represented by separate data types.
-Restricting attention to the separate domains is often helpful:
-we will see that it is easy to do induction on the natural numbers,
-and it is easiest to reason about divisibility of integers when the
-real numbers are not part of the picture.
-But having to mediate between the different domains is a headache,
-one we will have to contend with.
-We will return to this issue later in this chapter.</p>
-<p>We should also expect to be able to strengthen the conclusion of the
-last theorem to say that the number <code class="docutils literal notranslate"><span class="pre">r</span></code> is a <code class="docutils literal notranslate"><span class="pre">k</span></code>-th power,
-since its <code class="docutils literal notranslate"><span class="pre">k</span></code>-th root is just the product of each prime dividing <code class="docutils literal notranslate"><span class="pre">r</span></code>
-raised to its multiplicity in <code class="docutils literal notranslate"><span class="pre">r</span></code> divided by <code class="docutils literal notranslate"><span class="pre">k</span></code>.
-To be able to do that we will need better means for reasoning about
-products and sums over a finite set,
-which is also a topic we will return to.</p>
-<p>In fact, the results in this section are all established in much
-greater generality in Mathlib,
-in <code class="docutils literal notranslate"><span class="pre">Data.Real.Irrational</span></code>.
-The notion of <code class="docutils literal notranslate"><span class="pre">multiplicity</span></code> is defined for an
-arbitrary commutative monoid,
-and that it takes values in the extended natural numbers <code class="docutils literal notranslate"><span class="pre">enat</span></code>,
-which adds the value infinity to the natural numbers.
-In the next chapter, we will begin to develop the means to
-appreciate the way that Lean supports this sort of generality.</p>
+<p>&#25105;&#20204;&#21487;&#33021;&#24076;&#26395;&#36890;&#36807;&#22810;&#31181;&#26041;&#24335;&#26469;&#25913;&#36827;&#36825;&#20123;&#32467;&#26524;&#12290;
+&#39318;&#20808;&#65292;&#26681;&#21495;&#20108;&#26159;&#26080;&#29702;&#25968;&#30340;&#35777;&#26126;&#24212;&#35813;&#28041;&#21450;&#19968;&#20123;&#21644;&#26681;&#21495;&#20108;&#30456;&#20851;&#30340;&#32467;&#35770;&#65292;
+&#31216;&#23427;&#26159;&#26080;&#29702;&#25968;&#24212;&#35813;&#25552;&#21040;&#19968;&#20123;&#20851;&#20110;&#26377;&#29702;&#25968;&#30340;&#20107;&#24773;&#65292;&#21363;&#27809;&#26377;&#26377;&#29702;&#25968;&#31561;&#20110;&#23427;&#12290;
+&#27492;&#22806;&#65292;&#25105;&#20204;&#24212;&#35813;&#23558;&#26412;&#33410;&#20013;&#30340;&#23450;&#29702;&#25193;&#23637;&#21040;&#25972;&#25968;&#12290;
+&#34429;&#28982;&#25968;&#23398;&#19978;&#26174;&#32780;&#26131;&#35265;&#30340;&#26159;&#65292;&#22914;&#26524;&#25105;&#20204;&#21487;&#20197;&#23558;&#20108;&#30340;&#24179;&#26041;&#26681;&#20889;&#20026;&#20004;&#20010;&#25972;&#25968;&#30340;&#21830;&#65292;
+&#37027;&#20040;&#25105;&#20204;&#23601;&#21487;&#20197;&#23558;&#20854;&#20889;&#20026;&#20004;&#20010;&#33258;&#28982;&#25968;&#30340;&#21830;&#65292;
+&#20294;&#24418;&#24335;&#19978;&#35777;&#26126;&#36825;&#19968;&#28857;&#38656;&#35201;&#19968;&#20123;&#21162;&#21147;&#12290;</p>
+<p>&#22312; Mathlib &#20013;&#65292;&#33258;&#28982;&#25968;&#12289;&#25972;&#25968;&#12289;&#26377;&#29702;&#25968;&#12289;&#23454;&#25968;&#21644;&#22797;&#25968;&#29992;&#19981;&#21516;&#30340;&#25968;&#25454;&#31867;&#22411;&#34920;&#31034;&#12290;
+&#25226;&#27880;&#24847;&#21147;&#38480;&#21046;&#22312;&#21333;&#29420;&#30340;&#39046;&#22495;&#20013;&#24120;&#24120;&#26159;&#26377;&#24110;&#21161;&#30340;&#65306;
+&#25105;&#20204;&#23558;&#30475;&#21040;&#22312;&#33258;&#28982;&#25968;&#19978;&#20570;&#24402;&#32435;&#27861;&#23481;&#26131;&#65292;
+&#28041;&#21450;&#25972;&#25968;&#30340;&#25972;&#38500;&#24615;&#30340;&#25512;&#29702;&#20063;&#24456;&#23481;&#26131;&#65292;
+&#20294;&#23454;&#25968;&#23601;&#19981;&#22312;&#36825;&#20123;&#22270;&#26223;&#20013;&#12290;
+&#20294;&#24517;&#39035;&#22312;&#19981;&#21516;&#39046;&#22495;&#20013;&#36827;&#34892;&#21327;&#35843;&#26159;&#25105;&#20204;&#23558;&#19981;&#24471;&#19981;&#38754;&#23545;&#30340;&#19968;&#20010;&#20196;&#20154;&#22836;&#30140;&#30340;&#38382;&#39064;&#12290;
+&#25105;&#20204;&#23558;&#22312;&#26412;&#31456;&#21518;&#38754;&#22238;&#21040;&#36825;&#20010;&#38382;&#39064;&#12290;</p>
+<p>&#25105;&#20204;&#36824;&#24212;&#35813;&#26399;&#26395;&#33021;&#25226;&#19978;&#19968;&#20010;&#23450;&#29702;&#30340;&#32467;&#35770;&#21152;&#24378;&#20026;&#25968; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26159; <code class="docutils literal notranslate"><span class="pre">k</span></code> &#27425;&#24130;&#65292;
+&#22240;&#20026;&#23427;&#30340; <code class="docutils literal notranslate"><span class="pre">k</span></code> &#27425;&#26681;&#24688;&#22909;&#26159;&#27599;&#20010;&#25972;&#38500; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#30340;&#32032;&#25968;&#20197;
+<code class="docutils literal notranslate"><span class="pre">r</span></code> &#38500;&#20197; <code class="docutils literal notranslate"><span class="pre">k</span></code> &#30340;&#37325;&#25968;&#20026;&#24130;&#27425;&#30340;&#24130;&#30340;&#20056;&#31215;&#12290;
+&#20026;&#20102;&#33021;&#22815;&#20570;&#21040;&#36825;&#19968;&#28857;&#65292;
+&#25105;&#20204;&#38656;&#35201;&#26356;&#22909;&#30340;&#26041;&#27861;&#26469;&#20570;&#20851;&#20110;&#26377;&#38480;&#38598;&#21512;&#19978;&#30340;&#20056;&#31215;&#19982;&#21644;&#30340;&#25512;&#29702;&#65292;
+&#36825;&#20063;&#26159;&#25105;&#20204;&#23558;&#35201;&#22238;&#21040;&#30340;&#35805;&#39064;&#12290;</p>
+<p>&#20107;&#23454;&#19978;&#65292;&#26412;&#33410;&#20013;&#30340;&#32467;&#26524;&#37117;&#24050;&#32463;&#22312; Mathlib &#30340;
+<code class="docutils literal notranslate"><span class="pre">Data.Real.Irrational</span></code> &#20013;&#20197;&#36828;&#20026;&#24191;&#20041;&#30340;&#26041;&#24335;&#24314;&#31435;&#12290;
+<code class="docutils literal notranslate"><span class="pre">multiplicity</span></code> &#30340;&#27010;&#24565;&#22312;&#20219;&#24847;&#30340;&#20132;&#25442;&#24186;&#21322;&#29615;&#19978;&#23450;&#20041;&#65292;
+&#23427;&#30340;&#21462;&#20540;&#22312;&#25193;&#23637;&#33258;&#28982;&#25968; <code class="docutils literal notranslate"><span class="pre">enat</span></code> &#20013;&#65292;
+&#21363;&#22312;&#33258;&#28982;&#25968;&#20013;&#28155;&#21152;&#26080;&#31351;&#20540;&#12290;
+&#22312;&#19979;&#19968;&#31456;&#20013;&#65292;
+&#25105;&#20204;&#23558;&#24320;&#22987;&#21457;&#23637;&#19968;&#20123;&#26041;&#27861;&#20174;&#32780;&#29702;&#35299; Lean &#25903;&#25345;&#36825;&#31867;&#19968;&#33324;&#24615;&#30340;&#36884;&#24452;&#12290;</p>
 </section>
 <section id="induction-and-recursion">
 <span id="section-induction-and-recursion"></span><h2><span class="section-number">5.2. </span>Induction and Recursion<a class="headerlink" href="#induction-and-recursion" title="Link to this heading">&#61633;</a></h2>
