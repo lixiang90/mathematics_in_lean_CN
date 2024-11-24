@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,7 +17,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7c91f8fd"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -61,9 +61,10 @@
 <li class="toctree-l1"><a class="reference internal" href="C06_Structures.html">6. Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C07_Hierarchies.html">7. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C08_Groups_and_Rings.html">8. Groups and Rings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C09_Topology.html">9. Topology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C10_Differential_Calculus.html">10. Differential Calculus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C11_Integration_and_Measure_Theory.html">11. Integration and Measure Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C09_Linear_Algebra.html">9. Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C10_Topology.html">10. Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C11_Differential_Calculus.html">11. Differential Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C12_Integration_and_Measure_Theory.html">12. Integration and Measure Theory</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -170,7 +171,7 @@ Mathlib &#25226;&#35859;&#35789; <code class="docutils literal notranslate"><spa
 &#36825;&#20135;&#29983;&#20102;&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">Nat.Prime.dvd_mul</span></code>.</p>
 <p>&#25105;&#20204;&#21487;&#20197;&#21033;&#29992;&#36825;&#20010;&#20107;&#23454;&#24314;&#31435;&#19978;&#38754;&#35770;&#35777;&#20013;&#30340;&#19968;&#20010;&#20851;&#38190;&#24615;&#36136;&#65306;
 &#22914;&#26524;&#19968;&#20010;&#25968;&#30340;&#24179;&#26041;&#26159;&#20598;&#25968;&#65292;&#37027;&#20040;&#36825;&#20010;&#25968;&#20063;&#26159;&#20598;&#25968;&#12290;
-Mathlib &#22312; <code class="docutils literal notranslate"><span class="pre">Data.Nat.Parity</span></code> &#20013;&#23450;&#20041;&#20102;&#35859;&#35789; <code class="docutils literal notranslate"><span class="pre">Even</span></code>,
+Mathlib &#22312; <code class="docutils literal notranslate"><span class="pre">Algebra.Group.Even</span></code> &#20013;&#23450;&#20041;&#20102;&#35859;&#35789; <code class="docutils literal notranslate"><span class="pre">Even</span></code>,
 &#20294;&#20986;&#20110;&#19979;&#38754;&#20250;&#28548;&#28165;&#30340;&#21407;&#22240;&#65292;
 &#25105;&#20204;&#23558;&#31616;&#21333;&#22320;&#29992; <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&#8739;</span> <span class="pre">m</span></code> &#34920;&#31034; <code class="docutils literal notranslate"><span class="pre">m</span></code> &#26159;&#20598;&#25968;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="n">Nat.Prime.dvd_mul</span>
@@ -244,16 +245,16 @@ Mathlib &#22312; <code class="docutils literal notranslate"><span class="pre">Da
 &#19979;&#38754;&#30340;&#24418;&#24335;&#21270;&#35777;&#23454;&#20102;&#36825;&#20010;&#20551;&#35774;&#26159;&#20805;&#20998;&#30340;&#12290;</p>
 <p>&#21807;&#19968;&#22240;&#23376;&#20998;&#35299;&#23450;&#29702;&#34920;&#26126;&#65292;
 &#20219;&#20309;&#22823;&#20110;&#38646;&#30340;&#33258;&#28982;&#25968;&#21487;&#20197;&#29992;&#21807;&#19968;&#30340;&#26041;&#24335;&#20889;&#25104;&#32032;&#25968;&#30340;&#20056;&#31215;&#12290;
-Mathlib &#21253;&#21547;&#20854;&#24418;&#24335;&#21270;&#29256;&#26412;&#65292;&#20351;&#29992;&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">Nat.factors</span></code> &#34920;&#36798;&#65292;
+Mathlib &#21253;&#21547;&#20854;&#24418;&#24335;&#21270;&#29256;&#26412;&#65292;&#20351;&#29992;&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">Nat.primeFactorsList</span></code> &#34920;&#36798;&#65292;
 &#35813;&#20989;&#25968;&#20197;&#38750;&#36882;&#20943;&#39034;&#24207;&#36820;&#22238;&#25968;&#30340;&#32032;&#22240;&#25968;&#21015;&#34920;&#12290;
 &#27492;&#24211;&#35777;&#26126;&#20102; <code class="docutils literal notranslate"><span class="pre">Nat.factors</span> <span class="pre">n</span></code> &#30340;&#20840;&#37096;&#20803;&#32032;&#37117;&#26159;&#32032;&#25968;&#65292;
 &#20219;&#24847;&#22823;&#20110;&#38646;&#30340; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#31561;&#20110;&#23427;&#30340;&#22240;&#23376;&#30340;&#20056;&#31215;&#65292;
 &#20197;&#21450;&#33509; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#31561;&#20110;&#21478;&#19968;&#21015;&#32032;&#25968;&#30340;&#20056;&#31215;&#65292;
 &#21017;&#36825;&#20010;&#21015;&#26159; <code class="docutils literal notranslate"><span class="pre">Nat.factors</span> <span class="pre">n</span></code> &#30340;&#19968;&#20010;&#25490;&#21015;&#12290;</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="n">Nat.factors</span>
-<span class="k">#check</span> <span class="n">Nat.prime_of_mem_factors</span>
-<span class="k">#check</span> <span class="n">Nat.prod_factors</span>
-<span class="k">#check</span> <span class="n">Nat.factors_unique</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="n">Nat.primeFactorsList</span>
+<span class="k">#check</span> <span class="n">Nat.prime_of_mem_primeFactorsList</span>
+<span class="k">#check</span> <span class="n">Nat.prod_primeFactorsList</span>
+<span class="k">#check</span> <span class="n">Nat.primeFactorsList_unique</span>
 </pre></div>
 </div>
 <p>&#20320;&#21487;&#20197;&#27983;&#35272;&#36825;&#20123;&#23450;&#29702;&#21644;&#38468;&#36817;&#30340;&#20854;&#20182;&#23450;&#29702;&#65292;
@@ -311,25 +312,25 @@ Mathlib &#21253;&#21547;&#20854;&#24418;&#24335;&#21270;&#29256;&#26412;&#65292;
 &#20294;&#24403; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26159;&#38646;&#26102;&#65292;&#19979;&#38754;&#30340;&#23450;&#29702;&#26159;&#24179;&#20961;&#30340;&#65292;
 &#21487;&#20351;&#29992;&#21270;&#31616;&#22120;&#36731;&#26131;&#35777;&#26126;&#12290;
 &#25152;&#20197;&#35777;&#26126;&#26159;&#20998;&#24773;&#20917;&#36827;&#34892;&#30340;&#12290;
-<code class="docutils literal notranslate"><span class="pre">cases</span> <span class="pre">r</span> <span class="pre">with</span> <span class="pre">r</span></code> &#36825;&#19968;&#34892;&#25226;&#30446;&#26631;&#26367;&#25442;&#20026;&#20004;&#20010;&#29256;&#26412;&#65306;
+<code class="docutils literal notranslate"><span class="pre">rcases</span> <span class="pre">r</span> <span class="pre">with</span> <span class="pre">_</span> <span class="pre">|</span> <span class="pre">r</span></code> &#36825;&#19968;&#34892;&#25226;&#30446;&#26631;&#26367;&#25442;&#20026;&#20004;&#20010;&#29256;&#26412;&#65306;
 &#19968;&#20010;&#25226; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26367;&#25442;&#20026; <code class="docutils literal notranslate"><span class="pre">0</span></code>,
 &#21478;&#19968;&#20010;&#25226; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#26367;&#25442;&#20026; <code class="docutils literal notranslate"><span class="pre">r</span></code> &#30340;&#21518;&#32487; <code class="docutils literal notranslate"><span class="pre">r.succ</span></code>.
 &#22312;&#31532;&#20108;&#31181;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#21487;&#20197;&#24212;&#29992;&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">r.succ_ne_zero</span></code>,
-&#30001;&#23427;&#21487;&#24471; <code class="docutils literal notranslate"><span class="pre">r.succ</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code>.</p>
+&#30001;&#23427;&#21487;&#24471; <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code> &#65288; <code class="docutils literal notranslate"><span class="pre">succ</span></code> &#34920;&#31034;&#21518;&#32487;&#65289;</p>
 <p>&#21478;&#35831;&#27880;&#24847;&#65292;&#20197; <code class="docutils literal notranslate"><span class="pre">have</span> <span class="pre">:</span> <span class="pre">npow_nz</span></code> &#24320;&#22836;&#30340;&#34892;&#25552;&#20379;&#20102; <code class="docutils literal notranslate"><span class="pre">n^k</span> <span class="pre">&#8800;</span> <span class="pre">0</span></code> &#30340;&#31616;&#30701;&#35777;&#26126;&#39033;&#35777;&#26126;&#12290;
 &#35201;&#29702;&#35299;&#23427;&#26159;&#22914;&#20309;&#24037;&#20316;&#30340;&#65292;&#35831;&#23581;&#35797;&#29992;&#31574;&#30053;&#35777;&#26126;&#26367;&#25442;&#23427;&#65292;
 &#28982;&#21518;&#24605;&#32771;&#31574;&#30053;&#22914;&#20309;&#25551;&#36848;&#35777;&#26126;&#39033;&#12290;</p>
 <p>&#30475;&#30475;&#20320;&#26159;&#21542;&#21487;&#20197;&#22635;&#34917;&#19979;&#21015;&#35777;&#26126;&#20013;&#32570;&#22833;&#30340;&#37096;&#20998;&#12290;
 &#22312;&#26368;&#21518;&#65292;&#20320;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_mul_right</span></code> &#26469;&#25910;&#23614;&#12290;</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="n">k</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">nnz</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">pow_eq</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">prime_p</span> <span class="o">:</span> <span class="n">p.Prime</span><span class="o">)</span> <span class="o">:</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="n">k</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">nnz</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">pow_eq</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">:</span>
     <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">r.factorization</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rcases</span> <span class="n">r</span> <span class="k">with</span> <span class="n">_</span> <span class="bp">|</span> <span class="n">r</span>
   <span class="bp">&#183;</span> <span class="n">simp</span>
   <span class="k">have</span> <span class="n">npow_nz</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="k">fun</span> <span class="n">npowz</span> <span class="bp">&#8614;</span> <span class="n">nnz</span> <span class="o">(</span><span class="n">pow_eq_zero</span> <span class="n">npowz</span><span class="o">)</span>
   <span class="k">have</span> <span class="n">eq1</span> <span class="o">:</span> <span class="o">(</span><span class="n">m</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span><span class="bp">.</span><span class="n">factorization</span> <span class="n">p</span> <span class="bp">=</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">m.factorization</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="gr">sorry</span>
-  <span class="k">have</span> <span class="n">eq2</span> <span class="o">:</span> <span class="o">(</span><span class="n">r.succ</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span><span class="bp">.</span><span class="n">factorization</span> <span class="n">p</span> <span class="bp">=</span>
-      <span class="n">k</span> <span class="bp">*</span> <span class="n">n.factorization</span> <span class="n">p</span> <span class="bp">+</span> <span class="n">r.succ.factorization</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">have</span> <span class="n">eq2</span> <span class="o">:</span> <span class="o">((</span><span class="n">r</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span><span class="bp">.</span><span class="n">factorization</span> <span class="n">p</span> <span class="bp">=</span>
+      <span class="n">k</span> <span class="bp">*</span> <span class="n">n.factorization</span> <span class="n">p</span> <span class="bp">+</span> <span class="o">(</span><span class="n">r</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span><span class="bp">.</span><span class="n">factorization</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="gr">sorry</span>
   <span class="k">have</span> <span class="o">:</span> <span class="n">r.succ.factorization</span> <span class="n">p</span> <span class="bp">=</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">m.factorization</span> <span class="n">p</span> <span class="bp">-</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">n.factorization</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">eq1</span><span class="o">,</span> <span class="n">pow_eq</span><span class="o">,</span> <span class="n">eq2</span><span class="o">,</span> <span class="n">add_comm</span><span class="o">,</span> <span class="n">Nat.add_sub_cancel</span><span class="o">]</span>
@@ -373,7 +374,7 @@ Mathlib &#21253;&#21547;&#20854;&#24418;&#24335;&#21270;&#29256;&#26412;&#65292;
 Lean &#24213;&#23618;&#20801;&#35768;&#25105;&#20204;&#22768;&#26126; <em>&#24402;&#32435;&#31867;&#22411;</em>&#65292;
 &#23427;&#26159;&#30001;&#19968;&#20010;&#32473;&#23450;&#30340; <em>&#26500;&#36896;&#22120;</em> &#21015;&#34920;&#24402;&#32435;&#22320;&#29983;&#25104;&#30340;&#31867;&#22411;&#12290;
 &#22312; Lean &#20013;&#65292;&#33258;&#28982;&#25968;&#22768;&#26126;&#22914;&#19979;&#12290;</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">Nat</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">Nat</span> <span class="n">where</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:</span> <span class="n">Nat</span>
   <span class="bp">|</span> <span class="n">succ</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">Nat</span>
 </pre></div>
@@ -529,8 +530,8 @@ Mathlib &#23450;&#20041;&#20102;&#34920;&#36798;&#24335; <code class="docutils l
 <p>&#19979;&#38754;&#25226;&#25105;&#20204;&#23450;&#20041;&#30340;&#38454;&#20056;&#20989;&#25968;&#34920;&#31034;&#20026;&#20056;&#31215;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">fac</span> <span class="n">n</span> <span class="bp">=</span> <span class="bp">&#8719;</span> <span class="n">i</span> <span class="k">in</span> <span class="n">range</span> <span class="n">n</span><span class="o">,</span> <span class="o">(</span><span class="n">i</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">induction&#39;</span> <span class="n">n</span> <span class="k">with</span> <span class="n">n</span> <span class="n">ih</span>
-  <span class="bp">&#183;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">fac</span><span class="o">,</span> <span class="n">prod_range_zero</span><span class="o">]</span>
-  <span class="n">rw</span> <span class="o">[</span><span class="n">fac</span><span class="o">,</span> <span class="n">ih</span><span class="o">,</span> <span class="n">prod_range_succ</span><span class="o">,</span> <span class="n">mul_comm</span><span class="o">]</span>
+  <span class="bp">&#183;</span> <span class="n">simp</span> <span class="o">[</span><span class="n">fac</span><span class="o">,</span> <span class="n">prod_range_zero</span><span class="o">]</span>
+  <span class="n">simp</span> <span class="o">[</span><span class="n">fac</span><span class="o">,</span> <span class="n">ih</span><span class="o">,</span> <span class="n">prod_range_succ</span><span class="o">,</span> <span class="n">mul_comm</span><span class="o">]</span>
 </pre></div>
 </div>
 <p>&#25105;&#20204;&#22312;&#31616;&#21270;&#35268;&#21017;&#20013;&#21253;&#21547; <code class="docutils literal notranslate"><span class="pre">mul_comm</span></code> &#36825;&#19968;&#20107;&#23454;&#20540;&#24471;&#35752;&#35770;&#12290;
@@ -600,7 +601,7 @@ Lean &#24456;&#32874;&#26126;&#65292;&#30693;&#36947;&#20351;&#29992;&#30456;&#2
 &#35201;&#23450;&#20041;&#25130;&#26029;&#20943;&#27861;&#65292;&#38656;&#35201;&#23450;&#20041;&#19968;&#20010;&#21069;&#32487;&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">pred</span></code>,
 &#20174;&#20219;&#20309;&#38750;&#38646;&#25968;&#20013;&#20943;&#21435;&#19968;&#24182;&#20445;&#25345;&#38646;&#19981;&#21464;&#12290;
 &#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">pred</span></code> &#21487;&#20197;&#36890;&#36807;&#19968;&#20010;&#31616;&#21333;&#30340;&#36882;&#24402;&#23454;&#20363;&#26469;&#23450;&#20041;&#12290;</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">MyNat</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">MyNat</span> <span class="n">where</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:</span> <span class="n">MyNat</span>
   <span class="bp">|</span> <span class="n">succ</span> <span class="o">:</span> <span class="n">MyNat</span> <span class="bp">&#8594;</span> <span class="n">MyNat</span>
 
@@ -653,7 +654,7 @@ One way to formulate this is as the statement that
 for every natural number
 <span class="math notranslate nohighlight">\(n\)</span>, there is a prime number greater than <span class="math notranslate nohighlight">\(n\)</span>.
 To prove this, let <span class="math notranslate nohighlight">\(p\)</span> be any prime factor of <span class="math notranslate nohighlight">\(n! + 1\)</span>.
-If <span class="math notranslate nohighlight">\(p\)</span> is less than <span class="math notranslate nohighlight">\(n\)</span>, it divides <span class="math notranslate nohighlight">\(n!\)</span>.
+If <span class="math notranslate nohighlight">\(p\)</span> is less than or equal to <span class="math notranslate nohighlight">\(n\)</span>, it divides <span class="math notranslate nohighlight">\(n!\)</span>.
 Since it also divides <span class="math notranslate nohighlight">\(n! + 1\)</span>, it divides 1, a contradiction.
 Hence <span class="math notranslate nohighlight">\(p\)</span> is greater than <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <p>To formalize that proof, we need to show that any number greater than or equal
@@ -670,7 +671,7 @@ successor function respects the ordering on the natural numbers.</p>
   <span class="n">cases</span> <span class="n">m</span><span class="bp">;</span> <span class="n">contradiction</span>
   <span class="n">case</span> <span class="n">succ</span> <span class="n">m</span> <span class="bp">=&gt;</span>
     <span class="n">cases</span> <span class="n">m</span><span class="bp">;</span> <span class="n">contradiction</span>
-    <span class="n">repeat&#39;</span> <span class="n">apply</span> <span class="n">Nat.succ_le_succ</span>
+    <span class="n">repeat</span> <span class="n">apply</span> <span class="n">Nat.succ_le_succ</span>
     <span class="n">apply</span> <span class="n">zero_le</span>
 </pre></div>
 </div>
@@ -687,7 +688,7 @@ Remember that you can hover over it to see its documentation.</p>
 </div>
 <p id="index-0">Recall that the semicolon after <code class="docutils literal notranslate"><span class="pre">interval_cases</span> <span class="pre">m</span></code> means
 that the next tactic is applied to each of the cases that it generates.
-Yet another option is to use the tactic, <code class="docutils literal notranslate"><span class="pre">decide</span></code>, which tries
+Yet another option is to use the tactic <code class="docutils literal notranslate"><span class="pre">decide</span></code>, which tries
 to find a decision procedure to solve the problem.
 Lean knows that you can decide the truth value of a statement that
 begins with a bounded quantifier <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">&#8594;</span> <span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">&#8743;</span> <span class="pre">...</span></code>
@@ -721,10 +722,7 @@ if <span class="math notranslate nohighlight">\(n\)</span> is prime, we&#8217;re
 then by one of the characterizations of what it means to be a prime number,
 it has a nontrivial factor, <span class="math notranslate nohighlight">\(m\)</span>,
 and we can apply the inductive hypothesis to that.
-Step through the next proof to see how that plays out.
-The line <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">at</span> <span class="pre">ih</span></code> simplifies the expression of the
-inductive hypothesis to make it more readable.
-The proof still works if you delete that line.</p>
+Step through the next proof to see how that plays out.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">exists_prime_factor</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">,</span> <span class="n">p.Prime</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_cases</span> <span class="n">np</span> <span class="o">:</span> <span class="n">n.Prime</span>
   <span class="bp">&#183;</span> <span class="n">use</span> <span class="n">n</span><span class="o">,</span> <span class="n">np</span>
@@ -739,7 +737,7 @@ The proof still works if you delete that line.</p>
   <span class="k">have</span> <span class="n">mgt2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">two_le</span> <span class="n">this</span> <span class="n">mne1</span>
   <span class="n">by_cases</span> <span class="n">mp</span> <span class="o">:</span> <span class="n">m.Prime</span>
   <span class="bp">&#183;</span> <span class="n">use</span> <span class="n">m</span><span class="o">,</span> <span class="n">mp</span>
-  <span class="bp">.</span> <span class="n">rcases</span> <span class="n">ih</span> <span class="n">m</span> <span class="n">mltn</span> <span class="n">mgt2</span> <span class="n">mp</span> <span class="k">with</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">pp</span><span class="o">,</span> <span class="n">pdvd</span><span class="o">&#10217;</span>
+  <span class="bp">&#183;</span> <span class="n">rcases</span> <span class="n">ih</span> <span class="n">m</span> <span class="n">mltn</span> <span class="n">mgt2</span> <span class="n">mp</span> <span class="k">with</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">pp</span><span class="o">,</span> <span class="n">pdvd</span><span class="o">&#10217;</span>
     <span class="n">use</span> <span class="n">p</span><span class="o">,</span> <span class="n">pp</span>
     <span class="n">apply</span> <span class="n">pdvd.trans</span> <span class="n">mdvdn</span>
 </pre></div>
@@ -747,13 +745,13 @@ The proof still works if you delete that line.</p>
 <p>We can now prove the following formulation of our theorem.
 See if you can fill out the sketch.
 You can use <code class="docutils literal notranslate"><span class="pre">Nat.factorial_pos</span></code>, <code class="docutils literal notranslate"><span class="pre">Nat.dvd_factorial</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub</span></code>.</p>
+and <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">primes_infinite</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">n</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="bp">&gt;</span> <span class="n">n</span><span class="o">,</span> <span class="n">Nat.Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">n</span>
   <span class="k">have</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">Nat.factorial</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="gr">sorry</span>
   <span class="n">rcases</span> <span class="n">exists_prime_factor</span> <span class="n">this</span> <span class="k">with</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">pp</span><span class="o">,</span> <span class="n">pdvd</span><span class="o">&#10217;</span>
-  <span class="n">refine&#39;</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">_</span><span class="o">,</span> <span class="n">pp</span><span class="o">&#10217;</span>
+  <span class="n">refine</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="bp">?</span><span class="n">_</span><span class="o">,</span> <span class="n">pp</span><span class="o">&#10217;</span>
   <span class="k">show</span> <span class="n">p</span> <span class="bp">&gt;</span> <span class="n">n</span>
   <span class="n">by_contra</span> <span class="n">ple</span>
   <span class="n">push_neg</span>  <span class="n">at</span> <span class="n">ple</span>
@@ -789,7 +787,7 @@ most equivalences involving finsets do not hold definitionally,
 so they need to be expanded manually using equivalences like
 <code class="docutils literal notranslate"><span class="pre">Finset.subset_iff</span></code>, <code class="docutils literal notranslate"><span class="pre">Finset.mem_union</span></code>, <code class="docutils literal notranslate"><span class="pre">Finset.mem_inter</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">Finset.mem_sdiff</span></code>. The <code class="docutils literal notranslate"><span class="pre">ext</span></code> tactic can still be used
-to reduce show that two finite sets are equal by showing
+to show that two finite sets are equal by showing
 that every element of one is an element of the other.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">Finset</span>
 
@@ -848,7 +846,7 @@ be able to prove using the theorem <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 <p>We can use this lemma to show that if a prime <code class="docutils literal notranslate"><span class="pre">p</span></code> divides a product of a finite
-set of primes, then it divides one of them.
+set of primes, then it is equal to one of them.
 Mathlib provides a useful principle of induction on finite sets:
 to show that a property holds of an arbitrary finite set <code class="docutils literal notranslate"><span class="pre">s</span></code>,
 show that it holds of the empty set, and show that it is preserved
@@ -898,7 +896,7 @@ You can use <code class="docutils literal notranslate"><span class="pre">Finset.
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">primes_infinite&#39;</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">Nat</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">p</span><span class="o">,</span> <span class="n">Nat.Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8713;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">s</span>
   <span class="n">by_contra</span> <span class="n">h</span>
-  <span class="n">push_neg</span>  <span class="n">at</span> <span class="n">h</span>
+  <span class="n">push_neg</span> <span class="n">at</span> <span class="n">h</span>
   <span class="n">set</span> <span class="n">s&#39;</span> <span class="o">:=</span> <span class="n">s.filter</span> <span class="n">Nat.Prime</span> <span class="k">with</span> <span class="n">s&#39;_def</span>
   <span class="k">have</span> <span class="n">mem_s&#39;</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">},</span> <span class="n">n</span> <span class="bp">&#8712;</span> <span class="n">s&#39;</span> <span class="bp">&#8596;</span> <span class="n">n.Prime</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="n">intro</span> <span class="n">n</span>
@@ -951,7 +949,7 @@ where <code class="docutils literal notranslate"><span class="pre">id</span></co
 shows that there are infinitely many primes congruent to 3 modulo 4.
 The argument goes as follows.
 First, notice that if the product of two numbers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>
-is equal to 3 modulo 4, then one of the two numbers is congruent to three modulo 4.
+is equal to 3 modulo 4, then one of the two numbers is congruent to 3 modulo 4.
 After all, both have to be odd, and if they are both congruent to 1 modulo 4,
 so is their product.
 We can use this observation to show that if some number
@@ -1020,7 +1018,7 @@ same property.</p>
   <span class="bp">&#183;</span> <span class="n">use</span> <span class="n">n</span>
   <span class="n">induction&#39;</span> <span class="n">n</span> <span class="n">using</span> <span class="n">Nat.strong_induction_on</span> <span class="k">with</span> <span class="n">n</span> <span class="n">ih</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">Nat.prime_def_lt</span><span class="o">]</span> <span class="n">at</span> <span class="n">np</span>
-  <span class="n">push_neg</span>  <span class="n">at</span> <span class="n">np</span>
+  <span class="n">push_neg</span> <span class="n">at</span> <span class="n">np</span>
   <span class="n">rcases</span> <span class="n">np</span> <span class="o">(</span><span class="n">two_le_of_mod_4_eq_3</span> <span class="n">h</span><span class="o">)</span> <span class="k">with</span> <span class="o">&#10216;</span><span class="n">m</span><span class="o">,</span> <span class="n">mltn</span><span class="o">,</span> <span class="n">mdvdn</span><span class="o">,</span> <span class="n">mne1</span><span class="o">&#10217;</span>
   <span class="k">have</span> <span class="n">mge2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="n">apply</span> <span class="n">two_le</span> <span class="n">_</span> <span class="n">mne1</span>
@@ -1054,7 +1052,7 @@ Our solution uses <code class="docutils literal notranslate"><span class="pre">N
 along the way.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">primes_mod_4_eq_3_infinite</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">n</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="bp">&gt;</span> <span class="n">n</span><span class="o">,</span> <span class="n">Nat.Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">%</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_contra</span> <span class="n">h</span>
-  <span class="n">push_neg</span>  <span class="n">at</span> <span class="n">h</span>
+  <span class="n">push_neg</span> <span class="n">at</span> <span class="n">h</span>
   <span class="n">rcases</span> <span class="n">h</span> <span class="k">with</span> <span class="o">&#10216;</span><span class="n">n</span><span class="o">,</span> <span class="n">hn</span><span class="o">&#10217;</span>
   <span class="k">have</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">Nat</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">p.Prime</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">%</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">&#8596;</span> <span class="n">p</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="n">apply</span> <span class="n">ex_finset_of_bounded</span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,7 +17,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7c91f8fd"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -59,9 +59,10 @@
 <li class="toctree-l1"><a class="reference internal" href="C06_Structures.html">6. Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C07_Hierarchies.html">7. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C08_Groups_and_Rings.html">8. Groups and Rings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C09_Topology.html">9. Topology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C10_Differential_Calculus.html">10. Differential Calculus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C11_Integration_and_Measure_Theory.html">11. Integration and Measure Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C09_Linear_Algebra.html">9. Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C10_Topology.html">10. Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C11_Differential_Calculus.html">11. Differential Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C12_Integration_and_Measure_Theory.html">12. Integration and Measure Theory</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -106,7 +107,7 @@
 &#20102;&#35299;&#26356;&#22810;&#20851;&#20110; Lean &#30340;&#20449;&#24687;&#12290;&#26412;&#25945;&#31243;&#22522;&#20110; Lean &#24222;&#22823;&#19988;&#19981;&#26029;&#22686;&#38271;&#30340;&#24211; <em>Mathlib</em>.
 &#25105;&#20204;&#20063;&#24378;&#28872;&#24314;&#35758;&#21152;&#20837; <a class="reference external" href="https://leanprover.zulipchat.com/">Lean Zulip &#22312;&#32447;&#32842;&#22825;&#32676;</a>&#65292;&#22914;&#26524;&#20320;&#36824;&#27809;&#26377;&#21152;&#20837;&#30340;&#35805;&#12290;
 &#22312;&#37027;&#37324;&#20320;&#20250;&#21457;&#29616;&#19968;&#20010;&#27963;&#36291;&#32780;&#21451;&#22909;&#30340; Lean &#29233;&#22909;&#32773;&#31038;&#21306;&#65292;&#24895;&#24847;&#22238;&#31572;&#38382;&#39064;&#24182;&#25552;&#20379;&#31934;&#31070;&#25903;&#25345;&#12290;</p>
-<p>&#34429;&#28982;&#20320;&#21487;&#20197;&#22312;&#32447;&#38405;&#35835;&#26412;&#20070;&#30340; pdf &#25110; html &#29256;&#26412;&#65292;&#20294;&#23427;&#35774;&#35745;&#20026;&#21487;&#20197;&#20132;&#20114;&#24335;&#38405;&#35835;&#65292;&#22312; VS Code &#32534;&#36753;&#22120;&#20013;&#36816;&#34892; Lean &#20195;&#30721;&#12290;&#24320;&#22987;&#23398;&#20064;&#21543;&#65306;</p>
+<p>&#34429;&#28982;&#20320;&#21487;&#20197;&#22312;&#32447;&#38405;&#35835;&#26412;&#20070;&#30340; pdf &#25110; html &#29256;&#26412;&#65292;&#20294;&#23427;&#34987;&#35774;&#35745;&#20026;&#21487;&#20197;&#20132;&#20114;&#24335;&#38405;&#35835;&#65292;&#22312; VS Code &#32534;&#36753;&#22120;&#20013;&#36816;&#34892; Lean &#20195;&#30721;&#12290;&#24320;&#22987;&#23398;&#20064;&#21543;&#65306;</p>
 <ol class="arabic simple">
 <li><p>&#25353;&#29031;&#36825;&#20123; <a class="reference external" href="https://leanprover-community.github.io/get_started.html">&#23433;&#35013;&#35828;&#26126;</a> &#23433;&#35013; Lean 4 &#21644; VS Code.</p></li>
 <li><p>&#30830;&#20445;&#20320;&#24050;&#23433;&#35013;&#20102; <a class="reference external" href="https://git-scm.com/">git</a>.</p></li>
@@ -118,8 +119,8 @@
 <p>&#22312;&#36825;&#20043;&#21518;&#65292;&#20320;&#21487;&#20197;&#25353;&#29031;&#20197;&#19979;&#27493;&#39588;&#22312; VS Code &#30340;&#20391;&#36793;&#26639;&#20013;&#25171;&#24320;&#25945;&#31185;&#20070;&#65306;</p>
 <ol class="arabic simple">
 <li><p>&#36755;&#20837; <code class="docutils literal notranslate"><span class="pre">ctrl-shift-P</span></code> &#65288;&#22312; macOS &#20013;&#20026; <code class="docutils literal notranslate"><span class="pre">command-shift-P</span></code> &#65289;&#12290;</p></li>
-<li><p>&#22312;&#20986;&#29616;&#30340;&#26639;&#20013;&#36755;&#20837; <code class="docutils literal notranslate"><span class="pre">Lean</span> <span class="pre">4:</span> <span class="pre">Open</span> <span class="pre">Documentation</span> <span class="pre">View</span></code>&#65292;&#28982;&#21518;&#25353;&#22238;&#36710;&#38190;&#12290;&#65288;&#19968;&#26086;&#35813;&#36873;&#39033;&#22312;&#33756;&#21333;&#20013;&#34987;&#39640;&#20142;&#26174;&#31034;&#65292;&#20320;&#23601;&#21487;&#20197;&#25353;&#22238;&#36710;&#38190;&#36873;&#25321;&#23427;&#12290;&#65289;</p></li>
-<li><p>&#22312;&#25171;&#24320;&#30340;&#31383;&#21475;&#20013;&#65292;&#28857;&#20987; <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">documentation</span> <span class="pre">of</span> <span class="pre">current</span> <span class="pre">project</span></code>.</p></li>
+<li><p>&#22312;&#20986;&#29616;&#30340;&#26639;&#20013;&#36755;&#20837; <code class="docutils literal notranslate"><span class="pre">Lean</span> <span class="pre">4:</span> <span class="pre">Docs:</span> <span class="pre">Show</span> <span class="pre">Documentation</span> <span class="pre">Resources</span></code>&#65292;&#28982;&#21518;&#25353;&#22238;&#36710;&#38190;&#12290;&#65288;&#19968;&#26086;&#35813;&#36873;&#39033;&#22312;&#33756;&#21333;&#20013;&#34987;&#39640;&#20142;&#26174;&#31034;&#65292;&#20320;&#23601;&#21487;&#20197;&#25353;&#22238;&#36710;&#38190;&#36873;&#25321;&#23427;&#12290;&#65289;</p></li>
+<li><p>&#22312;&#25171;&#24320;&#30340;&#31383;&#21475;&#20013;&#65292;&#28857;&#20987; <code class="docutils literal notranslate"><span class="pre">Mathematics</span> <span class="pre">in</span> <span class="pre">Lean</span></code>.</p></li>
 </ol>
 <p>&#25110;&#32773;&#65292;&#20320;&#36824;&#21487;&#20197;&#22312;&#20113;&#20013;&#36816;&#34892; Lean &#21644; VS Code&#65292;&#20351;&#29992; <a class="reference external" href="https://gitpod.io/">Gitpod</a>&#12290;
 &#20320;&#21487;&#20197;&#22312; Github &#19978;&#30340; Mathematics in Lean <a class="reference external" href="https://github.com/leanprover-community/mathematics_in_lean">&#39033;&#30446;&#39029;&#38754;</a> &#25214;&#21040;&#22914;&#20309;&#25805;&#20316;&#30340;&#35828;&#26126;&#12290;
@@ -189,11 +190,11 @@
 </div>
 <p>&#20197;&#19979;&#26159;&#21516;&#19968;&#23450;&#29702;&#30340; <em>&#31574;&#30053;(tactic)&#39118;&#26684;</em> &#35777;&#26126;&#65292;&#20854;&#20013;&#20197; <code class="docutils literal notranslate"><span class="pre">--</span></code> &#24320;&#22836;&#30340;&#34892;&#26159;&#27880;&#37322;&#65292;&#22240;&#27492;&#34987;Lean&#24573;&#30053;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">,</span> <span class="n">Even</span> <span class="n">n</span> <span class="bp">&#8594;</span> <span class="n">Even</span> <span class="o">(</span><span class="n">m</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="c1">-- Say m and n are natural numbers, and assume n=2*k.</span>
+  <span class="c1">-- Say `m` and `n` are natural numbers, and assume `n = 2 * k`.</span>
   <span class="n">rintro</span> <span class="n">m</span> <span class="n">n</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span>
-  <span class="c1">-- We need to prove m*n is twice a natural number. Let&#39;s show it&#39;s twice m*k.</span>
+  <span class="c1">-- We need to prove `m * n` is twice a natural number. Let&#39;s show it&#39;s twice `m * k`.</span>
   <span class="n">use</span> <span class="n">m</span> <span class="bp">*</span> <span class="n">k</span>
-  <span class="c1">-- Substitute for n,</span>
+  <span class="c1">-- Substitute for `n`,</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
   <span class="c1">-- and now it&#39;s obvious.</span>
   <span class="n">ring</span>
@@ -205,7 +206,7 @@
 &#31532;&#20108;&#34892;&#65292; <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">m</span> <span class="pre">*</span> <span class="pre">k</span></code>, &#22768;&#26126;&#25105;&#20204;&#23558;&#36890;&#36807;&#35777;&#26126; <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(m</span> <span class="pre">*</span> <span class="pre">k)</span></code> &#26469;&#35777;&#26126; <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span></code> &#26159;&#20598;&#25968;&#12290;
 &#19979;&#19968;&#34892;&#20351;&#29992;&#20102; <code class="docutils literal notranslate"><span class="pre">rewrite</span></code> &#31574;&#30053;&#22312;&#30446;&#26631;&#20013;&#23558; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#26367;&#25442;&#20026; <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">k</span></code>&#65292;&#24471;&#21040;&#30340;&#26032;&#30446;&#26631; <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">k)</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(m</span> <span class="pre">*</span> <span class="pre">k)</span></code> &#26368;&#32456;&#34987; <code class="docutils literal notranslate"><span class="pre">ring</span></code> &#31574;&#30053;&#35299;&#20915;&#12290;</p>
 <p>&#36880;&#27493;&#26500;&#24314;&#35777;&#26126;&#24182;&#33719;&#24471;&#22686;&#37327;&#21453;&#39304;&#30340;&#33021;&#21147;&#38750;&#24120;&#24378;&#22823;&#12290;&#22240;&#27492;&#65292;&#31574;&#30053;&#35777;&#26126;&#36890;&#24120;&#27604;&#32534;&#20889;&#35777;&#26126;&#39033;&#26356;&#23481;&#26131;&#20063;&#26356;&#24555;&#12290;&#20004;&#32773;&#20043;&#38388;&#27809;&#26377;&#26126;&#26174;&#30340;&#21306;&#21035;&#65306;&#31574;&#30053;&#35777;&#26126;&#21487;&#20197;&#25554;&#20837;&#21040;&#35777;&#26126;&#39033;&#20013;&#65292;
-&#23601;&#20687;&#25105;&#20204;&#22312;&#19978;&#38754;&#30340;&#20363;&#23376;&#20013;&#20351;&#29992;&#30701;&#35821; <code class="docutils literal notranslate"><span class="pre">by</span> <span class="pre">rw</span> <span class="pre">[hk,</span> <span class="pre">mul_left_comm]</span></code> &#19968;&#26679;&#12290;&#25105;&#20204;&#36824;&#23558;&#30475;&#21040;&#65292;&#21453;&#20043;&#65292;&#23558;&#19968;&#20010;&#31616;&#30701;&#30340;&#35777;&#26126;&#39033;&#25554;&#20837;&#21040;&#31574;&#30053;&#35777;&#26126;&#20013;&#36890;&#24120;&#20063;&#24456;&#26377;&#29992;&#12290;
+&#23601;&#20687;&#25105;&#20204;&#22312;&#19978;&#38754;&#30340;&#20363;&#23376;&#20013;&#20351;&#29992;&#30701;&#35821; <code class="docutils literal notranslate"><span class="pre">by</span> <span class="pre">rw</span> <span class="pre">[hk,</span> <span class="pre">mul_add]</span></code> &#19968;&#26679;&#12290;&#25105;&#20204;&#36824;&#23558;&#30475;&#21040;&#65292;&#21453;&#20043;&#65292;&#23558;&#19968;&#20010;&#31616;&#30701;&#30340;&#35777;&#26126;&#39033;&#25554;&#20837;&#21040;&#31574;&#30053;&#35777;&#26126;&#20013;&#36890;&#24120;&#20063;&#24456;&#26377;&#29992;&#12290;
 &#34429;&#28982;&#22914;&#27492;&#65292;&#20294;&#22312;&#36825;&#26412;&#20070;&#20013;&#65292;&#25105;&#20204;&#20250;&#25226;&#37325;&#28857;&#25918;&#22312;&#31574;&#30053;&#30340;&#20351;&#29992;&#19978;&#12290;</p>
 <p>&#22312;&#25105;&#20204;&#30340;&#20363;&#23376;&#20013;&#65292;&#31574;&#30053;&#35777;&#26126;&#20063;&#21487;&#20197;&#31616;&#21270;&#20026;&#19968;&#34892;&#65306;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">,</span> <span class="n">Even</span> <span class="n">n</span> <span class="bp">&#8594;</span> <span class="n">Even</span> <span class="o">(</span><span class="n">m</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -226,16 +227,30 @@
 &#25105;&#20204;&#24076;&#26395;&#33021;&#22312;&#37027;&#37324;&#35265;&#21040;&#20320;&#65292;&#24182;&#19988;&#27627;&#26080;&#30097;&#38382;&#65292;&#24456;&#24555;&#20320;&#20063;&#23558;&#33021;&#22815;&#22238;&#31572;&#36825;&#31867;&#38382;&#39064;&#24182;&#20026; <em>Mathlib</em> &#30340;&#21457;&#23637;&#20570;&#20986;&#36129;&#29486;&#12290;</p>
 <p>&#22240;&#27492;&#65292;&#22914;&#26524;&#20320;&#36873;&#25321;&#25509;&#21463;&#36825;&#20010;&#20219;&#21153;&#65292;&#20320;&#30340;&#20351;&#21629;&#22914;&#19979;&#65306;&#25237;&#20837;&#20854;&#20013;&#65292;&#23581;&#35797;&#32451;&#20064;&#65292;&#26377;&#38382;&#39064;&#23601;&#26469; Zulip &#25552;&#38382;&#65292;&#24182;&#20139;&#21463;&#20048;&#36259;&#12290;
 &#20294;&#35201;&#27880;&#24847;&#65306;&#20132;&#20114;&#24335;&#23450;&#29702;&#35777;&#26126;&#23558;&#25361;&#25112;&#20320;&#20197;&#20840;&#26032;&#30340;&#26041;&#24335;&#24605;&#32771;&#25968;&#23398;&#21644;&#36827;&#34892;&#25968;&#23398;&#25512;&#29702;&#12290;&#20320;&#30340;&#29983;&#27963;&#21487;&#33021;&#19981;&#20877;&#21644;&#20197;&#21069;&#30456;&#21516;&#12290;</p>
-<p><em>&#33268;&#35874;.</em> &#25105;&#20204;&#24863;&#35874; Gabriel Ebner &#20026;&#22312; VS Code &#20013;&#36816;&#34892;&#26412;&#25945;&#31243;&#25645;&#24314;&#22522;&#30784;&#35774;&#26045;&#65292;&#20197;&#21450; Scott Morrison &#21644; Mario Carneiro &#20026;&#25226;&#26412;&#25945;&#31243;&#36801;&#31227;&#21040; Lean 4 &#25552;&#20379;&#30340;&#24110;&#21161;&#12290;
-&#25105;&#20204;&#36824;&#24863;&#35874; Takeshi Abe&#12289;Julian Berman&#12289;Alex Best&#12289;
-Bulwi Cha&#12289;Bryan Gin-ge Chen&#12289;Steven Clontz&#12289;Mauricio Collaris&#12289;Johan Commelin&#12289;Mark Czubin&#12289;
-Alexandru Duca&#12289;Denis Gorbachev&#12289;Winston de Greef&#12289;
-Mathieu Guay-Paquet&#12289;Julian K&#252;lshammer&#12289;
-Martin C. Martin&#12289;
-Giovanni Mascellani&#12289;Isaiah Mindich&#12289;Hunter Monroe&#12289;Pietro Monticone&#12289;Oliver Nash&#12289;
-Bartosz Piotrowski&#12289;Nicolas Rolland&#12289;Keith Rush&#12289;Guilherme Silva&#12289;
-Pedro S&#225;nchez Terraf&#12289;
-Floris van Doorn &#21644; Eric Wieser &#25552;&#20379;&#30340;&#24110;&#21161;&#21644;&#20462;&#27491;&#12290;
+<p><em>&#33268;&#35874;.</em> &#25105;&#20204;&#24863;&#35874; Gabriel Ebner &#20026;&#22312; VS Code &#20013;&#36816;&#34892;&#26412;&#25945;&#31243;&#25645;&#24314;&#22522;&#30784;&#35774;&#26045;&#65292;&#20197;&#21450; Kim Morrison &#21644; Mario Carneiro &#20026;&#25226;&#26412;&#25945;&#31243;&#36801;&#31227;&#21040; Lean 4 &#25552;&#20379;&#30340;&#24110;&#21161;&#12290;
+&#25105;&#20204;&#36824;&#24863;&#35874;
+Takeshi Abe,
+Julian Berman, Alex Best, Thomas Browning,
+Bulwi Cha, Hanson Char, Bryan Gin-ge Chen, Steven Clontz, Mauricio Collaris, Johan Commelin,
+Mark Czubin,
+Alexandru Duca,
+Pierpaolo Frasa,
+Denis Gorbachev, Winston de Greef, Mathieu Guay-Paquet,
+Marc Huisinga,
+Benjamin Jones,
+Julian K&#252;lshammer,
+Victor Liu, Jimmy Lu,
+Martin C. Martin, Giovanni Mascellani, John McDowell, Isaiah Mindich, Hunter Monroe,
+Pietro Monticone,
+Oliver Nash, Emanuelle Natale,
+Pim Otte,
+Bartosz Piotrowski,
+Nicolas Rolland, Keith Rush,
+Yannick Seurin, Guilherme Silva,
+Pedro S&#225;nchez Terraf, Matthew Toohey, Alistair Tucker,
+Floris van Doorn,
+Eric Wieser
+&#31561;&#20154;&#25552;&#20379;&#30340;&#24110;&#21161;&#21644;&#20462;&#27491;&#12290;
 &#25105;&#20204;&#30340;&#24037;&#20316;&#37096;&#20998;&#24471;&#21040;&#20102;Hoskinson Center for Formal Mathematics&#30340;&#25903;&#25345;&#12290;</p>
 </section>
 </section>

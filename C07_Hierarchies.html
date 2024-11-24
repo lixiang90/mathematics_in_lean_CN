@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,7 +17,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7c91f8fd"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -60,9 +60,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="C08_Groups_and_Rings.html">8. Groups and Rings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C09_Topology.html">9. Topology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C10_Differential_Calculus.html">10. Differential Calculus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C11_Integration_and_Measure_Theory.html">11. Integration and Measure Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C09_Linear_Algebra.html">9. Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C10_Topology.html">10. Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C11_Differential_Calculus.html">11. Differential Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C12_Integration_and_Measure_Theory.html">12. Integration and Measure Theory</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -124,9 +125,9 @@ more details about what the <code class="docutils literal notranslate"><span cla
 First, the <code class="docutils literal notranslate"><span class="pre">class</span></code> command above defines a structure <code class="docutils literal notranslate"><span class="pre">One&#8321;</span></code> with parameter <code class="docutils literal notranslate"><span class="pre">&#945;</span> <span class="pre">:</span> <span class="pre">Type</span></code> and
 a single field <code class="docutils literal notranslate"><span class="pre">one</span></code>. It also mark this structure as a class so that arguments of type
 <code class="docutils literal notranslate"><span class="pre">One&#8321;</span> <span class="pre">&#945;</span></code> for some type <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> will be inferrable using the instance resolution procedure,
-as long as they are marked as instance-implicit, ie appear between square brackets.
+as long as they are marked as instance-implicit, i.e. appear between square brackets.
 Those two effects could also have been achieved using the <code class="docutils literal notranslate"><span class="pre">structure</span></code> command with <code class="docutils literal notranslate"><span class="pre">class</span></code>
-attribute, ie writing <code class="docutils literal notranslate"><span class="pre">&#64;[class]</span> <span class="pre">structure</span></code> instance of <code class="docutils literal notranslate"><span class="pre">class</span></code>. But the class command also
+attribute, i.e. writing <code class="docutils literal notranslate"><span class="pre">&#64;[class]</span> <span class="pre">structure</span></code> instance of <code class="docutils literal notranslate"><span class="pre">class</span></code>. But the class command also
 ensures that <code class="docutils literal notranslate"><span class="pre">One&#8321;</span> <span class="pre">&#945;</span></code> appears as an instance-implicit argument in its own fields. Compare:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="n">One&#8321;.one</span> <span class="c1">-- One&#8321;.one {&#945; : Type} [self : One&#8321; &#945;] : &#945;</span>
 
@@ -804,7 +805,7 @@ Let us redefine our <code class="docutils literal notranslate"><span class="pre"
 
 <span class="kd">instance</span> <span class="o">(</span><span class="n">M</span> <span class="n">N</span> <span class="o">:</span> <span class="kt">Type</span><span class="o">)</span> <span class="o">[</span><span class="n">Monoid</span> <span class="n">M</span><span class="o">]</span> <span class="o">[</span><span class="n">Monoid</span> <span class="n">N</span><span class="o">]</span> <span class="o">:</span> <span class="n">MonoidHomClass&#8323;</span> <span class="o">(</span><span class="n">MonoidHom&#8321;</span> <span class="n">M</span> <span class="n">N</span><span class="o">)</span> <span class="n">M</span> <span class="n">N</span> <span class="n">where</span>
   <span class="n">coe</span> <span class="o">:=</span> <span class="n">MonoidHom&#8321;.toFun</span>
-  <span class="n">coe_injective&#39;</span> <span class="o">:=</span> <span class="n">MonoidHom&#8321;.ext</span>
+  <span class="n">coe_injective&#39;</span> <span class="n">_</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">MonoidHom&#8321;.ext</span>
   <span class="n">map_one</span> <span class="o">:=</span> <span class="n">MonoidHom&#8321;.map_one</span>
   <span class="n">map_mul</span> <span class="o">:=</span> <span class="n">MonoidHom&#8321;.map_mul</span>
 </pre></div>
@@ -864,7 +865,7 @@ coercion and <code class="docutils literal notranslate"><span class="pre">Member
 <span class="sd">/-- Submonoids in `M` can be seen as sets in `M`. -/</span>
 <span class="kd">instance</span> <span class="o">[</span><span class="n">Monoid</span> <span class="n">M</span><span class="o">]</span> <span class="o">:</span> <span class="n">SetLike</span> <span class="o">(</span><span class="n">Submonoid&#8321;</span> <span class="n">M</span><span class="o">)</span> <span class="n">M</span> <span class="n">where</span>
   <span class="n">coe</span> <span class="o">:=</span> <span class="n">Submonoid&#8321;.carrier</span>
-  <span class="n">coe_injective&#39;</span> <span class="o">:=</span> <span class="n">Submonoid&#8321;.ext</span>
+  <span class="n">coe_injective&#39;</span> <span class="n">_</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">Submonoid&#8321;.ext</span>
 </pre></div>
 </div>
 <p>Equipped with the above <code class="docutils literal notranslate"><span class="pre">SetLike</span></code> instance, we can already state naturally that

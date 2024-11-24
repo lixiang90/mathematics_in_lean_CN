@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,14 +17,14 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7c91f8fd"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Topology" href="C09_Topology.html" />
+    <link rel="next" title="9. Linear algebra" href="C09_Linear_Algebra.html" />
     <link rel="prev" title="7. Hierarchies" href="C07_Hierarchies.html" /> 
 </head>
 
@@ -73,9 +73,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="C09_Topology.html">9. Topology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C10_Differential_Calculus.html">10. Differential Calculus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C11_Integration_and_Measure_Theory.html">11. Integration and Measure Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C09_Linear_Algebra.html">9. Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C10_Topology.html">10. Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C11_Differential_Calculus.html">11. Differential Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C12_Integration_and_Measure_Theory.html">12. Integration and Measure Theory</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -176,7 +177,7 @@ composition to compose maps. Instead, we need to use <code class="docutils liter
 <h3><span class="section-number">8.1.2. </span>Groups and their morphisms<a class="headerlink" href="#groups-and-their-morphisms" title="Link to this heading">&#61633;</a></h3>
 <p>We will have much more to say about groups, which are monoids with the extra
 property that every element has an inverse.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">G</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">x</span><span class="bp">&#8315;&#185;</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">mul_inv_self</span> <span class="n">x</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">G</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">x</span><span class="bp">&#8315;&#185;</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">mul_inv_cancel</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p id="index-2">Similar to the <code class="docutils literal notranslate"><span class="pre">ring</span></code> tactic that we saw earlier, there is a <code class="docutils literal notranslate"><span class="pre">group</span></code> tactic that proves
@@ -396,30 +397,29 @@ the group. Sylow&#8217;s first theorem is a famous partial converse to Lagrange&
 Lean to use nonconstructive logic anyway using the following <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">scoped</span></code> command.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">scoped</span> <span class="n">Classical</span>
 
-<span class="kn">open</span> <span class="n">Fintype</span>
 
-<span class="kd">example</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">G&#39;</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">)</span> <span class="o">:</span> <span class="n">card</span> <span class="n">G&#39;</span> <span class="bp">&#8739;</span> <span class="n">card</span> <span class="n">G</span> <span class="o">:=</span>
+<span class="kd">example</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">G&#39;</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">)</span> <span class="o">:</span> <span class="n">Nat.card</span> <span class="n">G&#39;</span> <span class="bp">&#8739;</span> <span class="n">Nat.card</span> <span class="n">G</span> <span class="o">:=</span>
   <span class="o">&#10216;</span><span class="n">G&#39;.index</span><span class="o">,</span> <span class="n">mul_comm</span> <span class="n">G&#39;.index</span> <span class="n">_</span> <span class="bp">&#9656;</span> <span class="n">G&#39;.index_mul_card.symm</span><span class="o">&#10217;</span>
 
 <span class="kn">open</span> <span class="n">Subgroup</span>
 
-<span class="kd">example</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">[</span><span class="n">Fact</span> <span class="n">p.Prime</span><span class="o">]</span>
-    <span class="o">(</span><span class="n">hdvd</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">card</span> <span class="n">G</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">K</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">,</span> <span class="n">card</span> <span class="n">K</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span>
+<span class="kd">example</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">[</span><span class="n">Finite</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">[</span><span class="n">Fact</span> <span class="n">p.Prime</span><span class="o">]</span>
+    <span class="o">(</span><span class="n">hdvd</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">Nat.card</span> <span class="n">G</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">K</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">,</span> <span class="n">Nat.card</span> <span class="n">K</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span>
   <span class="n">Sylow.exists_subgroup_card_pow_prime</span> <span class="n">p</span> <span class="n">hdvd</span>
 </pre></div>
 </div>
 <p>The next two exercises derive a corollary of Lagrange&#8217;s lemma. (This is also already in Mathlib,
 so do not use <code class="docutils literal notranslate"><span class="pre">exact?</span></code> too quickly.)</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">eq_bot_iff_card</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">{</span><span class="n">H</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">}</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">H</span><span class="o">]</span> <span class="o">:</span>
-    <span class="n">H</span> <span class="bp">=</span> <span class="bp">&#8869;</span> <span class="bp">&#8596;</span> <span class="n">card</span> <span class="n">H</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">eq_bot_iff_card</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">{</span><span class="n">H</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">}</span> <span class="o">:</span>
+    <span class="n">H</span> <span class="bp">=</span> <span class="bp">&#8869;</span> <span class="bp">&#8596;</span> <span class="n">Nat.card</span> <span class="n">H</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">suffices</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">H</span><span class="o">,</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">H</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">a</span> <span class="bp">&#8712;</span> <span class="n">H</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">x</span> <span class="kd">by</span>
-    <span class="n">simpa</span> <span class="o">[</span><span class="n">eq_bot_iff_forall</span><span class="o">,</span> <span class="n">card_eq_one_iff</span><span class="o">]</span>
+    <span class="n">simpa</span> <span class="o">[</span><span class="n">eq_bot_iff_forall</span><span class="o">,</span> <span class="n">Nat.card_eq_one_iff_exists</span><span class="o">]</span>
   <span class="gr">sorry</span>
 
 <span class="k">#check</span> <span class="n">card_dvd_of_le</span>
 
-<span class="kd">lemma</span> <span class="n">inf_bot_of_coprime</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">H</span> <span class="n">K</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">)</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">H</span><span class="o">]</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">K</span><span class="o">]</span>
-    <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="o">(</span><span class="n">card</span> <span class="n">H</span><span class="o">)</span><span class="bp">.</span><span class="n">Coprime</span> <span class="o">(</span><span class="n">card</span> <span class="n">K</span><span class="o">))</span> <span class="o">:</span> <span class="n">H</span> <span class="bp">&#8851;</span> <span class="n">K</span> <span class="bp">=</span> <span class="bp">&#8869;</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">lemma</span> <span class="n">inf_bot_of_coprime</span> <span class="o">{</span><span class="n">G</span> <span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">H</span> <span class="n">K</span> <span class="o">:</span> <span class="n">Subgroup</span> <span class="n">G</span><span class="o">)</span>
+    <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="o">(</span><span class="n">Nat.card</span> <span class="n">H</span><span class="o">)</span><span class="bp">.</span><span class="n">Coprime</span> <span class="o">(</span><span class="n">Nat.card</span> <span class="n">K</span><span class="o">))</span> <span class="o">:</span> <span class="n">H</span> <span class="bp">&#8851;</span> <span class="n">K</span> <span class="bp">=</span> <span class="bp">&#8869;</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -636,7 +636,7 @@ the first isomorphism theorem.</p>
 with a quotient group projection <code class="docutils literal notranslate"><span class="pre">Quotient.mk'</span> <span class="pre">N'</span></code>,
 we can also aim for a morphism from <code class="docutils literal notranslate"><span class="pre">G</span> <span class="pre">&#10744;</span> <span class="pre">N</span></code> to <code class="docutils literal notranslate"><span class="pre">G'</span> <span class="pre">&#10744;</span> <span class="pre">N'</span></code>.
 The condition required on <code class="docutils literal notranslate"><span class="pre">&#966;</span></code> is usually formulated by saying &#8220;<code class="docutils literal notranslate"><span class="pre">&#966;</span></code> should send <code class="docutils literal notranslate"><span class="pre">N</span></code> inside
-<code class="docutils literal notranslate"><span class="pre">N'</span></code>.&#8221; But this is equivalent to asking that <code class="docutils literal notranslate"><span class="pre">&#966;</span></code> should pull <code class="docutils literal notranslate"><span class="pre">N'</span></code> back inside
+<code class="docutils literal notranslate"><span class="pre">N'</span></code>.&#8221; But this is equivalent to asking that <code class="docutils literal notranslate"><span class="pre">&#966;</span></code> should pull <code class="docutils literal notranslate"><span class="pre">N'</span></code> back over
 <code class="docutils literal notranslate"><span class="pre">N</span></code>, and the latter condition is nicer to work with since the definition of pullback does not
 involve an existential quantifier.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">G</span> <span class="n">G&#39;</span><span class="o">:</span> <span class="kt">Type</span><span class="bp">*</span><span class="o">}</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G</span><span class="o">]</span> <span class="o">[</span><span class="n">Group</span> <span class="n">G&#39;</span><span class="o">]</span>
@@ -664,28 +664,27 @@ or disjoint.</p>
 
 <span class="kn">open</span> <span class="n">MonoidHom</span>
 
-<span class="k">#check</span> <span class="n">card_pos</span> <span class="c1">-- The nonempty argument will be automatically inferred for subgroups</span>
+<span class="k">#check</span> <span class="n">Nat.card_pos</span> <span class="c1">-- The nonempty argument will be automatically inferred for subgroups</span>
 <span class="k">#check</span> <span class="n">Subgroup.index_eq_card</span>
 <span class="k">#check</span> <span class="n">Subgroup.index_mul_card</span>
 <span class="k">#check</span> <span class="n">Nat.eq_of_mul_eq_mul_right</span>
 
-<span class="c1">-- The following line is working around a Lean bug that will be fixed very soon.</span>
-<span class="kn">attribute</span> <span class="o">[</span><span class="bp">-</span><span class="kd">instance</span><span class="o">]</span> <span class="n">Subtype.instInhabited</span>
-
-<span class="kd">lemma</span> <span class="n">aux_card_eq</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">h&#39;</span> <span class="o">:</span> <span class="n">card</span> <span class="n">G</span> <span class="bp">=</span> <span class="n">card</span> <span class="n">H</span> <span class="bp">*</span> <span class="n">card</span> <span class="n">K</span><span class="o">)</span> <span class="o">:</span> <span class="n">card</span> <span class="o">(</span><span class="n">G</span> <span class="bp">&#10744;</span> <span class="n">H</span><span class="o">)</span> <span class="bp">=</span> <span class="n">card</span> <span class="n">K</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">lemma</span> <span class="n">aux_card_eq</span> <span class="o">[</span><span class="n">Finite</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">h&#39;</span> <span class="o">:</span> <span class="n">Nat.card</span> <span class="n">G</span> <span class="bp">=</span> <span class="n">Nat.card</span> <span class="n">H</span> <span class="bp">*</span> <span class="n">Nat.card</span> <span class="n">K</span><span class="o">)</span> <span class="o">:</span>
+    <span class="n">Nat.card</span> <span class="o">(</span><span class="n">G</span> <span class="bp">&#10744;</span> <span class="n">H</span><span class="o">)</span> <span class="bp">=</span> <span class="n">Nat.card</span> <span class="n">K</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
 <p>From now on, we assume that our subgroups are normal and disjoint, and we assume the cardinality
 condition. Now we construct the first building block of the desired isomorphism.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">[</span><span class="n">H.Normal</span><span class="o">]</span> <span class="o">[</span><span class="n">K.Normal</span><span class="o">]</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">Disjoint</span> <span class="n">H</span> <span class="n">K</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#39;</span> <span class="o">:</span> <span class="n">card</span> <span class="n">G</span> <span class="bp">=</span> <span class="n">card</span> <span class="n">H</span> <span class="bp">*</span> <span class="n">card</span> <span class="n">K</span><span class="o">)</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">[</span><span class="n">H.Normal</span><span class="o">]</span> <span class="o">[</span><span class="n">K.Normal</span><span class="o">]</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">Disjoint</span> <span class="n">H</span> <span class="n">K</span><span class="o">)</span>
+  <span class="o">(</span><span class="n">h&#39;</span> <span class="o">:</span> <span class="n">Nat.card</span> <span class="n">G</span> <span class="bp">=</span> <span class="n">Nat.card</span> <span class="n">H</span> <span class="bp">*</span> <span class="n">Nat.card</span> <span class="n">K</span><span class="o">)</span>
 
-<span class="k">#check</span> <span class="n">bijective_iff_injective_and_card</span>
+<span class="k">#check</span> <span class="n">Nat.bijective_iff_injective_and_card</span>
 <span class="k">#check</span> <span class="n">ker_eq_bot_iff</span>
 <span class="k">#check</span> <span class="n">restrict</span>
 <span class="k">#check</span> <span class="n">ker_restrict</span>
 
-<span class="kd">def</span> <span class="n">iso&#8321;</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">Disjoint</span> <span class="n">H</span> <span class="n">K</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#39;</span> <span class="o">:</span> <span class="n">card</span> <span class="n">G</span> <span class="bp">=</span> <span class="n">card</span> <span class="n">H</span> <span class="bp">*</span> <span class="n">card</span> <span class="n">K</span><span class="o">)</span> <span class="o">:</span> <span class="n">K</span> <span class="bp">&#8771;*</span> <span class="n">G</span> <span class="bp">&#10744;</span> <span class="n">H</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">def</span> <span class="n">iso&#8321;</span> <span class="o">[</span><span class="n">Fintype</span> <span class="n">G</span><span class="o">]</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">Disjoint</span> <span class="n">H</span> <span class="n">K</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#39;</span> <span class="o">:</span> <span class="n">Nat.card</span> <span class="n">G</span> <span class="bp">=</span> <span class="n">Nat.card</span> <span class="n">H</span> <span class="bp">*</span> <span class="n">Nat.card</span> <span class="n">K</span><span class="o">)</span> <span class="o">:</span> <span class="n">K</span> <span class="bp">&#8771;*</span> <span class="n">G</span> <span class="bp">&#10744;</span> <span class="n">H</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1070,8 +1069,9 @@ for <code class="docutils literal notranslate"><span class="pre">roots</span></c
 <span class="kd">example</span> <span class="o">:</span> <span class="n">aroots</span> <span class="o">(</span><span class="n">X</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">[</span><span class="n">X</span><span class="o">])</span> <span class="n">&#8450;</span> <span class="bp">=</span> <span class="o">{</span><span class="n">Complex.I</span><span class="o">,</span> <span class="bp">-</span><span class="n">I</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">suffices</span> <span class="n">roots</span> <span class="o">(</span><span class="n">X</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8450;</span><span class="o">[</span><span class="n">X</span><span class="o">])</span> <span class="bp">=</span> <span class="o">{</span><span class="n">I</span><span class="o">,</span> <span class="bp">-</span><span class="n">I</span><span class="o">}</span> <span class="kd">by</span> <span class="n">simpa</span> <span class="o">[</span><span class="n">aroots_def</span><span class="o">]</span>
   <span class="k">have</span> <span class="n">factored</span> <span class="o">:</span> <span class="o">(</span><span class="n">X</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8450;</span><span class="o">[</span><span class="n">X</span><span class="o">])</span> <span class="bp">=</span> <span class="o">(</span><span class="n">X</span> <span class="bp">-</span> <span class="n">C</span> <span class="n">I</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">X</span> <span class="bp">-</span> <span class="n">C</span> <span class="o">(</span><span class="bp">-</span><span class="n">I</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
+    <span class="k">have</span> <span class="n">key</span> <span class="o">:</span> <span class="o">(</span><span class="n">C</span> <span class="n">I</span> <span class="bp">*</span> <span class="n">C</span> <span class="n">I</span> <span class="o">:</span> <span class="n">&#8450;</span><span class="o">[</span><span class="n">X</span><span class="o">])</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">simp</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">C_mul</span><span class="o">]</span>
     <span class="n">rw</span> <span class="o">[</span><span class="n">C_neg</span><span class="o">]</span>
-    <span class="n">linear_combination</span> <span class="k">show</span> <span class="o">(</span><span class="n">C</span> <span class="n">I</span> <span class="bp">*</span> <span class="n">C</span> <span class="n">I</span> <span class="o">:</span> <span class="n">&#8450;</span><span class="o">[</span><span class="n">X</span><span class="o">])</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="kd">by</span> <span class="n">simp</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">C_mul</span><span class="o">]</span>
+    <span class="n">linear_combination</span> <span class="n">key</span>
   <span class="k">have</span> <span class="n">p_ne_zero</span> <span class="o">:</span> <span class="o">(</span><span class="n">X</span> <span class="bp">-</span> <span class="n">C</span> <span class="n">I</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">X</span> <span class="bp">-</span> <span class="n">C</span> <span class="o">(</span><span class="bp">-</span><span class="n">I</span><span class="o">))</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
     <span class="n">intro</span> <span class="n">H</span>
     <span class="n">apply_fun</span> <span class="n">eval</span> <span class="mi">0</span> <span class="n">at</span> <span class="n">H</span>
@@ -1087,9 +1087,9 @@ for <code class="docutils literal notranslate"><span class="pre">roots</span></c
 in <code class="docutils literal notranslate"><span class="pre">S</span></code> using <code class="docutils literal notranslate"><span class="pre">Polynomial.eval&#8322;</span></code>. This one produces an actual function from <code class="docutils literal notranslate"><span class="pre">R[X]</span></code> to <code class="docutils literal notranslate"><span class="pre">S</span></code>
 since it does not assume the existence of a <code class="docutils literal notranslate"><span class="pre">Algebra</span> <span class="pre">R</span> <span class="pre">S</span></code> instance, so dot notation works as
 you would expect.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="o">(</span><span class="n">Complex.ofReal</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#8594;+*</span> <span class="n">&#8450;</span><span class="o">)</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="o">(</span><span class="n">Complex.ofRealHom</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#8594;+*</span> <span class="n">&#8450;</span><span class="o">)</span>
 
-<span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="n">X</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">[</span><span class="n">X</span><span class="o">])</span><span class="bp">.</span><span class="n">eval&#8322;</span> <span class="n">Complex.ofReal</span> <span class="n">Complex.I</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">simp</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="n">X</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">[</span><span class="n">X</span><span class="o">])</span><span class="bp">.</span><span class="n">eval&#8322;</span> <span class="n">Complex.ofRealHom</span> <span class="n">Complex.I</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">simp</span>
 </pre></div>
 </div>
 <p>Let us end by mentioning multivariate polynomials briefly. Given a commutative semiring <code class="docutils literal notranslate"><span class="pre">R</span></code>,
@@ -1121,7 +1121,7 @@ determined by the number of arguments and some type <code class="docutils litera
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="C07_Hierarchies.html" class="btn btn-neutral float-left" title="7. Hierarchies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="C09_Topology.html" class="btn btn-neutral float-right" title="9. Topology" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="C09_Linear_Algebra.html" class="btn btn-neutral float-right" title="9. Linear algebra" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

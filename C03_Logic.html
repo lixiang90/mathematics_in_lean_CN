@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,7 +17,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7c91f8fd"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -64,9 +64,10 @@
 <li class="toctree-l1"><a class="reference internal" href="C06_Structures.html">6. Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C07_Hierarchies.html">7. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C08_Groups_and_Rings.html">8. Groups and Rings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C09_Topology.html">9. Topology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C10_Differential_Calculus.html">10. Differential Calculus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C11_Integration_and_Measure_Theory.html">11. Integration and Measure Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C09_Linear_Algebra.html">9. Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C10_Topology.html">10. Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C11_Differential_Calculus.html">11. Differential Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C12_Integration_and_Measure_Theory.html">12. Integration and Measure Theory</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -1206,7 +1207,7 @@ Lean &#25226;&#30456;&#24212;&#30340;&#20005;&#26684;&#39044;&#24207;&#20844;&#2
   <span class="n">rcases</span> <span class="n">le_or_gt</span> <span class="mi">0</span> <span class="n">y</span> <span class="k">with</span> <span class="n">h</span> <span class="bp">|</span> <span class="n">h</span>
   <span class="bp">&#183;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">abs_of_nonneg</span> <span class="n">h</span><span class="o">]</span>
     <span class="n">intro</span> <span class="n">h</span><span class="bp">;</span> <span class="n">left</span><span class="bp">;</span> <span class="n">exact</span> <span class="n">h</span>
-  <span class="bp">.</span> <span class="n">rw</span> <span class="o">[</span><span class="n">abs_of_neg</span> <span class="n">h</span><span class="o">]</span>
+  <span class="bp">&#183;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">abs_of_neg</span> <span class="n">h</span><span class="o">]</span>
     <span class="n">intro</span> <span class="n">h</span><span class="bp">;</span> <span class="n">right</span><span class="bp">;</span> <span class="n">exact</span> <span class="n">h</span>
 </pre></div>
 </div>
@@ -1234,7 +1235,7 @@ Lean &#25226;&#30456;&#24212;&#30340;&#20005;&#26684;&#39044;&#24207;&#20844;&#2
 </pre></div>
 </div>
 <p>&#21517;&#23383; <code class="docutils literal notranslate"><span class="pre">inl</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">inr</span></code> &#20998;&#21035;&#26159; &#8220;intro left&#8221; &#21644; &#8220;intro right&#8221; &#30340;&#32553;&#20889;&#12290;
-&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">cases</span></code> &#30340;&#22909;&#22788;&#26159;&#20320;&#21487;&#20197;&#20197;&#20219;&#24847;&#39034;&#24207;&#35777;&#26126;&#27599;&#31181;&#24773;&#20917;&#65307;
+&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">case</span></code> &#30340;&#22909;&#22788;&#26159;&#20320;&#21487;&#20197;&#20197;&#20219;&#24847;&#39034;&#24207;&#35777;&#26126;&#27599;&#31181;&#24773;&#20917;&#65307;
 Lean &#20351;&#29992;&#26631;&#31614;&#25214;&#21040;&#30456;&#20851;&#30340;&#30446;&#26631;&#12290;
 &#22914;&#26524;&#20320;&#19981;&#22312;&#20046;&#36825;&#20010;&#65292;&#20320;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">next</span></code>, &#25110;&#32773; <code class="docutils literal notranslate"><span class="pre">match</span></code>,
 &#29978;&#33267;&#26159;&#27169;&#24335;&#21305;&#37197;&#29256;&#30340; <code class="docutils literal notranslate"><span class="pre">have</span></code>.</p>
@@ -1261,7 +1262,7 @@ Lean &#20351;&#29992;&#26631;&#31614;&#25214;&#21040;&#30456;&#20851;&#30340;&#3
 <p>&#22312; <code class="docutils literal notranslate"><span class="pre">match</span></code> &#30340;&#24773;&#20917;&#19979;&#65292;
 &#25105;&#20204;&#38656;&#35201;&#29992;&#20856;&#22411;&#26041;&#24335;&#20351;&#29992;&#20840;&#31216; <code class="docutils literal notranslate"><span class="pre">Or.inl</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Or.inr</span></code> &#26469;&#35777;&#26126;&#26512;&#21462;&#12290;
 &#22312;&#26412;&#25945;&#31185;&#20070;&#20013;&#65292;&#25105;&#20204;&#36890;&#24120;&#20250;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">rcases</span></code> &#26469;&#20998;&#21106;&#26512;&#21462;&#30340;&#24773;&#20917;&#12290;</p>
-<p>&#35797;&#30528;&#29992;&#19979;&#19968;&#20010;&#29255;&#27573;&#20013;&#30340;&#21069;&#20004;&#20010;&#23450;&#29702;&#35777;&#26126;&#19977;&#35282;&#19981;&#31561;&#24335;&#12290;
+<p>&#35797;&#30528;&#29992;&#19979;&#19968;&#27573;&#20013;&#30340;&#21069;&#20004;&#20010;&#23450;&#29702;&#35777;&#26126;&#19977;&#35282;&#19981;&#31561;&#24335;&#12290;
 &#23427;&#20204;&#30340;&#21517;&#31216;&#19982; Mathlib &#20013;&#30340;&#30456;&#21516;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">namespace</span> <span class="n">MyAbs</span>
 
@@ -1290,7 +1291,7 @@ Lean &#20351;&#29992;&#26631;&#31614;&#25214;&#21040;&#30456;&#20851;&#30340;&#3
   <span class="bp">&#183;</span> <span class="n">left</span>
     <span class="n">exact</span> <span class="n">xlt</span>
   <span class="bp">&#183;</span> <span class="n">contradiction</span>
-  <span class="bp">.</span> <span class="n">right</span><span class="bp">;</span> <span class="n">exact</span> <span class="n">xgt</span>
+  <span class="bp">&#183;</span> <span class="n">right</span><span class="bp">;</span> <span class="n">exact</span> <span class="n">xgt</span>
 </pre></div>
 </div>
 <p>&#20320;&#20173;&#28982;&#21487;&#20197;&#36827;&#34892;&#27169;&#24335;&#23884;&#22871;&#65292;&#24182;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">rfl</span></code> &#20851;&#38190;&#23383;&#26469;&#26367;&#25442;&#31561;&#24335;&#65306;</p>
@@ -1298,7 +1299,7 @@ Lean &#20351;&#29992;&#26631;&#31614;&#25214;&#21040;&#30456;&#20851;&#30340;&#3
   <span class="n">rcases</span> <span class="n">h</span> <span class="k">with</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">rfl</span><span class="o">&#10217;</span> <span class="bp">|</span> <span class="o">&#10216;</span><span class="n">b</span><span class="o">,</span> <span class="n">rfl</span><span class="o">&#10217;</span>
   <span class="bp">&#183;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">mul_assoc</span><span class="o">]</span>
     <span class="n">apply</span> <span class="n">dvd_mul_right</span>
-  <span class="bp">.</span> <span class="n">rw</span> <span class="o">[</span><span class="n">mul_comm</span><span class="o">,</span> <span class="n">mul_assoc</span><span class="o">]</span>
+  <span class="bp">&#183;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">mul_comm</span><span class="o">,</span> <span class="n">mul_assoc</span><span class="o">]</span>
     <span class="n">apply</span> <span class="n">dvd_mul_right</span>
 </pre></div>
 </div>
@@ -1349,7 +1350,7 @@ Lean &#20351;&#29992;&#26631;&#31614;&#25214;&#21040;&#30456;&#20851;&#30340;&#3
   <span class="n">intro</span> <span class="n">h</span>
   <span class="n">cases</span> <span class="n">em</span> <span class="n">P</span>
   <span class="bp">&#183;</span> <span class="n">assumption</span>
-  <span class="bp">.</span> <span class="n">contradiction</span>
+  <span class="bp">&#183;</span> <span class="n">contradiction</span>
 </pre></div>
 </div>
 <p id="index-23">&#25110;&#32773;&#65292;&#20320;&#20063;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">by_cases</span></code> &#31574;&#30053;&#12290;</p>
@@ -1568,7 +1569,7 @@ leaving us to prove <code class="docutils literal notranslate"><span class="pre"
   <span class="bp">&#8704;</span> <span class="n">&#949;</span> <span class="bp">&gt;</span> <span class="mi">0</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">N</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="n">N</span><span class="o">,</span> <span class="bp">|</span><span class="n">s</span> <span class="n">n</span> <span class="bp">-</span> <span class="n">a</span><span class="bp">|</span> <span class="bp">&lt;</span> <span class="n">&#949;</span>
 </pre></div>
 </div>
-<p>&#22312; <a class="reference internal" href="C09_Topology.html#filters"><span class="std std-numref">Section 9.1</span></a> &#20013;&#65292;&#25105;&#20204;&#23558;&#30475;&#21040; Mathlib &#26377;&#26356;&#19968;&#33324;&#30340;&#26426;&#21046;&#26469;&#22788;&#29702;&#25910;&#25947;&#65292;
+<p>&#22312; <a class="reference internal" href="C10_Topology.html#filters"><span class="std std-numref">Section 10.1</span></a> &#20013;&#65292;&#25105;&#20204;&#23558;&#30475;&#21040; Mathlib &#26377;&#26356;&#19968;&#33324;&#30340;&#26426;&#21046;&#26469;&#22788;&#29702;&#25910;&#25947;&#65292;
 &#23427;&#19981;&#20165;&#25277;&#35937;&#21270;&#20102;&#23450;&#20041;&#22495;&#21644;&#20540;&#22495;&#30340;&#29305;&#23450;&#29305;&#24449;&#65292;&#36824;&#22312;&#25277;&#35937;&#24847;&#20041;&#19979;&#32479;&#19968;&#20102;&#19981;&#21516;&#31867;&#22411;&#30340;&#25910;&#25947;&#12290;</p>
 </section>
 </section>
