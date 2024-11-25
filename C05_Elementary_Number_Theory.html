@@ -55,7 +55,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. &#21021;&#31561;&#25968;&#35770;</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#section-irrational-roots">5.1. &#26080;&#29702;&#26681;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#section-induction-and-recursion">5.2. &#24402;&#32435;&#21644;&#36882;&#24402;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#infinitely-many-primes">5.3. Infinitely Many Primes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#section-infinitely-many-primes">5.3. &#32032;&#25968;&#26080;&#31351;</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="C06_Structures.html">6. Structures</a></li>
@@ -646,27 +646,23 @@ Lean &#24456;&#32874;&#26126;&#65292;&#30693;&#36947;&#20351;&#29992;&#30456;&#2
 </pre></div>
 </div>
 </section>
-<section id="infinitely-many-primes">
-<span id="section-infinitely-many-primes"></span><h2><span class="section-number">5.3. </span>Infinitely Many Primes<a class="headerlink" href="#infinitely-many-primes" title="Link to this heading">&#61633;</a></h2>
-<p>Let us continue our exploration of induction and recursion with another
-mathematical standard: a proof that there are infinitely many primes.
-One way to formulate this is as the statement that
-for every natural number
-<span class="math notranslate nohighlight">\(n\)</span>, there is a prime number greater than <span class="math notranslate nohighlight">\(n\)</span>.
-To prove this, let <span class="math notranslate nohighlight">\(p\)</span> be any prime factor of <span class="math notranslate nohighlight">\(n! + 1\)</span>.
-If <span class="math notranslate nohighlight">\(p\)</span> is less than or equal to <span class="math notranslate nohighlight">\(n\)</span>, it divides <span class="math notranslate nohighlight">\(n!\)</span>.
-Since it also divides <span class="math notranslate nohighlight">\(n! + 1\)</span>, it divides 1, a contradiction.
-Hence <span class="math notranslate nohighlight">\(p\)</span> is greater than <span class="math notranslate nohighlight">\(n\)</span>.</p>
-<p>To formalize that proof, we need to show that any number greater than or equal
-to 2 has a prime factor.
-To do that, we will need to show that any natural number that is
-not equal to 0 or 1 is greater-than or equal to 2.
-And this brings us to a quirky feature of formalization:
-it is often trivial statements like this that are among the most
-annoying to formalize.
-Here we consider a few ways to do it.</p>
-<p>To start with, we can use the <code class="docutils literal notranslate"><span class="pre">cases</span></code> tactic and the fact that the
-successor function respects the ordering on the natural numbers.</p>
+<section id="section-infinitely-many-primes">
+<span id="id4"></span><h2><span class="section-number">5.3. </span>&#32032;&#25968;&#26080;&#31351;<a class="headerlink" href="#section-infinitely-many-primes" title="Link to this heading">&#61633;</a></h2>
+<p>&#35753;&#25105;&#20204;&#29992;&#21478;&#19968;&#20010;&#26631;&#20934;&#25968;&#23398;&#23450;&#29702;&#32487;&#32493;&#25506;&#32034;&#24402;&#32435;&#21644;&#36882;&#24402;&#65306;&#35777;&#26126;&#32032;&#25968;&#26377;&#26080;&#31351;&#22810;&#20010;&#12290;
+&#19968;&#31181;&#34920;&#36848;&#26041;&#24335;&#26159;&#65292;&#23545;&#20110;&#27599;&#20010;&#33258;&#28982;&#25968; <span class="math notranslate nohighlight">\(n\)</span>,
+&#37117;&#26377;&#19968;&#20010;&#22823;&#20110; <span class="math notranslate nohighlight">\(n\)</span> &#30340;&#32032;&#25968;&#12290;
+&#20026;&#20102;&#35777;&#26126;&#36825;&#19968;&#28857;&#65292;&#20196; <span class="math notranslate nohighlight">\(p\)</span> &#26159; <span class="math notranslate nohighlight">\(n! + 1\)</span> &#30340;&#20219;&#24847;&#19968;&#20010;&#32032;&#22240;&#23376;&#12290;
+&#33509; <span class="math notranslate nohighlight">\(p\)</span> &#23567;&#20110;&#31561;&#20110; <span class="math notranslate nohighlight">\(n\)</span>, &#21017;&#23427;&#25972;&#38500; <span class="math notranslate nohighlight">\(n!\)</span>.
+&#30001;&#20110;&#23427;&#20063;&#25972;&#38500; <span class="math notranslate nohighlight">\(n! + 1\)</span>, &#23427;&#25972;&#38500; 1, &#30683;&#30462;&#12290;
+&#22240;&#27492;&#65292;<span class="math notranslate nohighlight">\(p\)</span> &#22823;&#20110; <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>&#20026;&#20102;&#24418;&#24335;&#21270;&#36825;&#20010;&#35777;&#26126;&#65292;
+&#25105;&#20204;&#38656;&#35201;&#35770;&#35777;&#20219;&#20309;&#22823;&#20110;&#25110;&#31561;&#20110; 2 &#30340;&#25968;&#37117;&#26377;&#19968;&#20010;&#32032;&#22240;&#25968;&#12290;
+&#20026;&#27492;&#65292;&#25105;&#20204;&#38656;&#35201;&#35777;&#26126;&#20219;&#20309;&#19981;&#31561;&#20110; 0 &#25110; 1 &#30340;&#33258;&#28982;&#25968;&#37117;&#22823;&#20110;&#25110;&#31561;&#20110; 2.
+&#36825;&#23601;&#32473;&#25105;&#20204;&#24102;&#26469;&#20102;&#24418;&#24335;&#21270;&#30340;&#19968;&#20010;&#21476;&#24618;&#29305;&#24449;&#65306;
+&#20687;&#36825;&#26679;&#29712;&#30862;&#30340;&#35821;&#21477;&#24448;&#24448;&#26159;&#26368;&#38590;&#24418;&#24335;&#21270;&#30340;&#12290;
+&#22312;&#27492;&#65292;&#25105;&#20204;&#32771;&#34385;&#20960;&#31181;&#26041;&#27861;&#12290;</p>
+<p>&#39318;&#20808;&#65292;&#25105;&#20204;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">cases</span></code> &#31574;&#30053;&#65292;
+&#20197;&#21450;&#21518;&#32487;&#20989;&#25968;&#23562;&#37325;&#33258;&#28982;&#25968;&#39034;&#24207;&#36825;&#19968;&#20107;&#23454;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">two_le</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">h0</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">cases</span> <span class="n">m</span><span class="bp">;</span> <span class="n">contradiction</span>
   <span class="n">case</span> <span class="n">succ</span> <span class="n">m</span> <span class="bp">=&gt;</span>
@@ -675,24 +671,23 @@ successor function respects the ordering on the natural numbers.</p>
     <span class="n">apply</span> <span class="n">zero_le</span>
 </pre></div>
 </div>
-<p>Another strategy is to use the tactic <code class="docutils literal notranslate"><span class="pre">interval_cases</span></code>,
-which automatically splits the goal into cases when
-the variable in question is contained in an interval
-of natural numbers or integers.
-Remember that you can hover over it to see its documentation.</p>
+<p>&#21478;&#19968;&#31181;&#26041;&#24335;&#26159;&#20351;&#29992;&#31574;&#30053; <code class="docutils literal notranslate"><span class="pre">interval_cases</span></code>,
+&#24403;&#30456;&#20851;&#21464;&#37327;&#21253;&#21547;&#22312;&#33258;&#28982;&#25968;&#25110;&#25972;&#25968;&#30340;&#21306;&#38388;&#20869;&#26102;&#65292;
+&#23427;&#20250;&#33258;&#21160;&#23558;&#30446;&#26631;&#20998;&#21106;&#25104;&#19981;&#21516;&#30340;&#24773;&#20917;&#12290;
+&#35831;&#35760;&#20303;&#65292;&#20320;&#21487;&#20197;&#23558;&#40736;&#26631;&#24748;&#20572;&#22312;&#35813;&#31574;&#30053;&#19978;&#20197;&#26597;&#30475;&#20854;&#25991;&#26723;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">h0</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_contra</span> <span class="n">h</span>
   <span class="n">push_neg</span> <span class="n">at</span> <span class="n">h</span>
   <span class="n">interval_cases</span> <span class="n">m</span> <span class="bp">&lt;;&gt;</span> <span class="n">contradiction</span>
 </pre></div>
 </div>
-<p id="index-0">Recall that the semicolon after <code class="docutils literal notranslate"><span class="pre">interval_cases</span> <span class="pre">m</span></code> means
-that the next tactic is applied to each of the cases that it generates.
-Yet another option is to use the tactic <code class="docutils literal notranslate"><span class="pre">decide</span></code>, which tries
-to find a decision procedure to solve the problem.
-Lean knows that you can decide the truth value of a statement that
-begins with a bounded quantifier <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">&#8594;</span> <span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">&#8743;</span> <span class="pre">...</span></code>
-by deciding each of the finitely many instances.</p>
+<p id="index-0">&#22238;&#24819;&#19968;&#19979;&#65292;<code class="docutils literal notranslate"><span class="pre">interval_cases</span> <span class="pre">m</span></code>
+&#21518;&#38754;&#30340;&#20998;&#21495;&#34920;&#31034;&#19979;&#19968;&#20010;&#31574;&#30053;&#23558;&#24212;&#29992;&#20110;&#23427;&#29983;&#25104;&#30340;&#27599;&#31181;&#24773;&#20917;&#12290;
+&#36824;&#26377;&#19968;&#31181;&#26041;&#27861;&#26159;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">decide</span></code> &#31574;&#30053;&#65292;
+&#35813;&#31574;&#30053;&#23581;&#35797;&#25214;&#21040;&#19968;&#20010;&#20915;&#31574;&#36807;&#31243;&#26469;&#35299;&#20915;&#38382;&#39064;&#12290;
+Lean &#30693;&#36947;&#21487;&#20197;&#36890;&#36807;&#23545;&#26377;&#38480;&#20010;&#23454;&#20363;&#36880;&#19968;&#36827;&#34892;&#21028;&#23450;&#65292;
+&#26469;&#30830;&#23450;&#19968;&#20010;&#20197;&#26377;&#30028;&#37327;&#35789;
+<code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">&#8594;</span> <span class="pre">...</span></code> &#25110; <code class="docutils literal notranslate"><span class="pre">&#8707;</span> <span class="pre">x,</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">&#8743;</span> <span class="pre">...</span></code> &#24320;&#22836;&#30340;&#35821;&#21477;&#30340;&#30495;&#20540;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">h0</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_contra</span> <span class="n">h</span>
   <span class="n">push_neg</span> <span class="n">at</span> <span class="n">h</span>
@@ -701,28 +696,27 @@ by deciding each of the finitely many instances.</p>
   <span class="n">decide</span>
 </pre></div>
 </div>
-<p>With the theorem <code class="docutils literal notranslate"><span class="pre">two_le</span></code> in hand, let&#8217;s start by showing that every
-natural number greater than two has a prime divisor.
-Mathlib contains a function <code class="docutils literal notranslate"><span class="pre">Nat.minFac</span></code> that
-returns the smallest prime divisor,
-but for the sake of learning new parts of the library,
-we&#8217;ll avoid using it and prove the theorem directly.</p>
-<p>Here, ordinary induction isn&#8217;t enough.
-We want to use <em>strong induction</em>, which allows us to prove
-that every natural number <span class="math notranslate nohighlight">\(n\)</span> has a property <span class="math notranslate nohighlight">\(P\)</span>
-by showing that for every number <span class="math notranslate nohighlight">\(n\)</span>, if <span class="math notranslate nohighlight">\(P\)</span> holds
-of all values less than <span class="math notranslate nohighlight">\(n\)</span>, it holds at <span class="math notranslate nohighlight">\(n\)</span> as well.
-In Lean, this principle is called <code class="docutils literal notranslate"><span class="pre">Nat.strong_induction_on</span></code>,
-and we can use the <code class="docutils literal notranslate"><span class="pre">using</span></code> keyword to tell the induction tactic
-to use it.
-Notice that when we do that, there is no base case; it is subsumed
-by the general induction step.</p>
-<p>The argument is simply as follows. Assuming <span class="math notranslate nohighlight">\(n &#8805; 2\)</span>,
-if <span class="math notranslate nohighlight">\(n\)</span> is prime, we&#8217;re done. If it isn&#8217;t,
-then by one of the characterizations of what it means to be a prime number,
-it has a nontrivial factor, <span class="math notranslate nohighlight">\(m\)</span>,
-and we can apply the inductive hypothesis to that.
-Step through the next proof to see how that plays out.</p>
+<p>&#25163;&#20013;&#26377;&#20102; <code class="docutils literal notranslate"><span class="pre">two_le</span></code> &#36825;&#20010;&#23450;&#29702;&#65292;
+&#25105;&#20204;&#23601;&#21487;&#20197;&#20174;&#35777;&#26126;&#27599;&#20010;&#22823;&#20110; 2 &#30340;&#33258;&#28982;&#25968;&#37117;&#26377;&#19968;&#20010;&#32032;&#25968;&#38500;&#25968;&#24320;&#22987;&#12290;
+Mathlib &#21253;&#21547;&#19968;&#20010;&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">Nat.minFac</span></code>,
+&#23427;&#33021;&#36820;&#22238;&#26368;&#23567;&#30340;&#32032;&#25968;&#38500;&#25968;&#65292;&#20294;&#20026;&#20102;&#23398;&#20064;&#24211;&#30340;&#26032;&#37096;&#20998;&#65292;
+&#25105;&#20204;&#23558;&#36991;&#20813;&#20351;&#29992;&#23427;&#65292;&#32780;&#26159;&#30452;&#25509;&#35777;&#26126;&#23450;&#29702;&#12290;</p>
+<p>&#22312;&#36825;&#37324;&#65292;&#24120;&#35268;&#30340;&#24402;&#32435;&#27861;&#26159;&#19981;&#22815;&#30340;&#12290;
+&#25105;&#20204;&#38656;&#35201;&#29992; <em>&#24378;&#24402;&#32435;&#27861;</em>&#65292;
+&#23427;&#20801;&#35768;&#25105;&#20204;&#36890;&#36807;&#35777;&#26126;&#23545;&#27599;&#20010;&#25968; <span class="math notranslate nohighlight">\(n\)</span>,
+&#33509;&#24615;&#36136; <span class="math notranslate nohighlight">\(P\)</span> &#23545;&#25152;&#26377;&#23567;&#20110; <span class="math notranslate nohighlight">\(n\)</span> &#30340;&#20540;&#37117;&#25104;&#31435;&#65292;
+&#21017;&#23545; <span class="math notranslate nohighlight">\(n\)</span> &#20063;&#25104;&#31435;&#65292;
+&#26469;&#35777;&#26126;&#27599;&#20010;&#33258;&#28982;&#25968; <span class="math notranslate nohighlight">\(n\)</span> &#37117;&#26377;&#24615;&#36136; <span class="math notranslate nohighlight">\(P\)</span>.
+&#22312; Lean &#20013;&#65292;&#36825;&#20010;&#21407;&#21017;&#34987;&#31216;&#20026; <code class="docutils literal notranslate"><span class="pre">Nat.strong_induction_on</span></code>,
+&#25105;&#20204;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">using</span></code> &#20851;&#38190;&#23383;&#21578;&#35785;&#24402;&#32435;&#31574;&#30053;&#21435;&#20351;&#29992;&#23427;&#12290;
+&#35831;&#27880;&#24847;&#65292;&#24403;&#25105;&#20204;&#36825;&#26679;&#20570;&#26102;&#65292;&#23601;&#27809;&#26377;&#24402;&#32435;&#22880;&#22522;&#20102;&#65307;
+&#23427;&#24050;&#34987;&#19968;&#33324;&#24402;&#32435;&#27493;&#39588;&#25152;&#21253;&#21547;&#12290;</p>
+<p>&#35770;&#35777;&#31616;&#36848;&#22914;&#19979;&#12290;&#20551;&#35774; <span class="math notranslate nohighlight">\(n&#8805;2\)</span>,
+&#22914;&#26524; <span class="math notranslate nohighlight">\(n\)</span> &#26159;&#32032;&#25968;&#65292;&#25105;&#20204;&#30340;&#35777;&#26126;&#23601;&#23436;&#25104;&#20102;&#12290;
+&#22914;&#26524;&#19981;&#26159;&#65292;&#37027;&#20040;&#26681;&#25454;&#20309;&#20026;&#32032;&#25968;&#30340;&#21051;&#30011;&#20043;&#19968;&#65292;
+&#23427;&#26377;&#19968;&#20010;&#38750;&#24179;&#20961;&#22240;&#23376; <span class="math notranslate nohighlight">\(m\)</span>,
+&#25105;&#20204;&#23601;&#21487;&#20197;&#23545;&#20854;&#24212;&#29992;&#24402;&#32435;&#20551;&#35774;&#12290;
+&#20998;&#27493;&#26597;&#30475;&#19979;&#19968;&#20010;&#35777;&#26126;&#20197;&#35266;&#23519;&#20854;&#25512;&#29702;&#36807;&#31243;&#26159;&#22914;&#20309;&#23436;&#25104;&#30340;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">exists_prime_factor</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">,</span> <span class="n">p.Prime</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_cases</span> <span class="n">np</span> <span class="o">:</span> <span class="n">n.Prime</span>
   <span class="bp">&#183;</span> <span class="n">use</span> <span class="n">n</span><span class="o">,</span> <span class="n">np</span>
@@ -742,10 +736,10 @@ Step through the next proof to see how that plays out.</p>
     <span class="n">apply</span> <span class="n">pdvd.trans</span> <span class="n">mdvdn</span>
 </pre></div>
 </div>
-<p>We can now prove the following formulation of our theorem.
-See if you can fill out the sketch.
-You can use <code class="docutils literal notranslate"><span class="pre">Nat.factorial_pos</span></code>, <code class="docutils literal notranslate"><span class="pre">Nat.dvd_factorial</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</span></code>.</p>
+<p>&#25105;&#20204;&#29616;&#22312;&#21487;&#20197;&#35777;&#26126;&#25105;&#20204;&#23450;&#29702;&#30340;&#19979;&#21015;&#34920;&#36848;&#24418;&#24335;&#12290;
+&#30475;&#30475;&#20320;&#33021;&#21542;&#22635;&#34917;&#36825;&#20010;&#26775;&#27010;&#12290;
+&#20320;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Nat.factorial_pos</span></code>, <code class="docutils literal notranslate"><span class="pre">Nat.dvd_factorial</span></code>,
+&#20197;&#21450; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">primes_infinite</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">n</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="bp">&gt;</span> <span class="n">n</span><span class="o">,</span> <span class="n">Nat.Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">n</span>
   <span class="k">have</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">Nat.factorial</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -763,32 +757,27 @@ and <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</s
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Let&#8217;s consider a variation of the proof above, where instead
-of using the factorial function,
-we suppose that we are given by a finite set
-<span class="math notranslate nohighlight">\(\{ p_1, \ldots, p_n \}\)</span> and we consider a prime factor of
-<span class="math notranslate nohighlight">\(\prod_{i = 1}^n p_i + 1\)</span>.
-That prime factor has to be distinct from each
-<span class="math notranslate nohighlight">\(p_i\)</span>, showing that there is no finite set that contains
-all the prime numbers.</p>
-<p>Formalizing this argument requires us to reason about finite
-sets. In Lean, for any type <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>, the type <code class="docutils literal notranslate"><span class="pre">Finset</span> <span class="pre">&#945;</span></code>
-represents finite sets of elements of type <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>.
-Reasoning about finite sets computationally requires having
-a procedure to test equality on <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>, which is why the snippet
-below includes the assumption <code class="docutils literal notranslate"><span class="pre">[DecidableEq</span> <span class="pre">&#945;]</span></code>.
-For concrete data types like <code class="docutils literal notranslate"><span class="pre">&#8469;</span></code>, <code class="docutils literal notranslate"><span class="pre">&#8484;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&#8474;</span></code>,
-the assumption is satisfied automatically. When reasoning about
-the real numbers, it can be satisfied using classical logic
-and abandoning the computational interpretation.</p>
-<p>We use the command <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">Finset</span></code> to avail ourselves of shorter names
-for the relevant theorems. Unlike the case with sets,
-most equivalences involving finsets do not hold definitionally,
-so they need to be expanded manually using equivalences like
+<p>&#35753;&#25105;&#20204;&#32771;&#34385;&#19978;&#36848;&#35777;&#26126;&#30340;&#19968;&#31181;&#21464;&#24335;&#65292;
+&#20854;&#20013;&#20026;&#20102;&#20195;&#26367;&#38454;&#20056;&#20989;&#25968;&#65292;
+&#25105;&#20204;&#20551;&#35774;&#32473;&#23450;&#20102;&#19968;&#20010;&#26377;&#38480;&#38598; <span class="math notranslate nohighlight">\(\{ p_1, \ldots, p_n \}\)</span>,
+&#32771;&#34385; <span class="math notranslate nohighlight">\(\prod_{i = 1}^n p_i + 1\)</span> &#30340;&#19968;&#20010;&#32032;&#22240;&#23376;&#12290;
+&#32032;&#22240;&#23376;&#24517;&#39035;&#19981;&#21516;&#20110;&#21508;&#20010; <span class="math notranslate nohighlight">\(p_i\)</span>,
+&#36825;&#34920;&#26126;&#19981;&#23384;&#22312;&#21253;&#21547;&#20840;&#37096;&#32032;&#25968;&#30340;&#26377;&#38480;&#38598;&#12290;</p>
+<p>&#24418;&#24335;&#21270;&#36825;&#19968;&#35770;&#35777;&#35201;&#27714;&#25105;&#20204;&#23545;&#26377;&#38480;&#38598;&#36827;&#34892;&#25512;&#29702;&#12290;
+&#22312; Lean &#20013;&#65292;&#23545;&#20110;&#20219;&#24847;&#31867;&#22411; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>, &#31867;&#22411; <code class="docutils literal notranslate"><span class="pre">Finset</span> <span class="pre">&#945;</span></code>
+&#34920;&#31034;&#31867;&#22411;&#20026; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#30340;&#20803;&#32032;&#30340;&#26377;&#38480;&#38598;&#12290;
+&#35201;&#23545;&#26377;&#38480;&#38598;&#36827;&#34892;&#35745;&#31639;&#24615;&#25512;&#29702;&#65292;&#23601;&#35201;&#26377;&#19968;&#20010;&#27969;&#31243;&#26469;&#27979;&#35797; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#20013;&#30340;&#30456;&#31561;&#24615;&#65292;
+&#36825;&#23601;&#26159;&#20026;&#20160;&#20040;&#19979;&#38754;&#30340;&#29255;&#27573;&#21253;&#21547;&#20102;&#20551;&#35774; <code class="docutils literal notranslate"><span class="pre">[DecidableEq</span> <span class="pre">&#945;]</span></code>.
+&#23545;&#20110;&#20687; <code class="docutils literal notranslate"><span class="pre">&#8469;</span></code>, <code class="docutils literal notranslate"><span class="pre">&#8484;</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">&#8474;</span></code> &#36825;&#26679;&#30340;&#20855;&#20307;&#25968;&#25454;&#31867;&#22411;&#65292;&#20551;&#35774;&#33258;&#21160;&#25104;&#31435;&#12290;
+&#22312;&#23545;&#23454;&#25968;&#36827;&#34892;&#25512;&#29702;&#26102;&#65292;&#20026;&#28385;&#36275;&#20551;&#35774;&#21487;&#20197;&#20351;&#29992;&#32463;&#20856;&#36923;&#36753;&#32780;&#25918;&#24323;&#35745;&#31639;&#35299;&#37322;&#12290;</p>
+<p>&#25105;&#20204;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">Finset</span></code> &#21629;&#20196;&#26469;&#20026;&#30456;&#20851;&#23450;&#29702;&#25552;&#20379;&#26356;&#30701;&#30340;&#21517;&#31216;&#12290;
+&#19981;&#20687;&#38598;&#21512;&#30340;&#24773;&#20917;&#65292;&#32477;&#22823;&#22810;&#25968;&#20851;&#20110;&#26377;&#38480;&#38598;&#30340;&#31561;&#20215;&#19981;&#26159;&#23450;&#20041;&#24615;&#25104;&#31435;&#30340;&#65292;
+&#25152;&#20197;&#23427;&#20204;&#38656;&#35201;&#20351;&#29992;&#35832;&#22914;
 <code class="docutils literal notranslate"><span class="pre">Finset.subset_iff</span></code>, <code class="docutils literal notranslate"><span class="pre">Finset.mem_union</span></code>, <code class="docutils literal notranslate"><span class="pre">Finset.mem_inter</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">Finset.mem_sdiff</span></code>. The <code class="docutils literal notranslate"><span class="pre">ext</span></code> tactic can still be used
-to show that two finite sets are equal by showing
-that every element of one is an element of the other.</p>
+&#20197;&#21450; <code class="docutils literal notranslate"><span class="pre">Finset.mem_sdiff</span></code> &#36825;&#20123;&#31561;&#20215;&#26469;&#25163;&#21160;&#23637;&#24320;&#12290;
+&#25105;&#20204;&#20173;&#28982;&#21487;&#20197;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">ext</span></code> &#31574;&#30053;&#65292;
+&#25226;&#35777;&#26126;&#20004;&#20010;&#26377;&#38480;&#38598;&#21512;&#30456;&#31561;&#65292;
+&#36824;&#21407;&#20026;&#35777;&#26126;&#20854;&#20013;&#20219;&#24847;&#19968;&#20010;&#38598;&#21512;&#30340;&#27599;&#20010;&#20803;&#32032;&#37117;&#26159;&#21478;&#19968;&#20010;&#38598;&#21512;&#30340;&#20803;&#32032;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">Finset</span>
 
 <span class="kn">section</span>
@@ -818,49 +807,48 @@ that every element of one is an element of the other.</p>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<p>We have used a new trick: the <code class="docutils literal notranslate"><span class="pre">tauto</span></code> tactic (and a strengthened
-version, <code class="docutils literal notranslate"><span class="pre">tauto!</span></code>, which uses classical logic) can be used to
-dispense with propositional tautologies. See if you can use
-these methods to prove the two examples below.</p>
+<p>&#25105;&#20204;&#20351;&#29992;&#20102;&#19968;&#20010;&#26032;&#25216;&#24039;&#65306;<code class="docutils literal notranslate"><span class="pre">tauto</span></code> &#31574;&#30053;
+&#65288;&#20197;&#21450;&#20351;&#29992;&#32463;&#20856;&#36923;&#36753;&#30340;&#21152;&#24378;&#29256; <code class="docutils literal notranslate"><span class="pre">tauto!</span></code>&#65289;
+&#21487;&#20197;&#29992;&#26469;&#20813;&#38500;&#21629;&#39064;&#37325;&#35328;&#24335;&#12290;
+&#30475;&#30475;&#20320;&#33021;&#21542;&#29992;&#36825;&#20123;&#26041;&#27861;&#35777;&#26126;&#19979;&#38754;&#30340;&#20004;&#20010;&#20363;&#23376;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="n">r</span> <span class="bp">&#8746;</span> <span class="n">s</span><span class="o">)</span> <span class="bp">&#8745;</span> <span class="o">(</span><span class="n">r</span> <span class="bp">&#8746;</span> <span class="n">t</span><span class="o">)</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">&#8746;</span> <span class="n">s</span> <span class="bp">&#8745;</span> <span class="n">t</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 <span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="n">r</span> <span class="bp">\</span> <span class="n">s</span><span class="o">)</span> <span class="bp">\</span> <span class="n">t</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">\</span> <span class="o">(</span><span class="n">s</span> <span class="bp">&#8746;</span> <span class="n">t</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>The theorem <code class="docutils literal notranslate"><span class="pre">Finset.dvd_prod_of_mem</span></code> tells us that if an
-<code class="docutils literal notranslate"><span class="pre">n</span></code> is an element of a finite set <code class="docutils literal notranslate"><span class="pre">s</span></code>, then <code class="docutils literal notranslate"><span class="pre">n</span></code> divides
-<code class="docutils literal notranslate"><span class="pre">&#8719;</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">s,</span> <span class="pre">i</span></code>.</p>
+<p>&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">Finset.dvd_prod_of_mem</span></code>
+&#21578;&#35785;&#25105;&#20204;&#22914;&#26524; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#26159;&#26377;&#38480;&#38598; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#30340;&#20803;&#32032;&#65292;
+&#37027;&#20040; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#25972;&#38500; <code class="docutils literal notranslate"><span class="pre">&#8719;</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">s,</span> <span class="pre">i</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="bp">&#8719;</span> <span class="n">i</span> <span class="k">in</span> <span class="n">s</span><span class="o">,</span> <span class="n">i</span> <span class="o">:=</span>
   <span class="n">Finset.dvd_prod_of_mem</span> <span class="n">_</span> <span class="n">h</span>
 </pre></div>
 </div>
-<p>We also need to know that the converse holds in the case where
-<code class="docutils literal notranslate"><span class="pre">n</span></code> is prime and <code class="docutils literal notranslate"><span class="pre">s</span></code> is a set of primes.
-To show that, we need the following lemma, which you should
-be able to prove using the theorem <code class="docutils literal notranslate"><span class="pre">Nat.Prime.eq_one_or_self_of_dvd</span></code>.</p>
+<p>&#25105;&#20204;&#20063;&#38656;&#35201;&#30693;&#36947;&#22312; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#26159;&#32032;&#25968;&#19988; <code class="docutils literal notranslate"><span class="pre">s</span></code>
+&#26159;&#32032;&#25968;&#38598;&#30340;&#24773;&#20917;&#19979;&#36870;&#21629;&#39064;&#25104;&#31435;&#12290;
+&#20026;&#20102;&#35828;&#26126;&#36825;&#19968;&#28857;&#65292;&#25105;&#20204;&#38656;&#35201;&#19979;&#21015;&#24341;&#29702;&#65292;
+&#20320;&#21487;&#20197;&#20351;&#29992;&#23450;&#29702; <code class="docutils literal notranslate"><span class="pre">Nat.Prime.eq_one_or_self_of_dvd</span></code> &#35777;&#26126;&#23427;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">_root_.Nat.Prime.eq_of_dvd_of_prime</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span>
       <span class="o">(</span><span class="n">prime_p</span> <span class="o">:</span> <span class="n">Nat.Prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">prime_q</span> <span class="o">:</span> <span class="n">Nat.Prime</span> <span class="n">q</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">q</span><span class="o">)</span> <span class="o">:</span>
     <span class="n">p</span> <span class="bp">=</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>We can use this lemma to show that if a prime <code class="docutils literal notranslate"><span class="pre">p</span></code> divides a product of a finite
-set of primes, then it is equal to one of them.
-Mathlib provides a useful principle of induction on finite sets:
-to show that a property holds of an arbitrary finite set <code class="docutils literal notranslate"><span class="pre">s</span></code>,
-show that it holds of the empty set, and show that it is preserved
-when we add a single new element <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&#8713;</span> <span class="pre">s</span></code>.
-The principle is known as <code class="docutils literal notranslate"><span class="pre">Finset.induction_on</span></code>.
-When we tell the induction tactic to use it, we can also specify the names
-<code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">s</span></code>, the name for the assumption <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&#8713;</span> <span class="pre">s</span></code> in the inductive step,
-and the name of the inductive hypothesis.
-The expression <code class="docutils literal notranslate"><span class="pre">Finset.insert</span> <span class="pre">a</span> <span class="pre">s</span></code> denotes the union of <code class="docutils literal notranslate"><span class="pre">s</span></code> with the singleton <code class="docutils literal notranslate"><span class="pre">a</span></code>.
-The identities <code class="docutils literal notranslate"><span class="pre">Finset.prod_empty</span></code> and <code class="docutils literal notranslate"><span class="pre">Finset.prod_insert</span></code> then provide
-the relevant rewrite rules for the product.
-In the proof below, the first <code class="docutils literal notranslate"><span class="pre">simp</span></code> applies <code class="docutils literal notranslate"><span class="pre">Finset.prod_empty</span></code>.
-Step through the beginning of the proof to see the induction unfold,
-and then finish it off.</p>
+<p>&#25105;&#20204;&#21487;&#20197;&#20351;&#29992;&#36825;&#20010;&#24341;&#29702;&#35777;&#26126;&#33509;&#32032;&#25968; <code class="docutils literal notranslate"><span class="pre">p</span></code> &#25972;&#38500;&#26377;&#38480;&#32032;&#25968;&#38598;&#30340;&#20056;&#31215;&#65292;
+&#21017;&#23427;&#25972;&#38500;&#20854;&#20013;&#19968;&#20010;&#32032;&#25968;&#12290;
+Mathlib &#25552;&#20379;&#20102;&#22312;&#26377;&#38480;&#38598;&#19978;&#20570;&#24402;&#32435;&#30340;&#19968;&#20010;&#26377;&#29992;&#27861;&#21017;&#65306;
+&#35201;&#35777;&#26126;&#26576;&#24615;&#36136;&#23545;&#20219;&#24847;&#26377;&#38480;&#38598; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#25104;&#31435;&#65292;
+&#20808;&#35777;&#26126;&#20854;&#23545;&#31354;&#38598;&#25104;&#31435;&#65292;
+&#20877;&#35777;&#26126;&#24403;&#28155;&#21152;&#19968;&#20010;&#26032;&#20803;&#32032; <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&#8713;</span> <span class="pre">s</span></code> &#26102;&#35813;&#24615;&#36136;&#20445;&#25345;&#25104;&#31435;&#12290;
+&#36825;&#20010;&#27861;&#21017;&#34987;&#31216;&#20026; <code class="docutils literal notranslate"><span class="pre">Finset.induction_on</span></code>.
+&#24403;&#25105;&#20204;&#21578;&#35785;&#24402;&#32435;&#31574;&#30053;&#20351;&#29992;&#23427;&#26102;&#65292;
+&#25105;&#20204;&#36824;&#21487;&#20197;&#25351;&#23450; <code class="docutils literal notranslate"><span class="pre">a</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#30340;&#21517;&#31216;&#65292;
+&#24402;&#32435;&#27493;&#39588;&#20013;&#30340;&#20551;&#35774; <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&#8713;</span> <span class="pre">s</span></code> &#30340;&#21517;&#31216;&#65292;&#20197;&#21450;&#24402;&#32435;&#20551;&#35774;&#30340;&#21517;&#31216;&#12290;
+&#34920;&#36798;&#24335; <code class="docutils literal notranslate"><span class="pre">Finset.insert</span> <span class="pre">a</span> <span class="pre">s</span></code> &#34920;&#31034; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#21644;&#21333;&#20803;&#32032;&#38598; <code class="docutils literal notranslate"><span class="pre">a</span></code> &#30340;&#24182;&#12290;
+&#28982;&#21518;&#65292;&#31561;&#24335; <code class="docutils literal notranslate"><span class="pre">Finset.prod_empty</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Finset.prod_insert</span></code>
+&#20026;&#20056;&#31215;&#25552;&#20379;&#20102;&#30456;&#20851;&#30340;&#37325;&#20889;&#27861;&#21017;&#12290;
+&#22312;&#19979;&#38754;&#30340;&#35777;&#26126;&#20013;&#65292;&#31532;&#19968;&#20010; <code class="docutils literal notranslate"><span class="pre">simp</span></code> &#24212;&#29992;&#20102; <code class="docutils literal notranslate"><span class="pre">Finset.prod_empty</span></code>.
+&#36880;&#27493;&#36861;&#36394;&#35777;&#26126;&#30340;&#24320;&#22836;&#65292;&#35266;&#23519;&#24402;&#32435;&#30340;&#23637;&#24320;&#65292;&#28982;&#21518;&#23436;&#25104;&#23427;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">mem_of_dvd_prod_primes</span> <span class="o">{</span><span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">prime_p</span> <span class="o">:</span> <span class="n">p.Prime</span><span class="o">)</span> <span class="o">:</span>
     <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">n</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">,</span> <span class="n">Nat.Prime</span> <span class="n">n</span><span class="o">)</span> <span class="bp">&#8594;</span> <span class="o">(</span><span class="n">p</span> <span class="bp">&#8739;</span> <span class="bp">&#8719;</span> <span class="n">n</span> <span class="k">in</span> <span class="n">s</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span> <span class="bp">&#8594;</span> <span class="n">p</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">h&#8320;</span> <span class="n">h&#8321;</span>
@@ -872,27 +860,24 @@ and then finish it off.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>We need one last property of finite sets.
-Given an element <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">&#945;</span></code> and a predicate
-<code class="docutils literal notranslate"><span class="pre">P</span></code> on <code class="docutils literal notranslate"><span class="pre">&#945;</span></code>, in  <a class="reference internal" href="C04_Sets_and_Functions.html#sets-and-functions"><span class="std std-numref">Chapter 4</span></a>
-we wrote <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">|</span> <span class="pre">P</span> <span class="pre">x</span> <span class="pre">}</span></code> for the set of
-elements of <code class="docutils literal notranslate"><span class="pre">s</span></code> that satisfy <code class="docutils literal notranslate"><span class="pre">P</span></code>.
-Given <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Finset</span> <span class="pre">&#945;</span></code>,
-the analogous notion is written <code class="docutils literal notranslate"><span class="pre">s.filter</span> <span class="pre">P</span></code>.</p>
+<p>&#25105;&#20204;&#38656;&#35201;&#26368;&#21518;&#19968;&#20010;&#26377;&#38480;&#38598;&#24615;&#36136;&#12290;
+&#32473;&#23450;&#19968;&#20010;&#20803;&#32032; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">&#945;</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">&#945;</span></code> &#19978;&#30340;&#35859;&#35789; <code class="docutils literal notranslate"><span class="pre">P</span></code>,
+&#22312; <a class="reference internal" href="C04_Sets_and_Functions.html#sets-and-functions"><span class="std std-numref">Chapter 4</span></a> &#20013;&#65292;
+&#25105;&#20204;&#29992; <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">&#8712;</span> <span class="pre">s</span> <span class="pre">|</span> <span class="pre">P</span> <span class="pre">x</span> <span class="pre">}</span></code> &#34920;&#31034;&#28385;&#36275; <code class="docutils literal notranslate"><span class="pre">P</span></code> &#30340;&#20803;&#32032;&#30340;&#38598;&#21512; <code class="docutils literal notranslate"><span class="pre">s</span></code>.
+&#32473;&#23450; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Finset</span> <span class="pre">&#945;</span></code>,
+&#31867;&#20284;&#30340;&#27010;&#24565;&#35760;&#20026; <code class="docutils literal notranslate"><span class="pre">s.filter</span> <span class="pre">P</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s.filter</span> <span class="n">Nat.Prime</span> <span class="bp">&#8596;</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="bp">&#8743;</span> <span class="n">x.Prime</span> <span class="o">:=</span>
   <span class="n">mem_filter</span>
 </pre></div>
 </div>
-<p>We now prove an alternative formulation of the statement that there are infinitely many
-primes, namely, that given any <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Finset</span> <span class="pre">&#8469;</span></code>, there is a prime <code class="docutils literal notranslate"><span class="pre">p</span></code> that is not
-an element of <code class="docutils literal notranslate"><span class="pre">s</span></code>.
-Aiming for a contradiction, we assume that all the primes are in <code class="docutils literal notranslate"><span class="pre">s</span></code>, and then
-cut down to a set <code class="docutils literal notranslate"><span class="pre">s'</span></code> that contains all and only the primes.
-Taking the product of that set, adding one, and finding a prime factor
-of the result
-leads to the contradiction we are looking for.
-See if you can complete the sketch below.
-You can use <code class="docutils literal notranslate"><span class="pre">Finset.prod_pos</span></code> in the proof of the first <code class="docutils literal notranslate"><span class="pre">have</span></code>.</p>
+<p>&#25105;&#20204;&#29616;&#22312;&#35777;&#26126;&#8220;&#32032;&#25968;&#26377;&#26080;&#31351;&#22810;&#20010;&#8221;&#36825;&#19968;&#21629;&#39064;&#30340;&#21478;&#19968;&#31181;&#34920;&#36848;&#65292;
+&#21363;&#32473;&#23450;&#20219;&#24847; <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">:</span> <span class="pre">Finset</span> <span class="pre">&#8469;</span></code>, &#23384;&#22312;&#19968;&#20010;&#32032;&#25968; <code class="docutils literal notranslate"><span class="pre">p</span></code> &#19981;&#26159; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#30340;&#20803;&#32032;&#12290;
+&#20026;&#20102;&#23548;&#20986;&#30683;&#30462;&#65292;&#25105;&#20204;&#20551;&#35774;&#25152;&#26377;&#32032;&#25968;&#37117;&#22312; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#20013;&#65292;
+&#28982;&#21518;&#32553;&#20943;&#20026;&#19968;&#20010;&#20165;&#21253;&#21547;&#25152;&#26377;&#32032;&#25968;&#30340;&#38598;&#21512; <code class="docutils literal notranslate"><span class="pre">s</span></code>.
+&#21462;&#35813;&#38598;&#21512;&#30340;&#20056;&#31215;&#65292;&#21152;&#19968;&#65292;&#28982;&#21518;&#25214;&#21040;&#32467;&#26524;&#30340;&#19968;&#20010;&#32032;&#22240;&#25968;&#65292;
+&#36825;&#36890;&#21521;&#20102;&#25105;&#20204;&#27491;&#22312;&#23547;&#25214;&#30340;&#30683;&#30462;&#12290;
+&#30475;&#30475;&#20320;&#33021;&#21542;&#23436;&#25104;&#19979;&#38754;&#30340;&#27010;&#35201;&#12290;
+&#20320;&#21487;&#20197;&#22312;&#31532;&#19968;&#20010; <code class="docutils literal notranslate"><span class="pre">have</span></code> &#30340;&#35777;&#26126;&#20013;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Finset.prod_pos</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">primes_infinite&#39;</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">Nat</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">p</span><span class="o">,</span> <span class="n">Nat.Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8713;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">s</span>
   <span class="n">by_contra</span> <span class="n">h</span>
@@ -914,19 +899,17 @@ You can use <code class="docutils literal notranslate"><span class="pre">Finset.
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>We have thus seen two ways of saying that there are infinitely many primes:
-saying that they are not bounded by any <code class="docutils literal notranslate"><span class="pre">n</span></code>, and saying that they are
-not contained in any finite set <code class="docutils literal notranslate"><span class="pre">s</span></code>.
-The two proofs below show that these formulations are equivalent.
-In the second, in order to form <code class="docutils literal notranslate"><span class="pre">s.filter</span> <span class="pre">Q</span></code>, we have to assume that there
-is a procedure for deciding whether or not <code class="docutils literal notranslate"><span class="pre">Q</span></code> holds. Lean knows that there
-is a procedure for <code class="docutils literal notranslate"><span class="pre">Nat.Prime</span></code>. In general, if we use classical logic
-by writing <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">Classical</span></code>,
-we can dispense with the assumption.</p>
-<p>In Mathlib, <code class="docutils literal notranslate"><span class="pre">Finset.sup</span> <span class="pre">s</span> <span class="pre">f</span></code> denotes the supremum of the values of <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">x</span></code> as <code class="docutils literal notranslate"><span class="pre">x</span></code>
-ranges over <code class="docutils literal notranslate"><span class="pre">s</span></code>, returning <code class="docutils literal notranslate"><span class="pre">0</span></code> in the case where <code class="docutils literal notranslate"><span class="pre">s</span></code> is empty and
-the codomain of <code class="docutils literal notranslate"><span class="pre">f</span></code> is <code class="docutils literal notranslate"><span class="pre">&#8469;</span></code>. In the first proof, we use <code class="docutils literal notranslate"><span class="pre">s.sup</span> <span class="pre">id</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">id</span></code> is the identity function, to refer to the maximum value in <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
+<p>&#30001;&#27492;&#25105;&#20204;&#24050;&#32463;&#35265;&#36807;&#20004;&#31181;&#34920;&#36798;&#8220;&#26377;&#26080;&#31351;&#22810;&#20010;&#32032;&#25968;&#8221;&#30340;&#26041;&#24335;&#65306;
+&#35828;&#32032;&#25968;&#19981;&#20197;&#20219;&#20309; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#20026;&#19978;&#30028;&#65292;&#21644;&#35828;&#23427;&#20204;&#19981;&#21253;&#21547;&#22312;&#20219;&#20309;&#26377;&#38480;&#38598; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#20013;&#12290;
+&#19979;&#38754;&#20004;&#20010;&#35777;&#26126;&#35828;&#26126;&#20102;&#36825;&#20123;&#34920;&#31034;&#26041;&#27861;&#26159;&#31561;&#20215;&#30340;&#12290;
+&#22312;&#31532;&#20108;&#20010;&#35777;&#26126;&#20013;&#65292;&#20026;&#20102;&#26500;&#24314; <code class="docutils literal notranslate"><span class="pre">s.filter</span> <span class="pre">Q</span></code>, &#25105;&#20204;&#21482;&#22909;&#20551;&#23450;&#23384;&#22312;&#19968;&#20010;&#33021;&#20915;&#23450; <code class="docutils literal notranslate"><span class="pre">Q</span></code>
+&#26159;&#21542;&#25104;&#31435;&#30340;&#36807;&#31243;&#12290;Lean&#30693;&#36947;&#26377;&#19968;&#20010;&#29992;&#20110; <code class="docutils literal notranslate"><span class="pre">Nat.Prime</span></code> &#30340;&#36807;&#31243;&#12290;&#19968;&#33324;&#22320;&#65292;
+&#22914;&#26524;&#25105;&#20204;&#38190;&#20837; <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">Classical</span></code> &#20197;&#20351;&#29992;&#32463;&#20856;&#36923;&#36753;&#65292;
+&#25105;&#20204;&#23601;&#21487;&#20197;&#30465;&#30053;&#36825;&#20010;&#20551;&#35774;&#12290;</p>
+<p>&#22312; Mathlib &#20013;&#65292; <code class="docutils literal notranslate"><span class="pre">Finset.sup</span> <span class="pre">s</span> <span class="pre">f</span></code> &#34920;&#31034;&#24403; <code class="docutils literal notranslate"><span class="pre">x</span></code> &#21462;&#36941; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#26102; <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">x</span></code> &#30340;&#19978;&#30830;&#30028;&#65292;
+&#32780;&#22312; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#20026;&#31354;&#19988; <code class="docutils literal notranslate"><span class="pre">f</span></code> &#30340;&#21040;&#36798;&#22495;&#20026; <code class="docutils literal notranslate"><span class="pre">&#8469;</span></code> &#26102;&#36820;&#22238; <code class="docutils literal notranslate"><span class="pre">0</span></code>.
+&#22312;&#31532;&#19968;&#20010;&#35777;&#26126;&#20013;&#65292;&#25105;&#20204;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">s.sup</span> <span class="pre">id</span></code> &#34920;&#31034; <code class="docutils literal notranslate"><span class="pre">s</span></code> &#30340;&#26368;&#22823;&#20540;&#65292;
+&#20854;&#20013; <code class="docutils literal notranslate"><span class="pre">id</span></code> &#26159;&#24658;&#31561;&#20989;&#25968;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">bounded_of_ex_finset</span> <span class="o">(</span><span class="n">Q</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span>
     <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">k</span><span class="o">,</span> <span class="n">Q</span> <span class="n">k</span> <span class="bp">&#8594;</span> <span class="n">k</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">)</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">k</span><span class="o">,</span> <span class="n">Q</span> <span class="n">k</span> <span class="bp">&#8594;</span> <span class="n">k</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rintro</span> <span class="o">&#10216;</span><span class="n">s</span><span class="o">,</span> <span class="n">hs</span><span class="o">&#10217;</span>
@@ -945,44 +928,39 @@ where <code class="docutils literal notranslate"><span class="pre">id</span></co
   <span class="n">exact</span> <span class="n">hn</span> <span class="n">k</span>
 </pre></div>
 </div>
-<p>A small variation on our second proof that there are infinitely many primes
-shows that there are infinitely many primes congruent to 3 modulo 4.
-The argument goes as follows.
-First, notice that if the product of two numbers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>
-is equal to 3 modulo 4, then one of the two numbers is congruent to 3 modulo 4.
-After all, both have to be odd, and if they are both congruent to 1 modulo 4,
-so is their product.
-We can use this observation to show that if some number
-greater than 2 is congruent to 3 modulo 4,
-then that number has a prime divisor that is also congruent to 3 modulo 4.</p>
-<p>Now suppose there are only finitely many prime numbers congruent to 3
-modulo 4, say, <span class="math notranslate nohighlight">\(p_1, \ldots, p_k\)</span>.
-Without loss of generality, we can assume that <span class="math notranslate nohighlight">\(p_1 = 3\)</span>.
-Consider the product <span class="math notranslate nohighlight">\(4 \prod_{i = 2}^k p_i + 3\)</span>.
-It is easy to see that this is congruent to 3 modulo 4, so it has
-a prime factor <span class="math notranslate nohighlight">\(p\)</span> congruent to 3 modulo 4.
-It can&#8217;t be the case that <span class="math notranslate nohighlight">\(p = 3\)</span>; since <span class="math notranslate nohighlight">\(p\)</span>
-divides <span class="math notranslate nohighlight">\(4 \prod_{i = 2}^k p_i + 3\)</span>, if <span class="math notranslate nohighlight">\(p\)</span>
-were equal to 3 then it would also divide <span class="math notranslate nohighlight">\(\prod_{i = 2}^k p_i\)</span>,
-which implies that <span class="math notranslate nohighlight">\(p\)</span> is equal to
-one of the <span class="math notranslate nohighlight">\(p_i\)</span> for <span class="math notranslate nohighlight">\(i = 2, \ldots, k\)</span>;
-and we have excluded 3 from this list.
-So <span class="math notranslate nohighlight">\(p\)</span> has to be one of the other elements <span class="math notranslate nohighlight">\(p_i\)</span>.
-But in that case, <span class="math notranslate nohighlight">\(p\)</span> divides <span class="math notranslate nohighlight">\(4 \prod_{i = 2}^k p_i\)</span>
-and hence 3, which contradicts the fact that it is not 3.</p>
-<p>In Lean, the notation <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%</span> <span class="pre">m</span></code>, read &#8220;<code class="docutils literal notranslate"><span class="pre">n</span></code> modulo <code class="docutils literal notranslate"><span class="pre">m</span></code>,&#8221;
-denotes the remainder of the division of <code class="docutils literal notranslate"><span class="pre">n</span></code> by <code class="docutils literal notranslate"><span class="pre">m</span></code>.</p>
+<p>&#25105;&#20204;&#23545;&#23384;&#22312;&#26080;&#31351;&#22810;&#20010;&#32032;&#25968;&#30340;&#31532;&#20108;&#20010;&#35777;&#26126;&#20570;&#20102;&#19968;&#20010;&#23567;&#30340;&#25913;&#21160;&#65292;
+&#34920;&#26126;&#26377;&#26080;&#31351;&#22810;&#20010;&#27169; 4 &#20313; 3 &#30340;&#32032;&#25968;&#12290;
+&#35770;&#35777;&#22914;&#19979;&#12290;
+&#39318;&#20808;&#65292;&#27880;&#24847;&#21040;&#33509;&#20004;&#20010;&#25968; <span class="math notranslate nohighlight">\(m\)</span> &#21644; <span class="math notranslate nohighlight">\(n\)</span> &#30340;&#20056;&#31215;&#27169; 4 &#31561;&#20110; 3,
+&#37027;&#20040;&#20004;&#20010;&#25968;&#20013;&#26377;&#19968;&#20010;&#27169; 4 &#20313; 3.
+&#27605;&#31455;&#65292;&#23427;&#20204;&#37117;&#26159;&#22855;&#25968;&#65292;&#33509;&#23427;&#20204;&#37117;&#27169; 4 &#20313; 1,
+&#37027;&#20040;&#23427;&#20204;&#30340;&#20056;&#31215;&#20063;&#19968;&#26679;&#12290;
+&#25105;&#20204;&#21487;&#20197;&#20351;&#29992;&#36825;&#20010;&#35266;&#23519;&#35777;&#26126;&#33509;&#26576;&#20010;&#22823;&#20110; 2 &#30340;&#25968;&#27169; 4 &#20313; 3,
+&#37027;&#20040;&#37027;&#20010;&#25968;&#26377;&#19968;&#20010;&#27169; 4 &#20313; 3 &#30340;&#32032;&#22240;&#23376;&#12290;</p>
+<p>&#29616;&#22312;&#20551;&#35774;&#21482;&#26377;&#26377;&#38480;&#22810;&#20010;&#32032;&#25968;&#27169; 4 &#20313; 3,
+&#35760;&#20026; <span class="math notranslate nohighlight">\(p_1, \ldots, p_k\)</span>.
+&#19981;&#22833;&#19968;&#33324;&#24615;&#65292;&#25105;&#20204;&#21487;&#20197;&#20551;&#35774; <span class="math notranslate nohighlight">\(p_1 = 3\)</span>.
+&#32771;&#34385;&#20056;&#31215; <span class="math notranslate nohighlight">\(4 \prod_{i = 2}^k p_i + 3\)</span>.
+&#23481;&#26131;&#30475;&#20986;&#36825;&#20010;&#20056;&#31215;&#27169; 4 &#20313; 3,
+&#22240;&#27492;&#23427;&#26377;&#19968;&#20010;&#27169; 4 &#20313; 3 &#30340;&#32032;&#22240;&#23376; <span class="math notranslate nohighlight">\(p\)</span>.
+&#19981;&#21487;&#33021;&#26159; <span class="math notranslate nohighlight">\(p = 3\)</span> &#30340;&#24773;&#20917;&#65307;
+&#30001;&#20110; <span class="math notranslate nohighlight">\(p\)</span> &#25972;&#38500; <span class="math notranslate nohighlight">\(4 \prod_{i = 2}^k p_i + 3\)</span>,
+&#33509; <span class="math notranslate nohighlight">\(p\)</span> &#31561;&#20110; 3, &#21017;&#23427;&#20063;&#25972;&#38500; <span class="math notranslate nohighlight">\(\prod_{i = 2}^k p_i\)</span>,
+&#36825;&#24847;&#21619;&#30528; <span class="math notranslate nohighlight">\(p\)</span> &#31561;&#20110; <span class="math notranslate nohighlight">\(p_i\)</span>, <span class="math notranslate nohighlight">\(i = 2, \ldots, k\)</span> &#20013;&#30340;&#19968;&#20010;&#65307;
+&#32780;&#25105;&#20204;&#24050;&#32463;&#22312;&#36825;&#20010;&#21015;&#34920;&#20013;&#21435;&#25481;&#20102; 3.
+&#22240;&#27492; <span class="math notranslate nohighlight">\(p\)</span> &#21482;&#33021;&#26159;&#20854;&#20313;&#20803;&#32032; <span class="math notranslate nohighlight">\(p_i\)</span> &#20013;&#30340;&#19968;&#20010;&#12290;
+&#20294;&#22312;&#37027;&#31181;&#24773;&#20917;&#19979;&#65292;<span class="math notranslate nohighlight">\(p\)</span> &#25972;&#38500; <span class="math notranslate nohighlight">\(4 \prod_{i = 2}^k p_i\)</span>,
+&#20174;&#32780;&#25972;&#38500; 3, &#36825;&#21644;&#23427;&#19981;&#26159; 3 &#30683;&#30462;&#12290;</p>
+<p>&#22312; Lean &#20013;&#65292;&#35760;&#21495; <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%</span> <span class="pre">m</span></code> &#35835;&#20316; &#8220;<code class="docutils literal notranslate"><span class="pre">n</span></code> &#27169; <code class="docutils literal notranslate"><span class="pre">m</span></code>,&#8221;
+&#34920;&#31034; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#38500;&#20197; <code class="docutils literal notranslate"><span class="pre">m</span></code> &#30340;&#20313;&#25968;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">27</span> <span class="bp">%</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
 </pre></div>
 </div>
-<p>We can then render the statement &#8220;<code class="docutils literal notranslate"><span class="pre">n</span></code> is congruent to 3 modulo 4&#8221;
-as <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">3</span></code>. The following example and theorems sum up
-the facts about this function that we will need to use below.
-The first named theorem is another illustration of reasoning by
-a small number of cases.
-In the second named theorem, remember that the semicolon means that
-the subsequent tactic block is applied to all the goals created by the
-preceding tactic.</p>
+<p>&#20174;&#27492;&#20197;&#21518;&#65292;&#25105;&#20204;&#21487;&#20197;&#25226;&#35821;&#21477; &#8220;<code class="docutils literal notranslate"><span class="pre">n</span></code> &#27169; 4 &#20313; 3&#8221; &#34920;&#31034;&#20026; <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">3</span></code>.
+&#20197;&#19979;&#31034;&#20363;&#21644;&#23450;&#29702;&#24635;&#32467;&#20102;&#25105;&#20204;&#23558;&#22312;&#19979;&#38754;&#38656;&#35201;&#20351;&#29992;&#30340;&#26377;&#20851;&#27492;&#20989;&#25968;&#30340;&#20107;&#23454;&#12290;
+&#31532;&#19968;&#20010;&#20855;&#21517;&#30340;&#23450;&#29702;&#26159;&#36890;&#36807;&#23569;&#37327;&#24773;&#20917;&#36827;&#34892;&#25512;&#29702;&#30340;&#21478;&#19968;&#20010;&#20363;&#35777;&#12290;
+&#22312;&#31532;&#20108;&#20010;&#20855;&#21517;&#23450;&#29702;&#20013;&#65292;
+&#35831;&#35760;&#20303;&#20998;&#21495;&#34920;&#31034;&#21518;&#32493;&#31574;&#30053;&#22359;&#24212;&#29992;&#20110;&#21069;&#19968;&#20010;&#31574;&#30053;&#21019;&#24314;&#30340;&#25152;&#26377;&#30446;&#26631;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">%</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">add_comm</span><span class="o">,</span> <span class="n">Nat.add_mul_mod_self_left</span><span class="o">]</span>
 
@@ -1001,17 +979,15 @@ preceding tactic.</p>
       <span class="n">norm_num</span> <span class="n">at</span> <span class="n">h</span>
 </pre></div>
 </div>
-<p>We will also need the following fact, which says that if
-<code class="docutils literal notranslate"><span class="pre">m</span></code> is a nontrivial divisor of <code class="docutils literal notranslate"><span class="pre">n</span></code>, then so is <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">/</span> <span class="pre">m</span></code>.
-See if you can complete the proof using <code class="docutils literal notranslate"><span class="pre">Nat.div_dvd_of_dvd</span></code>
-and <code class="docutils literal notranslate"><span class="pre">Nat.div_lt_self</span></code>.</p>
+<p>&#25105;&#20204;&#20063;&#38656;&#35201;&#19979;&#21015;&#20107;&#23454;&#65292;&#23427;&#26159;&#35828;&#33509; <code class="docutils literal notranslate"><span class="pre">m</span></code> &#26159; <code class="docutils literal notranslate"><span class="pre">n</span></code> &#30340;&#19968;&#20010;&#38750;&#24179;&#20961;&#22240;&#23376;&#65292;
+&#37027;&#20040; <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">/</span> <span class="pre">m</span></code> &#20063;&#26159;&#12290;
+&#30475;&#30475;&#20320;&#33021;&#21542;&#20351;&#29992; <code class="docutils literal notranslate"><span class="pre">Nat.div_dvd_of_dvd</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Nat.div_lt_self</span></code> &#23436;&#25104;&#35777;&#26126;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">aux</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">h&#8320;</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#8321;</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">m</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#8322;</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">/</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">n</span> <span class="bp">/</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Now put all the pieces together to prove that any
-number congruent to 3 modulo 4 has a prime divisor with that
-same property.</p>
+<p>&#29616;&#22312;&#25226;&#25152;&#26377;&#30340;&#37096;&#20998;&#25918;&#22312;&#19968;&#36215;&#26469;&#35777;&#26126;&#65292;
+&#20219;&#20309;&#27169; 4 &#20313; 3 &#30340;&#25968;&#37117;&#26377;&#19968;&#20010;&#20855;&#26377;&#30456;&#21516;&#24615;&#36136;&#30340;&#32032;&#25968;&#22240;&#23376;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">exists_prime_factor_mod_4_eq_3</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">%</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
     <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">Nat</span><span class="o">,</span> <span class="n">p.Prime</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">%</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_cases</span> <span class="n">np</span> <span class="o">:</span> <span class="n">n.Prime</span>
@@ -1034,9 +1010,9 @@ same property.</p>
   <span class="bp">.</span> <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>We are in the home stretch. Given a set <code class="docutils literal notranslate"><span class="pre">s</span></code> of prime
-numbers, we need to talk about the result of removing 3 from that
-set, if it is present. The function <code class="docutils literal notranslate"><span class="pre">Finset.erase</span></code> handles that.</p>
+<p>&#25105;&#20204;&#24050;&#32463;&#21040;&#20102;&#26368;&#21518;&#38454;&#27573;&#12290;&#32473;&#23450;&#19968;&#20010;&#32032;&#25968;&#38598; <code class="docutils literal notranslate"><span class="pre">s</span></code>,
+&#25105;&#20204;&#38656;&#35201;&#35848;&#35770;&#35813;&#38598;&#21512;&#21024;&#38500; 3 (&#22914;&#26524;&#23384;&#22312;)&#30340;&#32467;&#26524;&#12290;
+&#20989;&#25968; <code class="docutils literal notranslate"><span class="pre">Finset.erase</span></code> &#21487;&#20197;&#22788;&#29702;&#36825;&#20010;&#38382;&#39064;&#12290;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Finset</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8712;</span> <span class="n">erase</span> <span class="n">s</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">m</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rwa</span> <span class="o">[</span><span class="n">mem_erase</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
 
@@ -1045,11 +1021,9 @@ set, if it is present. The function <code class="docutils literal notranslate"><
   <span class="n">assumption</span>
 </pre></div>
 </div>
-<p>We are now ready to prove that there are infinitely many primes
-congruent to 3 modulo 4.
-Fill in the missing parts below.
-Our solution uses <code class="docutils literal notranslate"><span class="pre">Nat.dvd_add_iff_left</span></code> and <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</span></code>
-along the way.</p>
+<p>&#25105;&#20204;&#29616;&#22312;&#24050;&#32463;&#20934;&#22791;&#22909;&#35777;&#26126;&#23384;&#22312;&#26080;&#31351;&#22810;&#20010;&#27169; 4 &#20313; 3 &#30340;&#32032;&#25968;&#12290;
+&#22635;&#20889;&#19979;&#38754;&#32570;&#22833;&#30340;&#37096;&#20998;&#12290;
+&#25105;&#20204;&#30340;&#35299;&#31572;&#36335;&#24452;&#20013;&#20351;&#29992;&#20102; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_add_iff_left</span></code> &#21644; <code class="docutils literal notranslate"><span class="pre">Nat.dvd_sub'</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">primes_mod_4_eq_3_infinite</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">n</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="bp">&gt;</span> <span class="n">n</span><span class="o">,</span> <span class="n">Nat.Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">%</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_contra</span> <span class="n">h</span>
   <span class="n">push_neg</span> <span class="n">at</span> <span class="n">h</span>
@@ -1077,8 +1051,7 @@ along the way.</p>
   <span class="n">contradiction</span>
 </pre></div>
 </div>
-<p>If you managed to complete the proof, congratulations! This has been a serious
-feat of formalization.</p>
+<p>&#22914;&#26524;&#20320;&#25104;&#21151;&#23436;&#25104;&#20102;&#35777;&#26126;&#65292;&#37027;&#20040;&#24685;&#21916;&#20320;&#65281;&#36825;&#26159;&#24418;&#24335;&#21270;&#30340;&#19968;&#20010;&#37325;&#22823;&#25104;&#26524;&#12290;</p>
 </section>
 </section>
 
