@@ -957,7 +957,7 @@ S_{n+1} &amp;= g(f(S_n)).\end{split}\]</div>
       <span class="n">simp</span> <span class="o">[</span><span class="n">sbAux</span><span class="o">]</span>
       <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">x&#8321;</span><span class="o">,</span> <span class="n">hn</span><span class="o">,</span> <span class="n">x&#8322;eq.symm</span><span class="o">&#10217;</span>
     <span class="gr">sorry</span>
-  <span class="n">push_neg</span>  <span class="n">at</span> <span class="n">xA</span>
+  <span class="n">push_neg</span> <span class="n">at</span> <span class="n">xA</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1007,8 +1007,9 @@ S_{n+1} &amp;= g(f(S_n)).\end{split}\]</div>
     <span class="k">have</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">A</span> <span class="o">:=</span> <span class="kd">by</span>
       <span class="n">rw</span> <span class="o">[</span><span class="n">A_def</span><span class="o">,</span> <span class="n">sbSet</span><span class="o">,</span> <span class="n">mem_iUnion</span><span class="o">]</span>
       <span class="n">exact</span> <span class="o">&#10216;</span><span class="n">n</span><span class="o">,</span> <span class="n">xmem</span><span class="o">&#10217;</span>
-    <span class="n">simp</span> <span class="n">only</span> <span class="o">[</span><span class="n">h_def</span><span class="o">,</span> <span class="n">sbFun</span><span class="o">,</span> <span class="n">if_pos</span> <span class="n">this</span><span class="o">]</span>
-    <span class="n">exact</span> <span class="n">hg</span> <span class="n">hx</span>
+    <span class="n">rw</span> <span class="o">[</span><span class="n">h_def</span><span class="o">,</span> <span class="n">sbFun</span><span class="o">,</span> <span class="n">if_pos</span> <span class="n">this</span><span class="o">]</span>
+    <span class="n">apply</span> <span class="n">hg</span> <span class="n">hx</span>
+
   <span class="gr">sorry</span>
 </pre></div>
 </div>
